@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace ProgrammingLearningApp;
 
 public class CommandFactory
@@ -16,6 +18,7 @@ public class CommandFactory
 public interface ICommand
 {
     void Execute(Character c);
+    string ToString();
 }
 
 public class Turn : ICommand
