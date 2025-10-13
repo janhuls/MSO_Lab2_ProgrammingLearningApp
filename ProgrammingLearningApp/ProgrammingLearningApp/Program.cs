@@ -6,22 +6,55 @@ class Program
     private string fileName;
     private Character character;
 
-    //TODO: 
-    //add prebuilt programs
-    //add metrics
-    //add command line interface
-
     static void Main()
     {
-        //some sort of command line interface
-        //options for prebuilt programs or custom input file
-        Program p = new Program("input");
-        foreach (ICommand c in p.program)
+        Console.WriteLine("=== Programming Learning App ===");
+        Console.WriteLine("1. Load example program");
+        Console.WriteLine("2. Load from file");
+        Console.Write("Choose option: ");
+
+        int choice = int.Parse(Console.ReadLine() ?? "1");
+
+        List<ICommand> commands;
+        string name;
+
+        if (choice == 1)
         {
-            c.Execute(p.character);
+            Console.WriteLine("Choose example: 1) Basic 2) Advanced 3) Expert");
+            int exampleChoice = int.Parse(Console.ReadLine() ?? "1");
+            (name, commands) = ExamplePrograms.GetExample(exampleChoice);
         }
-        Console.WriteLine('.');
-        Console.WriteLine("End state " + p.character.ToString());
+        else
+        {
+            Console.Write("Enter file name: ");
+            string fileName = Console.ReadLine() ?? "input.txt";
+            string input = System.IO.File.ReadAllText(fileName);
+            commands = new ProgramParser(new CommandFactory()).Parse(input);
+            name = fileName;
+        }
+
+        Console.WriteLine("1. Execute Program\n2. Show Metrics");
+        int action = int.Parse(Console.ReadLine() ?? "1");
+
+        Character c = new();
+        if (action == 1)
+        {
+            Console.WriteLine($"\nExecuting {name}:");
+
+            List<string> cmds = new();
+            foreach (var cmd in commands)
+            {
+                cmd.Execute(c);
+                cmds.Add(cmd.ToString());
+            }
+            Console.WriteLine(String.Join(", ", cmds) + ".");
+            Console.WriteLine($"End state {c}");
+        }
+        else
+        {
+            var metrics = new MetricsCalculator(new BasicMetricsStrategy());
+            metrics.Calculate(commands);
+        }
     }
 
     public Program(string fileName)

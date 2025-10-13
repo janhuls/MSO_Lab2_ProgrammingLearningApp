@@ -1,5 +1,18 @@
 namespace ProgrammingLearningApp;
 
+public class CommandFactory
+{
+    public ICommand CreateCommand(string[] parts)
+    {
+        return parts[0] switch
+        {
+            "Move" => new Move(int.Parse(parts[1])),
+            "Turn" => new Turn((SIDE)Enum.Parse(typeof(SIDE), parts[1], true)),
+            _ => throw new Exception($"Unknown command: {parts[0]}")
+        };
+    }
+}
+
 public interface ICommand
 {
     void Execute(Character c);
@@ -16,7 +29,6 @@ public class Turn : ICommand
     public void Execute(Character c)
     {
         c.Rotate(side);
-        Console.WriteLine(this.ToString());
     }
     public override string ToString()
     {
@@ -35,7 +47,6 @@ public class Move : ICommand
     public void Execute(Character c)
     {
         c.Move(amount);
-        Console.WriteLine(this.ToString());
     }
     public override string ToString()
     {
@@ -63,4 +74,15 @@ public class Repeat : ICommand
             }
         }
     }
-}
+    public List<ICommand> GetCommands() => commands;
+    public override string ToString() 
+    {
+        List<string> ss = new();
+        for (int i = 0; i < repetitions; i++)
+        {
+            foreach (var cmd in commands)
+                ss.Add(cmd.ToString());
+        }
+        return String.Join(", ", ss);
+    }
+} 
