@@ -80,12 +80,31 @@
 %============================%
 \title{\textbf{MSO Lab Assignment 2:\\
 Programming Learning App}}
-\author{Jan Huls (4699610), Arwin Moormans ()}
+\author{Jan Huls (4699610), Arwin Moormans (4965957)}
 
 
 \begin{document}
 \maketitle
 \section*{Software Design \& Patterns}
+Below you will find a Class diagram to show the structure of the application.
+%hier die toevoegen kwee nie hoe da moet
+We have used multiple pattern's to structure our program.
+The first pattern is the Composite pattern in the repeat command class.
+This class holds all the functionality of the repeat command, such as the commands it needs to reapeat and how many times.
+Because one of the repeated commands can be another reapeat command, we use the Composite pattern.
+This makes a tree like structure where non-repeat commands are leafs and other repeat commands are nodes.
+This way it is possible to call the Execute function of the root command and that will automaticly execute every command in the tree.
+
+An other pattern is the Factory pattern that we use to construct commands bla bla 
+
+For calculating different metrics we use the Strategy pattern.
+This ensures that it is possible to add more 
+
+At last we have used the Builder pattern to create the example programs.
+This way it is possible to create 
+%mis is deze ook niet nodig?? soort van wrm doen we nii gwn alle commands met de hand aan n lijst toevoegen
+% anders moeten we ook deze class aanpassen elke keer als we commando toevoegen
+
 
 %Composite pattern bij Repeat
 %Factory pattern bij CommandFactory
