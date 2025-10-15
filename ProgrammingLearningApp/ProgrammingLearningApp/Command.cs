@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-namespace ProgrammingLearningApp;
+namespace ProgrammingLearningApp.ProgrammingLearningApp;
 
 public interface ICommand
 {

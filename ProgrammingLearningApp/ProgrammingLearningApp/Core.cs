@@ -1,4 +1,4 @@
-namespace ProgrammingLearningApp;
+namespace ProgrammingLearningApp.ProgrammingLearningApp;
 
 public interface IParser
 {
