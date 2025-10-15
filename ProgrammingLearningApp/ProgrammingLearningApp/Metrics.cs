@@ -31,15 +31,3 @@ public class BasicMetricsStrategy : IMetricsStrategy
         }
     }
 }
-
-public class MetricsCalculator
-{
-    private readonly IMetricsStrategy strategy;
-
-    public MetricsCalculator(IMetricsStrategy strategy)
-    {
-        this.strategy = strategy;
-    }
-
-    public void Calculate(List<ICommand> commands) => strategy.Calculate(commands);
-}
