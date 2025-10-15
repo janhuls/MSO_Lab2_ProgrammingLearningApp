@@ -1,5 +1,4 @@
-namespace ProgrammingLearningApp;
-
+namespace MSOProgramLearningApp;
 public interface IParser
 {
     public List<ICommand> Parse();

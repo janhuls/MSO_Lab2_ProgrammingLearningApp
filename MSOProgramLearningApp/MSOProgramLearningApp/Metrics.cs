@@ -1,5 +1,4 @@
-namespace ProgrammingLearningApp;
-
+namespace MSOProgramLearningApp;
 public interface IMetricsStrategy
 {
     void Calculate(List<ICommand> commands);
@@ -7,14 +6,17 @@ public interface IMetricsStrategy
 
 public class BasicMetricsStrategy : IMetricsStrategy
 {
+    private string result = "";
     public void Calculate(List<ICommand> commands)
     {
         int totalCommands = 0, repeatCount = 0, maxDepth = 0;
         Analyze(commands, 0, ref totalCommands, ref repeatCount, ref maxDepth);
-
-        Console.WriteLine($"Commands: {totalCommands}");
-        Console.WriteLine($"Repeat Commands: {repeatCount}");
-        Console.WriteLine($"Max Nesting Depth: {maxDepth}");
+        
+        // save it so that it can be tested
+        result = $"Commands: {totalCommands}\n" +
+               $"Repeat Commands: {repeatCount}\n" +
+               $"Max Nesting Depth: {maxDepth}\n";
+        Console.Write(result);
     }
 
     private void Analyze(List<ICommand> commands, int depth, ref int total, ref int repeats, ref int maxDepth)
@@ -29,5 +31,11 @@ public class BasicMetricsStrategy : IMetricsStrategy
                 Analyze(r.GetCommands(), depth + 1, ref total, ref repeats, ref maxDepth);
             }
         }
+    }
+
+    // for testing purposes
+    public string GetResult()
+    {
+        return result;
     }
 }

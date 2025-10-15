@@ -1,8 +1,8 @@
-﻿namespace ProgrammingLearningApp;
+﻿namespace MSOProgramLearningApp;
 
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
         Console.WriteLine("=== Programming Learning App ===");
         Console.WriteLine("1. Load example program");

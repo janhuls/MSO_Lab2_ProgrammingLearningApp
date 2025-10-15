@@ -107,10 +107,13 @@ This way it is possible to call the Execute function of the root command and tha
 For calculating different metrics we use the Strategy pattern.
 This ensures that it is possible to add different kind of metrics later.
 By making this a Strategy pattern it is possible to easily change wich kind of metrics the user wants to see.
-The IMetricsStrategy is the Strategy interface and the BasicMatricsStrategy is the concrete Strategy.
+The \texttt{IMetricsStrategy} is the Strategy interface and the \texttt{BasicMatricsStrategy} is the concrete Strategy.
 
 At last we have used the Builder pattern to create the example programs.
-This way it is possible to create 
+This way it is possible to create different type of complex programs with the same generation code.
+By using a Builder pattern it is possible to also add more functionality when adding a command to a program.
+The \texttt{ProgramBuilder} is the concrete builder and the \texttt{ExamplePrograms} uses the builder to create all the example programs.
+
 %mis is deze ook niet nodig?? soort van wrm doen we nii gwn alle commands met de hand aan n lijst toevoegen
 % anders moeten we ook deze class aanpassen elke keer als we commando toevoegen
 % hmmm, ik denk dat ie wel mooi is zodat iemand die onze code wil implementeren ofz zelf makkelijk voorbeelden kan maken

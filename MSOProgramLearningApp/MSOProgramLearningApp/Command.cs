@@ -1,6 +1,4 @@
-using System.Runtime.CompilerServices;
-
-namespace ProgrammingLearningApp;
+namespace MSOProgramLearningApp;
 
 public interface ICommand
 {
