@@ -16,12 +16,7 @@ public class StringParser : IParser
 
     public List<ICommand> Parse()
     {
-        return Parse(program);
-    }
-
-    public static List<ICommand> Parse(string input)
-    {
-        var lines = input
+        var lines = program
             .Split('\n', StringSplitOptions.RemoveEmptyEntries)
             .Select(l => l.Replace("\r", ""))
             .ToArray();
@@ -29,7 +24,7 @@ public class StringParser : IParser
         return ParseBlock(lines, ref index, 0);
     }
 
-    private static List<ICommand> ParseBlock(string[] lines, ref int index, int expectedIndent)
+    private List<ICommand> ParseBlock(string[] lines, ref int index, int expectedIndent)
     {
         var commands = new List<ICommand>();
 
@@ -59,7 +54,7 @@ public class StringParser : IParser
         return commands;
     }
 
-    private static ICommand ParseRepeat(string[] lines, ref int index, int expectedIndent)
+    private ICommand ParseRepeat(string[] lines, ref int index, int expectedIndent)
     {
         string line = lines[index].Trim();
 
@@ -74,12 +69,12 @@ public class StringParser : IParser
         return new Repeat(times, innerCommands);
     }
 
-    private static ICommand ParseSimpleCommand(string line)
+    private ICommand ParseSimpleCommand(string line)
     {
         var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         return CreateCommand(parts);
     }
-    private static ICommand CreateCommand(string[] parts)
+    private ICommand CreateCommand(string[] parts)
     {
         return parts[0] switch
         {
