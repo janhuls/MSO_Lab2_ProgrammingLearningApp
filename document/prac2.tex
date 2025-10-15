@@ -95,14 +95,13 @@ Below you will find a Class diagram to show the structure of the application.
   \caption{Class diagram of the Programming Learning App}
 \end{figure}
 %hier die toevoegen kwee nie hoe da moet
-We have used multiple patterns to structure our program.
+We have used multiple patterns to structure our program. 
+
 The first pattern is the Composite pattern in the repeat command class.
 This class holds all the functionality of the repeat command, such as the commands it needs to reapeat and how many times.
 Because one of the repeated commands can be another reapeat command, we use the Composite pattern.
-This makes a tree like structure where non-repeat commands are leafs and other repeat commands are nodes.
+This makes a tree like structure where non-repeat commands are leafs and other repeat commands are nodes, meaning \texttt{ICommand} is the component and \texttt{Repeat} is the composite.
 This way it is possible to call the Execute function of the root command and that will automaticly execute every command in the tree.
-
-An other pattern is the Factory pattern that we use to construct commands bla bla 
 
 For calculating different metrics we use the Strategy pattern.
 This ensures that it is possible to add more 
@@ -111,10 +110,10 @@ At last we have used the Builder pattern to create the example programs.
 This way it is possible to create 
 %mis is deze ook niet nodig?? soort van wrm doen we nii gwn alle commands met de hand aan n lijst toevoegen
 % anders moeten we ook deze class aanpassen elke keer als we commando toevoegen
+% hmmm, ik denk dat ie wel mooi is zodat iemand die onze code wil implementeren ofz zelf makkelijk voorbeelden kan maken
 
 
 %Composite pattern bij Repeat
-%Factory pattern bij CommandFactory
 %Strategy pattern bij MetricsCalculator, IMetricsStrategy
 %Builder pattern bij ProgramBuilder
 

@@ -1,9 +1,9 @@
-PWD /home/jan/Documents/school/MSO/MSO prac 2/MSO_Lab2_ProgrammingLearningApp/document
+PWD /home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/document
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/jan/Documents/school/MSO/MSO prac 2/MSO_Lab2_ProgrammingLearningApp/document/prac2.tex
+INPUT /home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/document/prac2.tex
 OUTPUT prac2.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -279,6 +279,10 @@ INPUT ./class_diagram.png
 INPUT ./class_diagram.png
 INPUT ./class_diagram.png
 INPUT ./class_diagram.png
+INPUT /usr/share/texmf/tex/latex/lm/t1lmtt.fd
+INPUT /usr/share/texmf/tex/latex/lm/t1lmtt.fd
+INPUT /usr/share/texmf/tex/latex/lm/t1lmtt.fd
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmtt10.tfm
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc
 INPUT prac2.aux
@@ -287,3 +291,4 @@ INPUT ./prac2.out
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmr12.pfb
+INPUT /usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
