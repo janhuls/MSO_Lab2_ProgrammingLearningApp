@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace ProgrammingLearningApp;
+﻿namespace ProgrammingLearningApp;
 
 class Program
 {

@@ -104,7 +104,9 @@ This makes a tree like structure where non-repeat commands are leafs and other r
 This way it is possible to call the Execute function of the root command and that will automaticly execute every command in the tree.
 
 For calculating different metrics we use the Strategy pattern.
-This ensures that it is possible to add more 
+This ensures that it is possible to add different kind of metrics later.
+By making this a Strategy pattern it is possible to easily change wich kind of metrics the user wants to see.
+The IMetricsStrategy is the Strategy interface and the BasicMatricsStrategy is the concrete Strategy.
 
 At last we have used the Builder pattern to create the example programs.
 This way it is possible to create 
