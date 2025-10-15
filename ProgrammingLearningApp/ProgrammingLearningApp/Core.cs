@@ -2,14 +2,8 @@ namespace ProgrammingLearningApp;
 
 public class ProgramParser
 {
-    private readonly CommandFactory _factory;
     private const int IndentSize = 4;
-
-    public ProgramParser(CommandFactory factory)
-    {
-        _factory = factory;
-    }
-
+    public ProgramParser() { }
     public List<ICommand> Parse(string input)
     {
         var lines = input
@@ -68,7 +62,16 @@ public class ProgramParser
     private ICommand ParseSimpleCommand(string line)
     {
         var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        return _factory.CreateCommand(parts);
+        return CreateCommand(parts);
+    }
+    private ICommand CreateCommand(string[] parts)
+    {
+        return parts[0] switch
+        {
+            "Move" => new Move(int.Parse(parts[1])),
+            "Turn" => new Turn((SIDE)Enum.Parse(typeof(SIDE), parts[1], true)),
+            _ => throw new Exception($"Unknown command: {parts[0]}")
+        };
     }
 }
 

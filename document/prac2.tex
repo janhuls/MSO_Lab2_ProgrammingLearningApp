@@ -6,7 +6,7 @@
 \usepackage[a4paper,margin=3cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[dutch]{babel}
+\usepackage[english]{babel}
 \usepackage{lmodern}          % Better serif font
 \usepackage{microtype}        % Better spacing and justification
 \usepackage{parskip}          % Paragraph spacing instead of indentation
@@ -15,6 +15,7 @@
 \usepackage{datetime}
 \newdateformat{monthyear}{\monthname[\THEMONTH] \THEYEAR}
 \date{\monthyear\today}
+\usepackage{graphicx}
 
 %============================%
 %        HEADINGS            %
@@ -42,9 +43,9 @@
 \newcommand{\C}{\mathds{C}}
 \newcommand{\EX}{\mathbb{E}}
 \newcommand{\PP}{\mathcal{P}}           % power set
-\newcommand{\ndiv}{\mathrel{\!\not|}}
+\newcommand{\ndiv}{\nmid}
 \newcommand{\eps}{\varepsilon}
-\let\temp\phi                           %varphi to phi
+\let\temp\phi                           % varphi to phi
 \let\phi\varphi
 \let\varphi\temp
 %different set notations
@@ -87,8 +88,14 @@ Programming Learning App}}
 \maketitle
 \section*{Software Design \& Patterns}
 Below you will find a Class diagram to show the structure of the application.
+
+\begin{figure}[htbp]\label{fig:class-diagram}
+  \centering
+  \includegraphics[width=0.9\textwidth]{class_diagram.png}
+  \caption{Class diagram of the Programming Learning App}
+\end{figure}
 %hier die toevoegen kwee nie hoe da moet
-We have used multiple pattern's to structure our program.
+We have used multiple patterns to structure our program.
 The first pattern is the Composite pattern in the repeat command class.
 This class holds all the functionality of the repeat command, such as the commands it needs to reapeat and how many times.
 Because one of the repeated commands can be another reapeat command, we use the Composite pattern.

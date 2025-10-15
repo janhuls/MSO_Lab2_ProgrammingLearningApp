@@ -2,19 +2,6 @@ using System.Runtime.CompilerServices;
 
 namespace ProgrammingLearningApp;
 
-public class CommandFactory
-{
-    public ICommand CreateCommand(string[] parts)
-    {
-        return parts[0] switch
-        {
-            "Move" => new Move(int.Parse(parts[1])),
-            "Turn" => new Turn((SIDE)Enum.Parse(typeof(SIDE), parts[1], true)),
-            _ => throw new Exception($"Unknown command: {parts[0]}")
-        };
-    }
-}
-
 public interface ICommand
 {
     void Execute(Character c);

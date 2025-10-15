@@ -29,7 +29,7 @@ class Program
             Console.Write("Enter file name: ");
             string fileName = Console.ReadLine() ?? "input.txt";
             string input = System.IO.File.ReadAllText(fileName);
-            commands = new ProgramParser(new CommandFactory()).Parse(input);
+            commands = new ProgramParser().Parse(input);
             name = fileName;
         }
 
