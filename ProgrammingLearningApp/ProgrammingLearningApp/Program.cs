@@ -1,11 +1,12 @@
-﻿namespace ProgrammingLearningApp;
+﻿using System.Xml.Serialization;
+
+namespace ProgrammingLearningApp;
 
 class Program
 {
     private List<ICommand> program;
     private string fileName;
     private Character character;
-
     static void Main()
     {
         Console.WriteLine("=== Programming Learning App ===");
@@ -14,7 +15,7 @@ class Program
         Console.Write("Choose option: ");
 
         int choice = int.Parse(Console.ReadLine() ?? "1");
-
+        IParser parser;
         List<ICommand> commands;
         string name;
 
@@ -29,7 +30,11 @@ class Program
             Console.Write("Enter file name: ");
             string fileName = Console.ReadLine() ?? "input.txt";
             string input = System.IO.File.ReadAllText(fileName);
-            commands = new ProgramParser().Parse(input);
+            parser = new StringParser(input);
+
+            commands = parser.Parse();
+
+            //commands = new StringParser().Parse(input);
             name = fileName;
         }
 

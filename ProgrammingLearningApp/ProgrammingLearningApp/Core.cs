@@ -1,10 +1,25 @@
 namespace ProgrammingLearningApp;
 
-public class ProgramParser
+public interface IParser
 {
-    private const int IndentSize = 4;
-    public ProgramParser() { }
-    public List<ICommand> Parse(string input)
+    public List<ICommand> Parse();
+}
+
+public class StringParser : IParser
+{
+    private static int IndentSize = 4;
+    private string program;
+    public StringParser(string program)
+    {
+        this.program = program;
+    }
+
+    public List<ICommand> Parse()
+    {
+        return Parse(program);
+    }
+
+    public static List<ICommand> Parse(string input)
     {
         var lines = input
             .Split('\n', StringSplitOptions.RemoveEmptyEntries)
@@ -14,7 +29,7 @@ public class ProgramParser
         return ParseBlock(lines, ref index, 0);
     }
 
-    private List<ICommand> ParseBlock(string[] lines, ref int index, int expectedIndent)
+    private static List<ICommand> ParseBlock(string[] lines, ref int index, int expectedIndent)
     {
         var commands = new List<ICommand>();
 
@@ -43,8 +58,8 @@ public class ProgramParser
         }
         return commands;
     }
-    
-    private ICommand ParseRepeat(string[] lines, ref int index, int expectedIndent)
+
+    private static ICommand ParseRepeat(string[] lines, ref int index, int expectedIndent)
     {
         string line = lines[index].Trim();
 
@@ -59,12 +74,12 @@ public class ProgramParser
         return new Repeat(times, innerCommands);
     }
 
-    private ICommand ParseSimpleCommand(string line)
+    private static ICommand ParseSimpleCommand(string line)
     {
         var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         return CreateCommand(parts);
     }
-    private ICommand CreateCommand(string[] parts)
+    private static ICommand CreateCommand(string[] parts)
     {
         return parts[0] switch
         {
