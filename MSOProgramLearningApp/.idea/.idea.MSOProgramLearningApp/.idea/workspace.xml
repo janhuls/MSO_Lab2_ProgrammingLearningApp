@@ -49,10 +49,7 @@
     <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOTestProject/StringParserTest.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
-<<<<<<< Updated upstream
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-=======
->>>>>>> Stashed changes
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -69,11 +66,8 @@
     "LaTeX.prac2.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-<<<<<<< Updated upstream
     "RunOnceActivity.git.unshallow": "true",
-=======
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
->>>>>>> Stashed changes
     "f1367efc-4b1f-47e9-b432-03e3dc0086c4.executor": "Debug",
     "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
@@ -81,17 +75,14 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-<<<<<<< Updated upstream
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager" selected="LaTeX.prac2">
-=======
     "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
   <component name="RunManager" selected=".NET Project.MSOAvaloniaApp">
     <configuration name="MSOAvaloniaApp" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -116,7 +107,6 @@
         <option name="Build" />
       </method>
     </configuration>
->>>>>>> Stashed changes
     <configuration name="MSOProgramLearningApp" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -200,16 +190,9 @@
       <option name="presentableId" value="Default" />
       <updated>1760536545415</updated>
       <workItem from="1760536546214" duration="6665000" />
-<<<<<<< Updated upstream
       <workItem from="1761045637839" duration="1171000" />
       <workItem from="1761046833533" duration="2751000" />
       <workItem from="1761049925596" duration="3593000" />
-=======
-      <workItem from="1760560219156" duration="33000" />
-      <workItem from="1761045721593" duration="2070000" />
-      <workItem from="1761049949068" duration="1542000" />
-      <workItem from="1761051525579" duration="2098000" />
->>>>>>> Stashed changes
     </task>
     <servers />
   </component>
