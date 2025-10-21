@@ -11,7 +11,6 @@ class Program
 
         int choice = int.Parse(Console.ReadLine() ?? "1");
         IParser parser;
-        IMetricsStrategy metricsStrategy = new BasicMetricsStrategy();
         List<ICommand> commands;
         string name;
 
@@ -51,7 +50,8 @@ class Program
         }
         else
         {
-            metricsStrategy.Calculate(commands);
+            var metrics = new MetricsCalculator(new BasicMetricsStrategy());
+            metrics.Calculate(commands);
         }
     }
 }

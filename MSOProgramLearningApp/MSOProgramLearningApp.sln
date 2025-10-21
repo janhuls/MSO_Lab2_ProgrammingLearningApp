@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSOProgramLearningApp", "MS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSOTestProject", "MSOTestProject\MSOTestProject.csproj", "{33E59434-EC26-432D-A032-9F51ADBAC7B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSOAvaloniaApp", "MSOAvaloniaApp\MSOAvaloniaApp.csproj", "{3E86DE72-5963-4D4F-B460-F3A7C432740B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{33E59434-EC26-432D-A032-9F51ADBAC7B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33E59434-EC26-432D-A032-9F51ADBAC7B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33E59434-EC26-432D-A032-9F51ADBAC7B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E86DE72-5963-4D4F-B460-F3A7C432740B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E86DE72-5963-4D4F-B460-F3A7C432740B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E86DE72-5963-4D4F-B460-F3A7C432740B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E86DE72-5963-4D4F-B460-F3A7C432740B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
