@@ -1,3 +1,6 @@
+using System.ComponentModel;
+using System.Data;
+
 namespace MSOProgramLearningApp;
 
 public interface ICommand
@@ -55,22 +58,71 @@ public class Repeat : ICommand
     public void Execute(Character c)
     {
         for (int i = 0; i < repetitions; i++)
-        {
             foreach (var command in commands)
-            {
                 command.Execute(c);
-            }
-        }
     }
     public List<ICommand> GetCommands() => commands;
     public override string ToString() 
     {
         List<string> ss = new();
+        
         for (int i = 0; i < repetitions; i++)
-        {
             foreach (var cmd in commands)
                 ss.Add(cmd.ToString());
-        }
+        
         return String.Join(", ", ss);
     }
-} 
+}
+
+public class ConditionalRepeat : ICommand
+{
+    private ICondition condition;
+    private List<ICommand> commands;
+    public ConditionalRepeat(List<ICommand> commands, ICondition condition)
+    {
+        this.condition = condition;
+        this.commands = commands;
+    }
+
+    public void Execute(Character c)
+    {
+        while (condition.Evaluate(c))
+            foreach (var com in commands)
+                com.Execute(c);
+    }
+    public List<ICommand> GetCommands() => commands;
+
+    public override string ToString()
+    {
+        List<string> ss = new();
+        
+        while (condition.Evaluate(c))
+            foreach (var cmd in commands)
+                ss.Add(cmd.ToString());
+        
+        return String.Join(", ", ss);
+    }
+}
+
+public interface ICondition
+{
+    public bool Evaluate(Character c);
+}
+
+class WallAhead : ICondition
+{
+    public bool Evaluate(Character c)
+    {
+        var (x, y) = c.CalcMove(1);
+        return c.Grid.IsWall(x, y);
+    }
+}
+
+class GridEdge : ICondition
+{
+    public bool Evaluate(Character c)
+    {
+        var (x, y) = c.CalcMove(1);
+        return x >= c.Grid.GetWidth() || y >= c.Grid.GetHeight();
+    }
+}

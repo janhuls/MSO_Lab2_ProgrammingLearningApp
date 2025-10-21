@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace MSOProgramLearningApp;
 public interface IParser
 {
@@ -172,37 +174,81 @@ public enum SIDE
     RIGHT
 }
 
+public class Grid
+{
+    private bool[,] walls; //True is a wall
+    
+    public static Grid TenSquareFalse()
+    {
+        var array = new bool[10, 10];
+        for (int i = 0; i < 10; i++)
+            for (int j = 0; j < 10; j++)
+                array[i, j] = false;
+        return new Grid(array);
+    }
+    public Grid(bool[,] grid)
+    {
+        this.walls = grid;
+    }
+    public int GetHeight()
+    {
+        return walls.GetLength(0);
+    }
+
+    public int GetWidth()
+    {
+        return walls.GetLength(1);
+    }
+
+    public bool IsWall(int x, int y)
+    {
+        return walls[x, y];
+    }
+}
+
 public class Character 
 {
     private int posX { get; set; }
     private int posY { get; set; }
-
+    public Grid Grid { get; set; }
     private DIRECTION rotation { get; set; }
 
-    public Character()
+    public Character(Grid grid)
     {
         posX = 0;
         posY = 0;
         rotation = DIRECTION.EAST;
+        this.Grid = grid;
     }
 
     public void Move(int amount)
     {
+        var (newx, newy) = CalcMove(amount);
+        posX = newx; posY = newy;
+    }
+    public (int, int) CalcMove(int amount)
+    {
+        int x = posX;
+        int y = posY;
         switch (rotation)
         {
             case DIRECTION.NORTH:
-                posY += amount;
+                y += amount;
                 break;
             case DIRECTION.EAST:
-                posX += amount;
+                x += amount;
                 break;
             case DIRECTION.SOUTH:
-                posY -= amount;
+                y -= amount;
                 break;
             case DIRECTION.WEST:
-                posX -= amount;
+                x -= amount;
                 break;
+            default:
+                throw new ArgumentException("Invalid direction.");
         }
+
+        return (x, y);
     }
     
     public void Rotate(SIDE side)

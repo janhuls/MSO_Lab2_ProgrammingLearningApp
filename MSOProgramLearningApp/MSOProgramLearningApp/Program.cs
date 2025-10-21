@@ -35,7 +35,7 @@ class Program
         Console.WriteLine("1. Execute Program\n2. Show Metrics");
         int action = int.Parse(Console.ReadLine() ?? "1");
 
-        Character c = new();
+        Character c = new(Grid.TenSquareFalse());
         if (action == 1)
         {
             Console.WriteLine($"\nExecuting {name}:");
