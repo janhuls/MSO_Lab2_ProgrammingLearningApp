@@ -10,11 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97649446-9819-4f13-9779-b22e68479461" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +62,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "f1367efc-4b1f-47e9-b432-03e3dc0086c4.executor": "Debug",
     "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
@@ -170,11 +167,6 @@
       </texify>
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="LaTeX.prac2" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -188,6 +180,7 @@
       <workItem from="1761045721593" duration="2070000" />
       <workItem from="1761049949068" duration="1542000" />
       <workItem from="1761051525579" duration="2098000" />
+      <workItem from="1761063125955" duration="99000" />
     </task>
     <servers />
   </component>
