@@ -92,6 +92,15 @@
         \label{image-mascot}
     \end{figure*}
     \newpage
-    \section{Changes From Previous Design}\label{sec:changes-from-previous-design}
-    list van strings met de "printed" moves in character ipv ToString methode in ICommand
+    \section*{Design}
+    \subsection*{Class Diagram}
+    \subsection*{Design Patterns}
+    \subsection*{Deviations From Previous Design}
+    To implement the \texttt{ConditionalRepeat} class, we had to make a few changes, since we encountered problems with our program needing to paste all the moves it has completed. 
+    Previously we implemented a \texttt{ToString} method for all classes implementing \texttt{ICommand}, and while executing the commands, we added them to a list, and after executing we called \texttt{ToString} on them.
+    This worked fine for the old commands, but the conditional repeat needs to check a character state to see how many times it should do its code block, which was not possible with our old implementation. 
+    To fix this we added a list of executed commands to the character, and each basic command (Turn and Move) adds itself to this list.
+    This way we can easily print the list in the \texttt{Character} class. 
+    
+    
 \end{document}

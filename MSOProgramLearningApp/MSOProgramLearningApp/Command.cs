@@ -53,7 +53,7 @@ public interface ICondition
     public bool Evaluate(Character c);
 }
 
-class WallAhead : ICondition
+public class WallAhead : ICondition
 {
     public bool Evaluate(Character c)
     {
@@ -62,7 +62,7 @@ class WallAhead : ICondition
     }
 }
 
-class GridEdge : ICondition
+public class GridEdge : ICondition
 {
     public bool Evaluate(Character c)
     {

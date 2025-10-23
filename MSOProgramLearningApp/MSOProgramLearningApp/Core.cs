@@ -197,8 +197,6 @@ public class Grid
         return _walls[x, y];
     }
 }
-
-[SuppressMessage("ReSharper", "IdentifierTypo")]
 public class Character(Grid grid)
 {
     private int PosX { get; set; } = 0;
