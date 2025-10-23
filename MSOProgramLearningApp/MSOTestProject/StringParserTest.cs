@@ -9,7 +9,7 @@ public class StringParserTest
     {
         List<ICommand> expectedCommands = new List<ICommand>();
         expectedCommands.Add(new Move(5));
-        expectedCommands.Add(new Turn(SIDE.RIGHT));
+        expectedCommands.Add(new Turn(Side.Right));
         List<ICommand> repeatCommands = new List<ICommand>();
         repeatCommands.Add(new Move(1));
         expectedCommands.Add(new Repeat(3, repeatCommands));

@@ -1,8 +1,8 @@
 ﻿namespace MSOProgramLearningApp;
 
-class Program
+internal static class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         Console.WriteLine("=== Programming Learning App ===");
         Console.WriteLine("1. Load example program");
@@ -10,7 +10,6 @@ class Program
         Console.Write("Choose option: ");
 
         int choice = int.Parse(Console.ReadLine() ?? "1");
-        IParser parser;
         List<ICommand> commands;
         string name;
 
@@ -25,7 +24,7 @@ class Program
             Console.Write("Enter file name: ");
             string fileName = Console.ReadLine() ?? "input.txt";
             string input = System.IO.File.ReadAllText(fileName);
-            parser = new StringParser(input);
+            IParser parser = new StringParser(input);
 
             commands = parser.Parse();
             name = fileName;
@@ -38,8 +37,7 @@ class Program
         if (action == 1)
         {
             Console.WriteLine($"\nExecuting {name}:");
-
-            List<string> cmds = new();
+            
             foreach (var cmd in commands)
             {
                 cmd.Execute(c);

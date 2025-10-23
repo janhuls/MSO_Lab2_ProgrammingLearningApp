@@ -13,6 +13,19 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Metrics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Metrics.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOTestProject/CharacterUnitTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOTestProject/CharacterUnitTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOTestProject/MetricsStrategyTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOTestProject/MetricsStrategyTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOTestProject/StringParserTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOTestProject/StringParserTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../document/class_diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/../document pt 2/class_diagram.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../document/prac2.aux" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../document/prac2.fdb_latexmk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../document/prac2.fls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../document/prac2.out" beforeDir="false" afterPath="$PROJECT_DIR$/../document pt 3/prac3.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../document/prac2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../document/prac2.synctex.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../document/prac2.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../document pt 2/prac2.tex" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,26 +71,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.MSOProgramLearningApp.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Project.MSOTestProject.executor&quot;: &quot;Run&quot;,
-    &quot;LaTeX.prac2.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;f1367efc-4b1f-47e9-b432-03e3dc0086c4.executor&quot;: &quot;Debug&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.MSOProgramLearningApp.executor": "Run",
+    ".NET Project.MSOTestProject.executor": "Run",
+    "LaTeX.prac2.executor": "Run",
+    "LaTeX.prac3.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "f1367efc-4b1f-47e9-b432-03e3dc0086c4.executor": "Debug",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="LaTeX.prac2">
+}]]></component>
+  <component name="RunManager" selected=".NET Project.MSOProgramLearningApp">
     <configuration name="MSOAvaloniaApp" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -158,13 +172,36 @@
         <envs />
         <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
         <before-run-command />
-        <main-file>$PROJECT_DIR$/../document/prac2.tex</main-file>
+        <main-file>$PROJECT_DIR$/../document pt 2/prac2.tex</main-file>
         <output-path>$PROJECT_DIR$/../out</output-path>
         <auxil-path>{projectDir}/auxil</auxil-path>
         <compile-twice>false</compile-twice>
         <output-format>PDF</output-format>
         <latex-distribution>TEXLIVE</latex-distribution>
-        <has-been-run>false</has-been-run>
+        <has-been-run>true</has-been-run>
+        <bib-run-config>[]</bib-run-config>
+        <makeindex-run-config>[]</makeindex-run-config>
+      </texify>
+      <method v="2" />
+    </configuration>
+    <configuration name="prac3" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory" temporary="true">
+      <texify>
+        <compiler>PDFLATEX</compiler>
+        <compiler-path />
+        <pdf-viewer>evince</pdf-viewer>
+        <require-focus>true</require-focus>
+        <viewer-command />
+        <compiler-arguments />
+        <envs />
+        <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
+        <before-run-command />
+        <main-file>$PROJECT_DIR$/../document pt 3/prac3.tex</main-file>
+        <output-path>$PROJECT_DIR$/../out</output-path>
+        <auxil-path>{projectDir}/auxil</auxil-path>
+        <compile-twice>false</compile-twice>
+        <output-format>PDF</output-format>
+        <latex-distribution>TEXLIVE</latex-distribution>
+        <has-been-run>true</has-been-run>
         <bib-run-config>[]</bib-run-config>
         <makeindex-run-config>[]</makeindex-run-config>
       </texify>
@@ -172,6 +209,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="LaTeX.prac3" />
         <item itemvalue="LaTeX.prac2" />
       </list>
     </recent_temporary>
@@ -187,7 +225,7 @@
       <workItem from="1761045637839" duration="1171000" />
       <workItem from="1761046833533" duration="2751000" />
       <workItem from="1761049925596" duration="3593000" />
-      <workItem from="1761210977703" duration="940000" />
+      <workItem from="1761210977703" duration="2889000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <option name="closed" value="true" />
@@ -205,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761211100232</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="character movelist toegevoegd">
+      <option name="closed" value="true" />
+      <created>1761212149309</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1761212149309</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +263,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="a" />
     <MESSAGE value="faa" />
-    <option name="LAST_COMMIT_MESSAGE" value="faa" />
+    <MESSAGE value="character movelist toegevoegd" />
+    <option name="LAST_COMMIT_MESSAGE" value="character movelist toegevoegd" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

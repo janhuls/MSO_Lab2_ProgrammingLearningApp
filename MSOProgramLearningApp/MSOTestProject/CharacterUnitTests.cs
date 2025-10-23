@@ -16,7 +16,7 @@ public class CharacterUnitTests
     public void TestRotateL()
     {
         Character c = new Character();
-        c.Rotate(SIDE.LEFT);
+        c.Rotate(Side.Left);
         Assert.Equal("(0, 0) facing north.", c.ToString());
     }
     
@@ -24,7 +24,7 @@ public class CharacterUnitTests
     public void TestRotateR()
     {
         Character c = new Character();
-        c.Rotate(SIDE.RIGHT);
+        c.Rotate(Side.Right);
         Assert.Equal("(0, 0) facing south.", c.ToString());
     }
     

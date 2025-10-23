@@ -8,14 +8,8 @@ public interface ICommand
     void Execute(Character c);
 }
 
-public class Turn : ICommand
+public class Turn(Side side) : ICommand
 {
-    private SIDE side;
-
-    public Turn(SIDE side)
-    {
-        this.side = side;
-    }
     public void Execute(Character c)
     {
         c.Rotate(side);
@@ -23,14 +17,8 @@ public class Turn : ICommand
     }
 }
 
-public class Move : ICommand
+public class Move(int amount) : ICommand
 {
-    private int amount;
-
-    public Move(int amount)
-    {
-        this.amount = amount;
-    }
     public void Execute(Character c)
     {
         c.Move(amount);
@@ -38,16 +26,8 @@ public class Move : ICommand
     }
 }
 
-public class Repeat : ICommand
+public class Repeat(int repetitions, List<ICommand> commands) : ICommand
 {
-    private List<ICommand> commands;
-    private int repetitions;
-
-    public Repeat(int repetitions, List<ICommand> commands)
-    {
-        this.repetitions = repetitions;
-        this.commands = commands;
-    }
     public void Execute(Character c)
     {
         for (int i = 0; i < repetitions; i++)
@@ -57,16 +37,8 @@ public class Repeat : ICommand
     public List<ICommand> GetCommands() => commands;
 }
 
-public class ConditionalRepeat : ICommand
+public class ConditionalRepeat(List<ICommand> commands, ICondition condition) : ICommand
 {
-    private ICondition condition;
-    private List<ICommand> commands;
-    public ConditionalRepeat(List<ICommand> commands, ICondition condition)
-    {
-        this.condition = condition;
-        this.commands = commands;
-    }
-
     public void Execute(Character c)
     {
         while (condition.Evaluate(c))

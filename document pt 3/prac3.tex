@@ -1,0 +1,92 @@
+\documentclass[11pt,a4paper]{article}
+
+%============================%
+%        BASIC PACKAGES      %
+%============================%
+\usepackage[a4paper,margin=3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}          % Better serif font
+\usepackage{microtype}        % Better spacing and justification
+\usepackage{parskip}          % Paragraph spacing instead of indentation
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{datetime}
+\newdateformat{monthyear}{\monthname[\THEMONTH] \THEYEAR}
+\date{\monthyear\today}
+\usepackage{graphicx}
+\usepackage{comment}
+
+%============================%
+%        HEADINGS            %
+%============================%
+\usepackage{titlesec}
+\renewcommand{\thesection}{\arabic{section}}    %all arabic is standard
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+% enumerate settings
+\usepackage{enumitem}                           % for the [resume] option
+\renewcommand{\theenumi}{\arabic{enumi}}        %options are {arabic, alph, Alph, roman, Roman}
+\renewcommand{\theenumii}{\alph{enumii}}
+\renewcommand{\theenumiii}{\roman{enumiii}}
+
+%============================%
+%        MATHEMATICS         %
+%============================%
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{dsfont}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathds{N}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\Q}{\mathds{Q}}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\C}{\mathds{C}}
+\newcommand{\EX}{\mathbb{E}}
+\newcommand{\PP}{\mathcal{P}}           % power set
+\newcommand{\ndiv}{\nmid}
+\newcommand{\eps}{\varepsilon}
+\let\temp\phi                           % varphi to phi
+\let\phi\varphi
+\let\varphi\temp
+%different set notations
+\newcommand{\sub}{\subset}              % new command to refer to standard notation \subset for standard subset (which might be equal)
+\newcommand{\subneq}{\subsetneq}        % new command to refer to standard notation \subsetneq for proper subset (not allowed to be equal)
+%\renewcommand{\sub}{\subseteq}         % use \subseteq instead of \subset for standard subset (which might be equal)
+%\renewcommand{\subneq}{\subset}        % use \subset instead of \subsetneq for proper subset (which is not allowed to be equal)
+%\renewcommand{\setminus}{-}            % use - instead of \ for relative complement of sets
+%\renewcommand{\neg}{{\sim}}            % use ~ as negation symbol
+\newcommand\norm[1]{\lVert#1\rVert}     % norm with double vertical lines
+\newcommand\normx[1]{\Vert#1\Vert}
+\newcommand{\bigO}{\mathcal{O}}         % big O notation
+
+%============================%
+%        CODE BLOCKS         %
+%============================%
+\usepackage{minted}
+\usemintedstyle{perldoc}
+\setminted[haskell]{
+    fontsize=\small,
+    baselinestretch=1.05,
+    frame=leftline,
+    rulecolor=\color{black!70},
+    framesep=2mm,
+    linenos=false,
+    tabsize=2,
+    breaklines=true,
+    autogobble=true
+}
+
+%============================%
+%         TITLE INFO         %
+%============================%
+\title{\textbf{MSO Lab Assignment 3:\\
+Programming Learning App}}
+\author{Jan Huls (4699610), Arwin Moormans (4965957)}
+
+
+\begin{document} 
+    \maketitle
+    \Section{Changes From Previous Design}
+    list van strings met de "printed" moves in character ipv ToString methode in ICommand
+\end{document}

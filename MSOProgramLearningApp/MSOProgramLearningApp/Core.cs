@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace MSOProgramLearningApp;
 public interface IParser
@@ -6,14 +7,9 @@ public interface IParser
     public List<ICommand> Parse();
 }
 
-public class StringParser : IParser
+public class StringParser(string program) : IParser
 {
-    private static int IndentSize = 4;
-    private string program;
-    public StringParser(string program)
-    {
-        this.program = program;
-    }
+    private const int IndentSize = 4;
 
     public List<ICommand> Parse()
     {
@@ -43,9 +39,7 @@ public class StringParser : IParser
             string trimmed = line.Trim();
 
             if (trimmed.StartsWith("Repeat", StringComparison.OrdinalIgnoreCase))
-            {
                 commands.Add(ParseRepeat(lines, ref index, expectedIndent));
-            }
             else
             {
                 commands.Add(ParseSimpleCommand(trimmed));
@@ -55,7 +49,7 @@ public class StringParser : IParser
         return commands;
     }
 
-    private ICommand ParseRepeat(string[] lines, ref int index, int expectedIndent)
+    private Repeat ParseRepeat(string[] lines, ref int index, int expectedIndent)
     {
         string line = lines[index].Trim();
 
@@ -66,24 +60,23 @@ public class StringParser : IParser
 
         index++;
 
-        var innerCommands = ParseBlock(lines, ref index, expectedIndent + 4);
+        var innerCommands = ParseBlock(lines, ref index, expectedIndent + IndentSize);
         return new Repeat(times, innerCommands);
     }
 
-    private ICommand ParseSimpleCommand(string line)
+    private static ICommand ParseSimpleCommand(string line)
     {
         var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         return CreateCommand(parts);
     }
-    private ICommand CreateCommand(string[] parts)
-    {
-        return parts[0] switch
+
+    private static ICommand CreateCommand(string[] parts) =>
+        parts[0] switch
         {
             "Move" => new Move(int.Parse(parts[1])),
-            "Turn" => new Turn((SIDE)Enum.Parse(typeof(SIDE), parts[1], true)),
+            "Turn" => new Turn((Side)Enum.Parse(typeof(Side), parts[1], true)),
             _ => throw new Exception($"Unknown command: {parts[0]}")
         };
-    }
 }
 
 
@@ -103,17 +96,17 @@ public static class ParserUtils
 
 public class ProgramBuilder
 {
-    private readonly List<ICommand> commands = new();
+    private readonly List<ICommand> _commands = new();
 
     public ProgramBuilder Move(int steps)
     {
-        commands.Add(new Move(steps));
+        _commands.Add(new Move(steps));
         return this;
     }
 
-    public ProgramBuilder Turn(SIDE side)
+    public ProgramBuilder Turn(Side side)
     {
-        commands.Add(new Turn(side));
+        _commands.Add(new Turn(side));
         return this;
     }
 
@@ -121,62 +114,60 @@ public class ProgramBuilder
     {
         var innerBuilder = new ProgramBuilder();
         block(innerBuilder);
-        commands.Add(new Repeat(times, innerBuilder.Build()));
+        _commands.Add(new Repeat(times, innerBuilder.Build()));
         return this;
     }
 
-    public List<ICommand> Build() => commands;
+    public List<ICommand> Build() => _commands;
 }
 
 public static class ExamplePrograms
 {
     public static (string name, List<ICommand> program) GetExample(int level)
     {
-        switch (level)
+        return level switch
         {
-            case 1:
-                return 
-                ("Basic", new ProgramBuilder()
-                .Move(10).Turn(SIDE.RIGHT)
-                .Move(10).Turn(SIDE.RIGHT)
-                .Move(10).Turn(SIDE.RIGHT)
-                .Move(10).Turn(SIDE.RIGHT)
-                .Build());
-            case 2:
-                return
-                ("Advanced", new ProgramBuilder()
-                .Repeat(4, b => b.Move(10).Turn(SIDE.RIGHT))
-                .Build());
-            case 3:
-                return
-                ("Expert", new ProgramBuilder()
-                .Move(5).Turn(SIDE.LEFT).Turn(SIDE.LEFT).Move(3)
-                .Turn(SIDE.RIGHT)
-                .Repeat(3, r => r.Move(1).Turn(SIDE.RIGHT)
-                    .Repeat(5, s => s.Move(2)))
-                .Turn(SIDE.LEFT)
-                .Build());
-            default:
-                throw new ArgumentException("Invalid example choice.");
+            1 => ("Basic",
+                new ProgramBuilder().Move(10)
+                    .Turn(Side.Right)
+                    .Move(10)
+                    .Turn(Side.Right)
+                    .Move(10)
+                    .Turn(Side.Right)
+                    .Move(10)
+                    .Turn(Side.Right)
+                    .Build()),
+            2 => ("Advanced", new ProgramBuilder().Repeat(4, b => b.Move(10).Turn(Side.Right)).Build()),
+            3 => ("Expert",
+                new ProgramBuilder().Move(5)
+                    .Turn(Side.Left)
+                    .Turn(Side.Left)
+                    .Move(3)
+                    .Turn(Side.Right)
+                    .Repeat(3, r => r.Move(1).Turn(Side.Right).Repeat(5, s => s.Move(2)))
+                    .Turn(Side.Left)
+                    .Build()),
+            _ => throw new ArgumentException("Invalid example choice.")
         };
+        ;
     }
 }
-public enum DIRECTION
+public enum Direction
 {
-    NORTH,
-    EAST,
-    SOUTH,
-    WEST
+    North,
+    East,
+    South,
+    West
 }
-public enum SIDE
+public enum Side
 {
-    LEFT,
-    RIGHT
+    Left,
+    Right
 }
 
 public class Grid
 {
-    private bool[,] walls; //True is a wall
+    private readonly bool[,] _walls; //True is a wall
     
     public static Grid TenSquareFalse()
     {
@@ -186,55 +177,59 @@ public class Grid
                 array[i, j] = false;
         return new Grid(array);
     }
-    public Grid(bool[,] grid)
+
+    private Grid(bool[,] grid)
     {
-        this.walls = grid;
+        this._walls = grid;
     }
     public int GetHeight()
     {
-        return walls.GetLength(0);
+        return _walls.GetLength(0);
     }
 
     public int GetWidth()
     {
-        return walls.GetLength(1);
+        return _walls.GetLength(1);
     }
 
     public bool IsWall(int x, int y)
     {
-        return walls[x, y];
+        return _walls[x, y];
     }
 }
 
+[SuppressMessage("ReSharper", "IdentifierTypo")]
 public class Character(Grid grid)
 {
-    private int posX { get; set; } = 0;
-    private int posY { get; set; } = 0;
-    private DIRECTION rotation { get; set; } = DIRECTION.EAST;
+    private int PosX { get; set; } = 0;
+    private int PosY { get; set; } = 0;
+    private Direction Rotation { get; set; } = Direction.East;
     public Grid Grid { get; set; } = grid;
     public List<string> Moves { get; set; } = [];
+
+    public Character() : this(Grid.TenSquareFalse()){}
 
     public void Move(int amount)
     {
         var (newx, newy) = CalcMove(amount);
-        posX = newx; posY = newy;
+        PosX = newx; PosY = newy;
     }
     public (int, int) CalcMove(int amount)
     {
-        int x = posX;
-        int y = posY;
-        switch (rotation)
+        int x = PosX;
+        int y = PosY;
+        switch (Rotation)
         {
-            case DIRECTION.NORTH:
+            case Direction.North:
                 y += amount;
                 break;
-            case DIRECTION.EAST:
+            case Direction.East:
                 x += amount;
                 break;
-            case DIRECTION.SOUTH:
+            case Direction.South:
                 y -= amount;
                 break;
-            case DIRECTION.WEST:
+            case Direction.West:
                 x -= amount;
                 break;
             default:
@@ -244,22 +239,19 @@ public class Character(Grid grid)
         return (x, y);
     }
     
-    public void Rotate(SIDE side)
+    public void Rotate(Side side)
     {
-        int rot = (int)this.rotation;
-        switch (side)
+        int rot = (int)this.Rotation;
+        Rotation = side switch
         {
-            case SIDE.LEFT:
-                rotation = (DIRECTION)((rot + 3) % 4);
-                break;
-            case SIDE.RIGHT:
-                rotation = (DIRECTION)((rot + 1) % 4);
-                break;
-        }
+            Side.Left => (Direction)((rot + 3) % 4),
+            Side.Right => (Direction)((rot + 1) % 4),
+            _ => Rotation
+        };
     }
 
     public override string ToString()
     {
-        return $"({posX}, {posY}) facing {rotation.ToString().ToLower()}.";
+        return $"({PosX}, {PosY}) facing {Rotation.ToString().ToLower()}.";
     }
 }

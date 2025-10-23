@@ -6,17 +6,17 @@ public interface IMetricsStrategy
 
 public class BasicMetricsStrategy : IMetricsStrategy
 {
-    private string result = "";
+    private string _result = "";
     public void Calculate(List<ICommand> commands)
     {
         int totalCommands = 0, repeatCount = 0, maxDepth = 0;
         Analyze(commands, 0, ref totalCommands, ref repeatCount, ref maxDepth);
         
         // save it so that it can be tested
-        result = $"Commands: {totalCommands}\n" +
+        _result = $"Commands: {totalCommands}\n" +
                $"Repeat Commands: {repeatCount}\n" +
                $"Max Nesting Depth: {maxDepth}\n";
-        Console.Write(result);
+        Console.Write(_result);
     }
 
     private void Analyze(List<ICommand> commands, int depth, ref int total, ref int repeats, ref int maxDepth)
@@ -36,18 +36,18 @@ public class BasicMetricsStrategy : IMetricsStrategy
     // for testing purposes
     public string GetResult()
     {
-        return result;
+        return _result;
     }
 }
 
 public class MetricsCalculator
 {
-    private readonly IMetricsStrategy strategy;
+    private readonly IMetricsStrategy _strategy;
 
     public MetricsCalculator(IMetricsStrategy strategy)
     {
-        this.strategy = strategy;
+        this._strategy = strategy;
     }
 
-    public void Calculate(List<ICommand> commands) => strategy.Calculate(commands);
+    public void Calculate(List<ICommand> commands) => _strategy.Calculate(commands);
 }
