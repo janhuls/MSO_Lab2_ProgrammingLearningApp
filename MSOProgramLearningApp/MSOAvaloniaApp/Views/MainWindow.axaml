@@ -15,11 +15,11 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
     
-    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-        <Button>Load Program</Button>
-        <Button>Turn</Button>
-        <Button>Move</Button>
-        <Button>Repeat</Button>
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" >
+        <Button Click="LoadHandler">Load Program</Button>
+        <Button Click="TurnHandler">Turn</Button>
+        <Button Click="MoveHandler">Move</Button>
+        <Button Click="RepeatHandler">Repeat</Button>
     </StackPanel>
     
     

@@ -10,22 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97649446-9819-4f13-9779-b22e68479461" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Metrics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Metrics.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOTestProject/CharacterUnitTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOTestProject/CharacterUnitTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOTestProject/MetricsStrategyTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOTestProject/MetricsStrategyTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOTestProject/StringParserTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOTestProject/StringParserTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../document/class_diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/../document pt 2/class_diagram.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../document/prac2.aux" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../document/prac2.fdb_latexmk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../document/prac2.fls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../document/prac2.out" beforeDir="false" afterPath="$PROJECT_DIR$/../document pt 3/prac3.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../document/prac2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../document/prac2.synctex.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../document/prac2.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../document pt 2/prac2.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/App.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/MSOAvaloniaApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/MSOAvaloniaApp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,9 +25,6 @@
   </component>
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
-  </component>
-  <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -59,10 +47,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/68b06b8592b1287fd78f3ee68566d6a38d6e2f45b9a9e6ebd4d0e9972f7c29/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7f8bab2ddd1a86312228e89db53ca668c6a6584aaf9c02761dcd3d728f5fc3e/Number.Parsing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e414b1dc488d6da566b0175c5a49dc48f0ea10c0661bed62352395375ebe80ac/EqualityAsserts.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/MSOTestProject/ProgramBuilderTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOTestProject/StringParserTest.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -73,25 +61,26 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    ".NET Project.MSOAvaloniaApp.executor": "Run",
     ".NET Project.MSOProgramLearningApp.executor": "Run",
     ".NET Project.MSOTestProject.executor": "Run",
     "LaTeX.prac2.executor": "Run",
-    "LaTeX.prac3.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "f1367efc-4b1f-47e9-b432-03e3dc0086c4.executor": "Debug",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "arwin",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Project.MSOProgramLearningApp">
+  <component name="RunManager" selected=".NET Project.MSOAvaloniaApp">
     <configuration name="MSOAvaloniaApp" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -172,47 +161,18 @@
         <envs />
         <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
         <before-run-command />
-        <main-file>$PROJECT_DIR$/../document pt 2/prac2.tex</main-file>
+        <main-file>$PROJECT_DIR$/../document/prac2.tex</main-file>
         <output-path>$PROJECT_DIR$/../out</output-path>
         <auxil-path>{projectDir}/auxil</auxil-path>
         <compile-twice>false</compile-twice>
         <output-format>PDF</output-format>
         <latex-distribution>TEXLIVE</latex-distribution>
-        <has-been-run>true</has-been-run>
+        <has-been-run>false</has-been-run>
         <bib-run-config>[]</bib-run-config>
         <makeindex-run-config>[]</makeindex-run-config>
       </texify>
       <method v="2" />
     </configuration>
-    <configuration name="prac3" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory" temporary="true">
-      <texify>
-        <compiler>PDFLATEX</compiler>
-        <compiler-path />
-        <pdf-viewer>evince</pdf-viewer>
-        <require-focus>true</require-focus>
-        <viewer-command />
-        <compiler-arguments />
-        <envs />
-        <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
-        <before-run-command />
-        <main-file>$PROJECT_DIR$/../document pt 3/prac3.tex</main-file>
-        <output-path>$PROJECT_DIR$/../out</output-path>
-        <auxil-path>{projectDir}/auxil</auxil-path>
-        <compile-twice>false</compile-twice>
-        <output-format>PDF</output-format>
-        <latex-distribution>TEXLIVE</latex-distribution>
-        <has-been-run>true</has-been-run>
-        <bib-run-config>[]</bib-run-config>
-        <makeindex-run-config>[]</makeindex-run-config>
-      </texify>
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="LaTeX.prac3" />
-        <item itemvalue="LaTeX.prac2" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -222,36 +182,13 @@
       <option name="presentableId" value="Default" />
       <updated>1760536545415</updated>
       <workItem from="1760536546214" duration="6665000" />
-      <workItem from="1761045637839" duration="1171000" />
-      <workItem from="1761046833533" duration="2751000" />
-      <workItem from="1761049925596" duration="3593000" />
-      <workItem from="1761210977703" duration="2889000" />
+      <workItem from="1760560219156" duration="33000" />
+      <workItem from="1761045721593" duration="2070000" />
+      <workItem from="1761049949068" duration="1542000" />
+      <workItem from="1761051525579" duration="2098000" />
+      <workItem from="1761063125955" duration="99000" />
+      <workItem from="1761210972110" duration="2857000" />
     </task>
-    <task id="LOCAL-00001" summary="a">
-      <option name="closed" value="true" />
-      <created>1761211090797</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1761211090797</updated>
-    </task>
-    <task id="LOCAL-00002" summary="faa">
-      <option name="closed" value="true" />
-      <created>1761211100232</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1761211100232</updated>
-    </task>
-    <task id="LOCAL-00003" summary="character movelist toegevoegd">
-      <option name="closed" value="true" />
-      <created>1761212149309</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1761212149309</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,10 +198,6 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="a" />
-    <MESSAGE value="faa" />
-    <MESSAGE value="character movelist toegevoegd" />
-    <option name="LAST_COMMIT_MESSAGE" value="character movelist toegevoegd" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
