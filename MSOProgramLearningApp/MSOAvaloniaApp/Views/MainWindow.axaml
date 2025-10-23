@@ -16,10 +16,11 @@
     </Design.DataContext>
     
     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" >
-        <Button Click="LoadHandler">Load Program</Button>
+        <Button>Load Program</Button>
         <Button Click="TurnHandler">Turn</Button>
         <Button Click="MoveHandler">Move</Button>
         <Button Click="RepeatHandler">Repeat</Button>
+        <TextBlock Text="{Binding Greeting}"></TextBlock>
     </StackPanel>
     
     

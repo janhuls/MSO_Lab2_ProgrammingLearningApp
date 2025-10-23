@@ -10,7 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97649446-9819-4f13-9779-b22e68479461" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/App.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/MSOAvaloniaApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/MSOAvaloniaApp.csproj" afterDir="false" />
@@ -46,6 +45,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/65427d1fdd7782566f2809cee9e7728a1df0808a90eef8281325f956d93b49/TestRunner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/68b06b8592b1287fd78f3ee68566d6a38d6e2f45b9a9e6ebd4d0e9972f7c29/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7f8bab2ddd1a86312228e89db53ca668c6a6584aaf9c02761dcd3d728f5fc3e/Number.Parsing.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c339aa19caf4a594221588dd595cf17d47a976ddf64bc37ac7227af58f9e524/X11Platform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e414b1dc488d6da566b0175c5a49dc48f0ea10c0661bed62352395375ebe80ac/EqualityAsserts.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
@@ -59,27 +59,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.MSOAvaloniaApp.executor": "Run",
-    ".NET Project.MSOProgramLearningApp.executor": "Run",
-    ".NET Project.MSOTestProject.executor": "Run",
-    "LaTeX.prac2.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "f1367efc-4b1f-47e9-b432-03e3dc0086c4.executor": "Debug",
-    "git-widget-placeholder": "arwin",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.MSOAvaloniaApp.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Project.MSOProgramLearningApp.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Project.MSOTestProject.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.prac2.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;f1367efc-4b1f-47e9-b432-03e3dc0086c4.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;arwinn&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Project.MSOAvaloniaApp">
     <configuration name="MSOAvaloniaApp" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -187,7 +187,8 @@
       <workItem from="1761049949068" duration="1542000" />
       <workItem from="1761051525579" duration="2098000" />
       <workItem from="1761063125955" duration="99000" />
-      <workItem from="1761210972110" duration="2857000" />
+      <workItem from="1761210972110" duration="3823000" />
+      <workItem from="1761214815726" duration="2298000" />
     </task>
     <servers />
   </component>
