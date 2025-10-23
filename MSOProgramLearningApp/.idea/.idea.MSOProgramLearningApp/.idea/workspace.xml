@@ -10,13 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97649446-9819-4f13-9779-b22e68479461" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/App.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/MSOAvaloniaApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/MSOAvaloniaApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../document pt 3/prac3.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../document pt 3/prac3.tex" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +46,7 @@
     <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOTestProject/StringParserTest.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -65,12 +61,13 @@
     ".NET Project.MSOProgramLearningApp.executor": "Run",
     ".NET Project.MSOTestProject.executor": "Run",
     "LaTeX.prac2.executor": "Run",
+    "LaTeX.prac3.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "f1367efc-4b1f-47e9-b432-03e3dc0086c4.executor": "Debug",
-    "git-widget-placeholder": "arwin",
+    "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -80,7 +77,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Project.MSOAvaloniaApp">
+  <component name="RunManager" selected="LaTeX.prac3">
     <configuration name="MSOAvaloniaApp" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -161,7 +158,7 @@
         <envs />
         <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
         <before-run-command />
-        <main-file>$PROJECT_DIR$/../document/prac2.tex</main-file>
+        <main-file />
         <output-path>$PROJECT_DIR$/../out</output-path>
         <auxil-path>{projectDir}/auxil</auxil-path>
         <compile-twice>false</compile-twice>
@@ -173,6 +170,34 @@
       </texify>
       <method v="2" />
     </configuration>
+    <configuration name="prac3" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory" temporary="true">
+      <texify>
+        <compiler>PDFLATEX</compiler>
+        <compiler-path />
+        <pdf-viewer>evince</pdf-viewer>
+        <require-focus>true</require-focus>
+        <viewer-command />
+        <compiler-arguments />
+        <envs />
+        <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
+        <before-run-command />
+        <main-file>$PROJECT_DIR$/../document pt 3/prac3.tex</main-file>
+        <output-path>$PROJECT_DIR$/../out</output-path>
+        <auxil-path>{projectDir}/auxil</auxil-path>
+        <compile-twice>false</compile-twice>
+        <output-format>PDF</output-format>
+        <latex-distribution>TEXLIVE</latex-distribution>
+        <has-been-run>true</has-been-run>
+        <bib-run-config>[]</bib-run-config>
+        <makeindex-run-config>[]</makeindex-run-config>
+      </texify>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="LaTeX.prac3" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
