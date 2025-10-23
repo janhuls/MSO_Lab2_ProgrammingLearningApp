@@ -1,6 +1,10 @@
-﻿namespace MSOAvaloniaApp.ViewModels;
+﻿using MSOProgramLearningApp;
 
-public partial class MainWindowViewModel : ViewModelBase
+namespace MSOAvaloniaApp.ViewModels;
+
+public partial class MainWindowViewModel(Character character) : ViewModelBase
 {
-    public string Greeting { get; } = "Welcome to Avalonia! kkr djalla";
+    private readonly Character _character = character;
+    
+    public string Greeting { get; } = "bababa";
 }
