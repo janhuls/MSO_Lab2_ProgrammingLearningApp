@@ -6,7 +6,6 @@ namespace MSOProgramLearningApp;
 public interface ICommand
 {
     void Execute(Character c);
-    string ToString();
 }
 
 public class Turn : ICommand
@@ -20,10 +19,7 @@ public class Turn : ICommand
     public void Execute(Character c)
     {
         c.Rotate(side);
-    }
-    public override string ToString()
-    {
-        return $"Turn {side.ToString().ToLower()}";
+        c.Moves.Add($"Turn {side.ToString().ToLower()}");
     }
 }
 
@@ -38,10 +34,7 @@ public class Move : ICommand
     public void Execute(Character c)
     {
         c.Move(amount);
-    }
-    public override string ToString()
-    {
-        return $"Move {amount}";
+        c.Moves.Add($"Move {amount}");
     }
 }
 
@@ -62,16 +55,6 @@ public class Repeat : ICommand
                 command.Execute(c);
     }
     public List<ICommand> GetCommands() => commands;
-    public override string ToString() 
-    {
-        List<string> ss = new();
-        
-        for (int i = 0; i < repetitions; i++)
-            foreach (var cmd in commands)
-                ss.Add(cmd.ToString());
-        
-        return String.Join(", ", ss);
-    }
 }
 
 public class ConditionalRepeat : ICommand
@@ -91,17 +74,6 @@ public class ConditionalRepeat : ICommand
                 com.Execute(c);
     }
     public List<ICommand> GetCommands() => commands;
-
-    public override string ToString()
-    {
-        List<string> ss = new();
-        
-        while (condition.Evaluate(c))
-            foreach (var cmd in commands)
-                ss.Add(cmd.ToString());
-        
-        return String.Join(", ", ss);
-    }
 }
 
 public interface ICondition

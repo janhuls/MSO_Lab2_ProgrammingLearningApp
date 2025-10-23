@@ -206,20 +206,13 @@ public class Grid
     }
 }
 
-public class Character 
+public class Character(Grid grid)
 {
-    private int posX { get; set; }
-    private int posY { get; set; }
-    public Grid Grid { get; set; }
-    private DIRECTION rotation { get; set; }
-
-    public Character(Grid grid)
-    {
-        posX = 0;
-        posY = 0;
-        rotation = DIRECTION.EAST;
-        this.Grid = grid;
-    }
+    private int posX { get; set; } = 0;
+    private int posY { get; set; } = 0;
+    private DIRECTION rotation { get; set; } = DIRECTION.EAST;
+    public Grid Grid { get; set; } = grid;
+    public List<string> Moves { get; set; } = [];
 
     public void Move(int amount)
     {

@@ -43,9 +43,8 @@ class Program
             foreach (var cmd in commands)
             {
                 cmd.Execute(c);
-                cmds.Add(cmd.ToString());
             }
-            Console.WriteLine(String.Join(", ", cmds) + ".");
+            Console.WriteLine(String.Join(", ", c.Moves) + ".");
             Console.WriteLine($"End state {c}");
         }
         else
