@@ -79,7 +79,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="LaTeX.prac3">
+  <component name="RunManager" selected=".NET Project.MSOAvaloniaApp">
     <configuration name="MSOAvaloniaApp" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -195,11 +195,6 @@
       </texify>
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="LaTeX.prac3" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -215,6 +210,8 @@
       <workItem from="1761051525579" duration="2098000" />
       <workItem from="1761063125955" duration="99000" />
       <workItem from="1761210972110" duration="2857000" />
+      <workItem from="1761305017135" duration="204000" />
+      <workItem from="1761305248211" duration="5210000" />
     </task>
     <task id="LOCAL-00001" summary="mascots">
       <option name="closed" value="true" />

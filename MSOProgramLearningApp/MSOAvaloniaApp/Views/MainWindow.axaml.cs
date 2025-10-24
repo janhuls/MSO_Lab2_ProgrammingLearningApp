@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using MSOAvaloniaApp.ViewModels;
 
 namespace MSOAvaloniaApp.Views;
 
@@ -10,7 +11,6 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
-
     private void LoadHandler(object? sender, RoutedEventArgs e)
     {
         throw new System.NotImplementedException();
@@ -18,8 +18,8 @@ public partial class MainWindow : Window
 
     private void TurnHandler(object? sender, RoutedEventArgs e)
     {
-        //Greeting.Text = " bababababa";
-        Debug.WriteLine("bababab");
+        //_viewModel.Greeting = "nooit";
+        //Debug.WriteLine("bababab");
     }
 
     private void MoveHandler(object? sender, RoutedEventArgs e)
@@ -28,6 +28,16 @@ public partial class MainWindow : Window
     }
 
     private void RepeatHandler(object? sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void RunHandler(object? sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void MetricsHandler(object? sender, RoutedEventArgs e)
     {
         throw new System.NotImplementedException();
     }
