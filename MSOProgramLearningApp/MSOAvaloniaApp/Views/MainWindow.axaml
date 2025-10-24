@@ -38,15 +38,15 @@
         </StackPanel>
         <TextBlock Grid.Row="0" Grid.Column="2" FontSize="40" FontWeight="Bold">Code Loopa app thingy</TextBlock>
         
-        <TextBox Grid.Column="1" Grid.Row="1"  Name="CodeInput">Type ur code here broski</TextBox>
+        <TextBox Grid.Column="1" Grid.Row="1" AcceptsReturn="True" TextWrapping="Wrap" Text="{Binding Code, Mode=TwoWay}" />
         
         <Image Grid.Row="1" Grid.Column="2" Source="../Assets/mauntain.bmp"></Image>
         
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top">
-            <Button Click="RunHandler">RUN</Button>
+            <Button Command="{Binding OutputCommand}">RUN</Button>
             <Button Click="MetricsHandler">Metrics</Button>
         </StackPanel>
-        <TextBox Grid.Row="3" Grid.Column="1">Output</TextBox>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Output, Mode=OneWay}" IsReadOnly="True" ></TextBox>
     </Grid>
     
     
