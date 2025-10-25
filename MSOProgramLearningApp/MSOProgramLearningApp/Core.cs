@@ -6,7 +6,41 @@ public interface IParser
 {
     public List<ICommand> Parse();
 }
+public static class GridParser
+{
+    public static Grid Parse(string input)
+    {
+        return new Grid(ArrayParse(input));
+    }
+    private static bool[,] ArrayParse(string input)
+    {
+        var lines = input.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+        if (lines.Length == 0) return new bool[0,0];
 
+        int rows = lines.Length;
+        int cols = lines[0].Length;
+        var grid = new bool[rows, cols];
+
+        for (int i = 0; i < rows; i++)
+        {
+            if (lines[i].Length != cols)
+                throw new ArgumentException("All lines must have the same length.");
+
+            for (int j = 0; j < cols; j++)
+            {
+                char c = lines[i][j];
+                grid[i, j] = c switch
+                {
+                    '+' => true,
+                    'o' => false,
+                    _ => throw new ArgumentException($"Invalid character '{c}' at line {i+1}, column {j+1}")
+                };
+            }
+        }
+
+        return grid;
+    }
+}
 public class StringParser(string program) : IParser
 {
     private const int IndentSize = 4;
@@ -188,10 +222,8 @@ public enum Side
     Right
 }
 
-public class Grid
+public class Grid(bool[,] grid) //true is wall
 {
-    private readonly bool[,] _walls; //True is a wall
-    
     public static Grid TenSquareFalse()
     {
         const int x = 10;
@@ -203,18 +235,14 @@ public class Grid
         return new Grid(array);
     }
 
-    private Grid(bool[,] grid)
-    {
-        _walls = grid;
-    }
     public int GetHeight()
     {
-        return _walls.GetLength(0);
+        return grid.GetLength(0);
     }
 
     public int GetWidth()
     {
-        return _walls.GetLength(1);
+        return grid.GetLength(1);
     }
 
     public bool IsWall(int x, int y)
@@ -222,7 +250,7 @@ public class Grid
         if (x < 0 || y < 0 || x >= GetWidth() || y >= GetHeight())
             return true;
 
-        return _walls[x, y];
+        return grid[x, y];
     }
 }
 public class Character(Grid grid)

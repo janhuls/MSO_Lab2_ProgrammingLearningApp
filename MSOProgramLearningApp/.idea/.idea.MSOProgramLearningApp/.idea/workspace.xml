@@ -11,13 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="97649446-9819-4f13-9779-b22e68479461" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Metrics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Metrics.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761337616773</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="RUn en Metrics knopje klaar enz">
+      <option name="closed" value="true" />
+      <created>1761396193582</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1761396193582</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,7 +277,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="mascots" />
     <MESSAGE value="bro ik ben hier kk klaar mee zlefs chat kan me niet helpen" />
-    <option name="LAST_COMMIT_MESSAGE" value="bro ik ben hier kk klaar mee zlefs chat kan me niet helpen" />
+    <MESSAGE value="RUn en Metrics knopje klaar enz" />
+    <option name="LAST_COMMIT_MESSAGE" value="RUn en Metrics knopje klaar enz" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
