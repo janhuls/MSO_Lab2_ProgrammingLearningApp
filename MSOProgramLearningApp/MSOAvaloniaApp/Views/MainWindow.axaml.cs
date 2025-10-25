@@ -33,14 +33,5 @@ public partial class MainWindow : Window
     {
         throw new System.NotImplementedException();
     }
-
-    private void RunHandler(object? sender, RoutedEventArgs e)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    private void MetricsHandler(object? sender, RoutedEventArgs e)
-    {
-        throw new System.NotImplementedException();
-    }
+    
 }

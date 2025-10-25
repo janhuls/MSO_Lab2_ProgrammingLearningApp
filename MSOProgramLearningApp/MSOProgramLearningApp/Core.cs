@@ -39,7 +39,7 @@ public class StringParser(string program) : IParser
             string trimmed = line.Trim();
 
             if (trimmed.StartsWith("Repeat", StringComparison.OrdinalIgnoreCase))
-                commands.Add(ParseRepeat(lines, ref index, expectedIndent));
+                commands.Add(ParseRepeatable(lines, ref index, expectedIndent));
             else
             {
                 commands.Add(ParseSimpleCommand(trimmed));
@@ -49,19 +49,42 @@ public class StringParser(string program) : IParser
         return commands;
     }
 
-    private Repeat ParseRepeat(string[] lines, ref int index, int expectedIndent)
+    private Repeatable ParseRepeatable(string[] lines, ref int index, int expectedIndent)
     {
         string line = lines[index].Trim();
-
         string[] parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-        if (!int.TryParse(parts[1], out int times))
-            throw new Exception($"Invalid repeat syntax at line {index + 1}: {line}");
+        if (parts.Length < 2)
+            throw new Exception($"Invalid repeat syntax at line {index + 1}: '{line}'");
+
+        string keyword = parts[0];
+        string arg = parts[1];
+
+        // RepeatUntil
+        if (keyword.Equals("RepeatUntil", StringComparison.OrdinalIgnoreCase))
+        {
+            var condition = ParseCondition(arg);
+
+            index++;
+            var innerCommands = ParseBlock(lines, ref index, expectedIndent + IndentSize);
+
+            return new ConditionalRepeat(innerCommands, condition);
+        }
+
+        // regular Repeat
+        if (!int.TryParse(arg, out int times))
+            throw new Exception($"Invalid repeat count at line {index + 1}: '{line}'");
 
         index++;
+        var repeatCommands = ParseBlock(lines, ref index, expectedIndent + IndentSize);
+        return new Repeat(times, repeatCommands);
+    }
 
-        var innerCommands = ParseBlock(lines, ref index, expectedIndent + IndentSize);
-        return new Repeat(times, innerCommands);
+    private ICondition ParseCondition(string token)
+    {
+        return token.Equals("WallAhead", StringComparison.OrdinalIgnoreCase)
+            ? new WallAhead()
+            : new GridEdge();
     }
 
     private static ICommand ParseSimpleCommand(string line)
@@ -171,16 +194,18 @@ public class Grid
     
     public static Grid TenSquareFalse()
     {
-        var array = new bool[10, 10];
-        for (int i = 0; i < 10; i++)
-            for (int j = 0; j < 10; j++)
+        const int x = 10;
+        const int y = 10;
+        var array = new bool[x, y];
+        for (int i = 0; i < x; i++)
+            for (int j = 0; j < y; j++)
                 array[i, j] = false;
         return new Grid(array);
     }
 
     private Grid(bool[,] grid)
     {
-        this._walls = grid;
+        _walls = grid;
     }
     public int GetHeight()
     {
@@ -194,6 +219,9 @@ public class Grid
 
     public bool IsWall(int x, int y)
     {
+        if (x < 0 || y < 0 || x >= GetWidth() || y >= GetHeight())
+            return true;
+
         return _walls[x, y];
     }
 }

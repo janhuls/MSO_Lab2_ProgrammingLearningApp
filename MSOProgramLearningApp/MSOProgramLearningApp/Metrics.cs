@@ -1,30 +1,31 @@
 namespace MSOProgramLearningApp;
 public interface IMetricsStrategy
 {
-    void Calculate(List<ICommand> commands);
+    public string Calculate(List<ICommand> commands);
 }
 
 public class BasicMetricsStrategy : IMetricsStrategy
 {
     private string _result = "";
-    public void Calculate(List<ICommand> commands)
+    public string Calculate(List<ICommand> commands)
     {
         int totalCommands = 0, repeatCount = 0, maxDepth = 0;
         Analyze(commands, 0, ref totalCommands, ref repeatCount, ref maxDepth);
         
-        // save it so that it can be tested
         _result = $"Commands: {totalCommands}\n" +
-               $"Repeat Commands: {repeatCount}\n" +
-               $"Max Nesting Depth: {maxDepth}\n";
-        Console.Write(_result);
+                  $"Repeat Commands: {repeatCount}\n" +
+                  $"Max Nesting Depth: {maxDepth}\n";
+        return _result;
     }
 
-    private void Analyze(List<ICommand> commands, int depth, ref int total, ref int repeats, ref int maxDepth)
+    private static void Analyze(List<ICommand> commands, int depth, ref int total, ref int repeats, ref int maxDepth)
     {
+        if (commands == null) return;
+        
         foreach (var cmd in commands)
         {
             total++;
-            if (cmd is Repeat r)
+            if (cmd is Repeatable r)
             {
                 repeats++;
                 maxDepth = Math.Max(maxDepth, depth + 1);
@@ -40,14 +41,7 @@ public class BasicMetricsStrategy : IMetricsStrategy
     }
 }
 
-public class MetricsCalculator
+public class MetricsCalculator(IMetricsStrategy strategy)
 {
-    private readonly IMetricsStrategy _strategy;
-
-    public MetricsCalculator(IMetricsStrategy strategy)
-    {
-        this._strategy = strategy;
-    }
-
-    public void Calculate(List<ICommand> commands) => _strategy.Calculate(commands);
+    public string Calculate(List<ICommand> commands) => strategy.Calculate(commands);
 }

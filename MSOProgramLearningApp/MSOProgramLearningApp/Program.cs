@@ -2,7 +2,7 @@
 
 internal static class Program
 {
-    private static void Main(string[] args)
+    private static void Main()
     {
         Console.WriteLine("=== Programming Learning App ===");
         Console.WriteLine("1. Load example program");
@@ -23,7 +23,7 @@ internal static class Program
         {
             Console.Write("Enter file name: ");
             string fileName = Console.ReadLine() ?? "input.txt";
-            string input = System.IO.File.ReadAllText(fileName);
+            string input = File.ReadAllText(fileName);
             IParser parser = new StringParser(input);
 
             commands = parser.Parse();
@@ -48,7 +48,7 @@ internal static class Program
         else
         {
             var metrics = new MetricsCalculator(new BasicMetricsStrategy());
-            metrics.Calculate(commands);
+            Console.WriteLine(metrics.Calculate(commands));
         }
     }
 }

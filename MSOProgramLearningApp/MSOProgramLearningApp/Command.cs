@@ -26,26 +26,47 @@ public class Move(int amount) : ICommand
     }
 }
 
-public class Repeat(int repetitions, List<ICommand> commands) : ICommand
+public abstract class Repeatable : ICommand
 {
-    public void Execute(Character c)
-    {
-        for (int i = 0; i < repetitions; i++)
-            foreach (var command in commands)
-                command.Execute(c);
-    }
+    public abstract void Execute(Character c);
+    protected List<ICommand> commands;
     public List<ICommand> GetCommands() => commands;
 }
 
-public class ConditionalRepeat(List<ICommand> commands, ICondition condition) : ICommand
+public class Repeat : Repeatable
 {
-    public void Execute(Character c)
+    private readonly int _repetitions;
+
+    public Repeat(int repetitions, List<ICommand> commands)
     {
-        while (condition.Evaluate(c))
+        _repetitions = repetitions;
+        this.commands = commands;
+    }
+
+    public override void Execute(Character c)
+    {
+        for (int i = 0; i < _repetitions; i++)
+            foreach (var command in commands)
+                command.Execute(c);
+    }
+}
+
+public class ConditionalRepeat : Repeatable
+{
+    private readonly ICondition _condition;
+
+    public ConditionalRepeat(List<ICommand> commands, ICondition condition)
+    {
+        _condition = condition;
+        this.commands = commands;
+    }
+
+    public override void Execute(Character c)
+    {
+        while (!_condition.Evaluate(c))
             foreach (var com in commands)
                 com.Execute(c);
     }
-    public List<ICommand> GetCommands() => commands;
 }
 
 public interface ICondition

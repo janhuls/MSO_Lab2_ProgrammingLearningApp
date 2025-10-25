@@ -1,4 +1,5 @@
-﻿using MSOProgramLearningApp;
+﻿using System.Collections.Generic;
+using MSOProgramLearningApp;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -17,17 +18,31 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty] 
     private string output = "Output";
     
+    public IRelayCommand MetricsCommand { get; } 
     public IRelayCommand OutputCommand { get; }
     
     public MainWindowViewModel(Character character)
     {
         _character = character;
         OutputCommand = new RelayCommand(GenerateOutput);
+        MetricsCommand = new RelayCommand(GenerateMetrics);
     }
 
+    private List<ICommand> getCommands(string s)
+    {
+        return new StringParser(s).Parse();
+    }
+
+    private void GenerateMetrics()
+    {
+        var cmds = getCommands(Code);
+
+        var metrics = new MetricsCalculator(new BasicMetricsStrategy());
+        Output = metrics.Calculate(cmds);
+    }
     private void GenerateOutput()
     {
-        var cmds = new StringParser(Code).Parse();
+        var cmds = getCommands(Code);
         
         var c = _character;
         foreach (var cmd in cmds)
