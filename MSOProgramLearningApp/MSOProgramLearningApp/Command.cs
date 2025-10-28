@@ -88,6 +88,6 @@ public class GridEdge : ICondition
     public bool Evaluate(Character c)
     {
         var (x, y) = c.CalcMove(1);
-        return x >= c.Grid.GetWidth() || y >= c.Grid.GetHeight();
+        return x >= c.Grid.GetSize() || y >= c.Grid.GetSize();
     }
 }

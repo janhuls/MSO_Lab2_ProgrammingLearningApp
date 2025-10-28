@@ -11,7 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="97649446-9819-4f13-9779-b22e68479461" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/OutputDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/OutputDrawer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,10 +44,10 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c339aa19caf4a594221588dd595cf17d47a976ddf64bc37ac7227af58f9e524/X11Platform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOAvaloniaApp/Views/MainWindow.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOProgramLearningApp/Metrics.cs" root0="FORCE_HIGHLIGHTING" />
@@ -220,6 +222,7 @@
       <workItem from="1761474030915" duration="146000" />
       <workItem from="1761565704048" duration="2105000" />
       <workItem from="1761567838801" duration="6944000" />
+      <workItem from="1761661899815" duration="1954000" />
     </task>
     <task id="LOCAL-00001" summary="mascots">
       <option name="closed" value="true" />

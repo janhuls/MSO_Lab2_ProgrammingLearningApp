@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
 namespace MSOProgramLearningApp;
@@ -222,8 +223,18 @@ public enum Side
     Right
 }
 
-public class Grid(bool[,] grid) //true is wall
+public class Grid //true is wall
 {
+    private int _size;
+    private readonly bool[,] _grid;
+
+    public Grid(bool[,] grid)
+    {
+        Debug.Assert(grid.GetLength(0) == grid.GetLength(1)); // should be a square grid
+        _grid = grid;
+        _size = _grid.GetLength(0);
+    }
+
     public static Grid TenSquareFalse()
     {
         const int x = 10;
@@ -235,22 +246,14 @@ public class Grid(bool[,] grid) //true is wall
         return new Grid(array);
     }
 
-    public int GetHeight()
-    {
-        return grid.GetLength(0);
-    }
-
-    public int GetWidth()
-    {
-        return grid.GetLength(1);
-    }
+    public int GetSize() => _size;
 
     public bool IsWall(int x, int y)
     {
-        if (x < 0 || y < 0 || x >= GetWidth() || y >= GetHeight())
+        if (x < 0 || y < 0 || x >= GetSize() || y >= GetSize())
             return true;
 
-        return grid[x, y];
+        return _grid[x, y];
     }
 }
 public class Character(Grid grid)
