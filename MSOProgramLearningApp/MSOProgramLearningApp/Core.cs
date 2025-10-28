@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace MSOProgramLearningApp;
 public interface IParser
 {

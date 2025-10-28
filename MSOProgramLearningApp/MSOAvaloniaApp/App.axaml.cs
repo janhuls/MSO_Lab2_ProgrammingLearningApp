@@ -13,7 +13,6 @@ namespace MSOAvaloniaApp;
 
 public partial class App : Application
 {
-    public Character character { get; set; } = null!; // trust me bro it is not null later type operator
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -21,7 +20,6 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        character = new Character(Grid.TenSquareFalse());
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
@@ -29,7 +27,7 @@ public partial class App : Application
             DisableAvaloniaDataAnnotationValidation();
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel(character),
+                DataContext = new MainWindowViewModel(),
             };
             
         }

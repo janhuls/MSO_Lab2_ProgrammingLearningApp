@@ -12,14 +12,14 @@ public class OutputDrawer(int imageSize = 1000) // should be a square so width a
 {
     private readonly int _imageSize = imageSize;
 
-    public void GenerateBitmap(List<ICommand> commands, Character character, MemoryStream outputMemStream)
+    public void GenerateBitmap(Character character, MemoryStream outputMemStream)
     {
         Image<Rgba32> image = new Image<Rgba32>(_imageSize, _imageSize);
         image.Mutate(ctx =>
         {
             // draw the grid
             ctx.DrawImage(GenerateGridImage(character.Grid), 1);
-            //ctx.DrawImage( DrawPath())
+            ctx.DrawImage(DrawPath(character.PointsVisited, 20), 1);
         });
         
         // save the image to memory
