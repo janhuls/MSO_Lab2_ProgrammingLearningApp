@@ -64,8 +64,13 @@ public class ConditionalRepeat : Repeatable
     public override void Execute(Character c)
     {
         while (!_condition.Evaluate(c))
-            foreach (var com in commands)
+            for (var index = 0; index < commands.Count; index++)
+            {
+                if (!_condition.Evaluate(c))
+                    break;
+                var com = commands[index];
                 com.Execute(c);
+            }
     }
 }
 

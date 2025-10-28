@@ -270,6 +270,8 @@ public class Character(Grid grid)
     public void Move(int amount)
     {
         var (newx, newy) = CalcMove(amount);
+        if (Grid.GetSize() < newx || Grid.GetSize() < newy || 0 > newx || 0 > newy)
+            throw new Exception($"Moving out of bounds from {ToString()} to {newx},{newy}");
         PosX = newx; PosY = newy;
         PointsVisited.Add(GetPosition());
     }
@@ -294,7 +296,6 @@ public class Character(Grid grid)
             default:
                 throw new ArgumentException("Invalid direction.");
         }
-
         return (x, y);
     }
     public void Rotate(Side side)

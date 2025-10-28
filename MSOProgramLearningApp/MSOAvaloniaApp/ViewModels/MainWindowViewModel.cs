@@ -13,9 +13,6 @@ public partial class MainWindowViewModel : ViewModelBase
 {
     private readonly OutputDrawer _outputDrawer;
     
-    [ObservableProperty]
-    private string greeting = "bababa";
-    
     [ObservableProperty] // example code of FindExit1
     private string code = "Repeat 3 \n    RepeatUntil WallAhead \n        Move 1 \n    Turn right \nRepeat 2 \n    RepeatUntil GridEdge \n        Move 1 \n    Turn right\n";
 
@@ -69,9 +66,16 @@ public partial class MainWindowViewModel : ViewModelBase
             return;
         
         var c = GetCharacter();
-        doCommands(c, cmds);
-        bindBitmap(c);
-        updateOutput(c);
+        try
+        {
+            doCommands(c, cmds);
+            bindBitmap(c);
+            updateOutput(c);
+        }
+        catch (Exception e)
+        {
+            Output =  e.Message;
+        }
     }
 
     private void updateOutput(Character c)
@@ -81,15 +85,8 @@ public partial class MainWindowViewModel : ViewModelBase
     }
     private void doCommands(Character c, List<ICommand> cmds)
     {
-        try
-        {
-            foreach (var cmd in cmds)
-                cmd.Execute(c);
-        }
-        catch (Exception e)
-        {
-            Output = e.Message;
-        }
+        foreach (var cmd in cmds) 
+            cmd.Execute(c);
     }
     private void bindBitmap(Character character)
     {
