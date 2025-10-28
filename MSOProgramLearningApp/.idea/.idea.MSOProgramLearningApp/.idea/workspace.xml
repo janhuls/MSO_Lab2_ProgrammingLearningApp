@@ -11,7 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="97649446-9819-4f13-9779-b22e68479461" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/OutputDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/OutputDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../document pt 3/prac3.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../document pt 3/prac3.tex" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,28 +65,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.MSOAvaloniaApp.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Project.MSOProgramLearningApp.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Project.MSOTestProject.executor&quot;: &quot;Run&quot;,
-    &quot;LaTeX.prac2.executor&quot;: &quot;Run&quot;,
-    &quot;LaTeX.prac3.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;f1367efc-4b1f-47e9-b432-03e3dc0086c4.executor&quot;: &quot;Debug&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.MSOAvaloniaApp.executor": "Run",
+    ".NET Project.MSOProgramLearningApp.executor": "Run",
+    ".NET Project.MSOTestProject.executor": "Run",
+    "LaTeX.prac2.executor": "Run",
+    "LaTeX.prac3.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "f1367efc-4b1f-47e9-b432-03e3dc0086c4.executor": "Debug",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Project.MSOAvaloniaApp">
     <configuration name="MSOAvaloniaApp" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -217,9 +221,8 @@
       <workItem from="1761305017135" duration="204000" />
       <workItem from="1761305248211" duration="5210000" />
       <workItem from="1761389183089" duration="955000" />
-      <workItem from="1761474030915" duration="146000" />
-      <workItem from="1761565704048" duration="2105000" />
-      <workItem from="1761567838801" duration="6944000" />
+      <workItem from="1761566708551" duration="91000" />
+      <workItem from="1761655551145" duration="6466000" />
     </task>
     <task id="LOCAL-00001" summary="mascots">
       <option name="closed" value="true" />
@@ -245,7 +248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761396193582</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="GridParser">
+      <option name="closed" value="true" />
+      <created>1761399527155</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1761399527155</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,7 +275,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/jan-bracn" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -281,7 +292,8 @@
     <MESSAGE value="mascots" />
     <MESSAGE value="bro ik ben hier kk klaar mee zlefs chat kan me niet helpen" />
     <MESSAGE value="RUn en Metrics knopje klaar enz" />
-    <option name="LAST_COMMIT_MESSAGE" value="RUn en Metrics knopje klaar enz" />
+    <MESSAGE value="GridParser" />
+    <option name="LAST_COMMIT_MESSAGE" value="GridParser" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,13 +1,9 @@
 ﻿using System.Diagnostics;
-using Avalonia.Controls.Shapes;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.Processing;
 using SixLabors.ImageSharp.Drawing;
-using SixLabors.ImageSharp.Drawing.Processing;
-using SixLabors.ImageSharp.Processing.Processors;
-using Point = Avalonia.Point;
 
 namespace MSOProgramLearningApp;
 

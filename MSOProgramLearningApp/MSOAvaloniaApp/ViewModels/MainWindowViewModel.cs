@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
@@ -10,8 +11,7 @@ namespace MSOAvaloniaApp.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    private readonly Character _character;
-    private OutputDrawer _outputDrawer;
+    private readonly OutputDrawer _outputDrawer;
     
     [ObservableProperty]
     private string greeting = "bababa";
@@ -27,43 +27,74 @@ public partial class MainWindowViewModel : ViewModelBase
 
     [ObservableProperty] private IImage? outputImageBinding;
 
-    public MainWindowViewModel(Character character)
+    public MainWindowViewModel()
     {
-        _character = character;
         _outputDrawer = new OutputDrawer();
         OutputCommand = new RelayCommand(GenerateOutput);
         MetricsCommand = new RelayCommand(GenerateMetrics);
     }
 
-    private List<ICommand> getCommands(string s)
+    private List<ICommand>? getCommands(string s)
     {
-        return new StringParser(s).Parse();
+        try
+        {
+            return new StringParser(s).Parse();
+        }
+        catch (Exception e)
+        {
+            Output = e.Message;
+            return null;
+        }
     }
 
     private void GenerateMetrics()
     {
         var cmds = getCommands(Code);
-
+        if (cmds is null)
+            return;
         var metrics = new MetricsCalculator(new BasicMetricsStrategy());
         Output = metrics.Calculate(cmds);
     }
 
+    private Character GetCharacter()
+    {
+        return new Character();
+        //TODO
+        //read grid size from UI ofz
+    }
     private void GenerateOutput()
     {
         var cmds = getCommands(Code);
-        MemoryStream memoryStream = new MemoryStream();
-        _outputDrawer.GenerateBitmap(cmds, _character,memoryStream);
-        OutputImageBinding = new Bitmap(memoryStream);
+        if (cmds is null)
+            return;
         
-        var c = _character;
-        foreach (var cmd in cmds)
-            cmd.Execute(c);
+        var c = GetCharacter();
+        doCommands(c, cmds);
+        bindBitmap(c);
+        updateOutput(c);
+    }
 
+    private void updateOutput(Character c)
+    {
         Output = string.Join(", ", c.Moves) + ".";
         Output += $"\nEnd state {c}";
-        
     }
-    public MainWindowViewModel() : this(new Character(Grid.TenSquareFalse()))
+    private void doCommands(Character c, List<ICommand> cmds)
     {
+        try
+        {
+            foreach (var cmd in cmds)
+                cmd.Execute(c);
+        }
+        catch (Exception e)
+        {
+            Output = e.Message;
+        }
+    }
+    private void bindBitmap(Character character)
+    {
+        MemoryStream memoryStream = new MemoryStream();
+        _outputDrawer.GenerateBitmap(character, memoryStream);
+        OutputImageBinding = new Bitmap(memoryStream);
     }
 }
