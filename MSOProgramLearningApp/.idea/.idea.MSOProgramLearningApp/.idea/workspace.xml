@@ -11,8 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="97649446-9819-4f13-9779-b22e68479461" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/App.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/OutputDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/OutputDrawer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

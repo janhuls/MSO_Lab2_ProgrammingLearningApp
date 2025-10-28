@@ -19,7 +19,7 @@ public class OutputDrawer(int imageSize = 1000) // should be a square so width a
         {
             // draw the grid
             ctx.DrawImage(GenerateGridImage(character.Grid), 1);
-            ctx.DrawImage(DrawPath(character.PointsVisited, 20), 1);
+            ctx.DrawImage(DrawPath(character.PointsVisited, character.Grid), 1);
         });
         
         // save the image to memory
@@ -32,8 +32,9 @@ public class OutputDrawer(int imageSize = 1000) // should be a square so width a
     {
         Image<Rgba32> image = new Image<Rgba32>(_imageSize, _imageSize);
         Color color = Color.Black;
+        const float thicknessDevider = 5f;
         int spaceBetweenLines = _imageSize / grid.GetSize();
-        float thickness = spaceBetweenLines / 5f;
+        float thickness = spaceBetweenLines / thicknessDevider;
 
         
         image.Mutate(ctx =>
@@ -62,23 +63,36 @@ public class OutputDrawer(int imageSize = 1000) // should be a square so width a
         return image;
     }
 
-    private Image<Rgba32> DrawPath(List<(int,int)> points, float thickness)
+    private Image<Rgba32> DrawPath(List<(int,int)> points, Grid grid)
     {
         Image<Rgba32> image = new Image<Rgba32>(_imageSize, _imageSize);
 
         Color color = Color.Blue;
+        const float thicknessDevider = 4f;
+
+        // ReSharper disable once PossibleLossOfFraction
+        float thickness = (_imageSize / grid.GetSize()) / thicknessDevider;
         
         image.Mutate(ctx =>
         {
             for (int i = 0; i < points.Count - 1; i++)
             {
                 PointF[] twoPoints = new PointF[2];
-                twoPoints[0] = new PointF(points[i].Item1, points[i].Item2);
-                twoPoints[1] = new PointF(points[i+1].Item1, points[i+1].Item2);
+                twoPoints[0] = getPointOnGrid(points[i], grid);
+                twoPoints[1] = getPointOnGrid(points[i + 1], grid);
                 ctx.DrawLine(color, thickness, twoPoints);
             }
         });
 
         return image;
+    }
+
+    private PointF getPointOnGrid((int,int) pt, Grid grid)
+    {
+        int spaceBetweenLines = _imageSize / grid.GetSize();
+        float offset = spaceBetweenLines / 2f;
+        var (x, y) = pt;
+        
+        return new PointF(x * spaceBetweenLines + offset, y * spaceBetweenLines + offset);
     }
 }
