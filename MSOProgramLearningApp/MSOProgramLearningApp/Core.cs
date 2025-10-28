@@ -1,7 +1,3 @@
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-
 namespace MSOProgramLearningApp;
 public interface IParser
 {
@@ -258,18 +254,22 @@ public class Grid //true is wall
 }
 public class Character(Grid grid)
 {
-    private int PosX { get; set; } = 0;
-    private int PosY { get; set; } = 0;
+    private int PosX { get; set; }
+    private int PosY { get; set; }
     private Direction Rotation { get; set; } = Direction.East;
-    public Grid Grid { get; set; } = grid;
-    public List<string> Moves { get; set; } = [];
-
+    public Grid Grid { get; } = grid;
+    public List<string> Moves { get; } = [];
+    public List<(int, int)> PointsVisited = [(0, 0)];
     public Character() : this(Grid.TenSquareFalse()){}
-
+    private (int, int) GetPosition()
+    {
+        return (PosX, PosY);
+    }
     public void Move(int amount)
     {
         var (newx, newy) = CalcMove(amount);
         PosX = newx; PosY = newy;
+        PointsVisited.Add(GetPosition());
     }
     public (int, int) CalcMove(int amount)
     {
@@ -278,13 +278,13 @@ public class Character(Grid grid)
         switch (Rotation)
         {
             case Direction.North:
-                y += amount;
+                y -= amount;
                 break;
             case Direction.East:
                 x += amount;
                 break;
             case Direction.South:
-                y -= amount;
+                y += amount;
                 break;
             case Direction.West:
                 x -= amount;
@@ -295,7 +295,6 @@ public class Character(Grid grid)
 
         return (x, y);
     }
-    
     public void Rotate(Side side)
     {
         int rot = (int)this.Rotation;
@@ -306,7 +305,6 @@ public class Character(Grid grid)
             _ => Rotation
         };
     }
-
     public override string ToString()
     {
         return $"({PosX}, {PosY}) facing {Rotation.ToString().ToLower()}.";

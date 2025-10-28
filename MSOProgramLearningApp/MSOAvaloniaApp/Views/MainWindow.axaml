@@ -53,7 +53,7 @@
                     
                     <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
                         <TextBlock FontSize="30" Margin="5">Select Grid size:</TextBlock>
-                        <ComboBox SelectedIndex="0" Margin="5" FontSize="20">
+                        <ComboBox SelectedIndex="1" Margin="5" FontSize="20">
                             <ComboBoxItem>5x5</ComboBoxItem>
                             <ComboBoxItem>10x10</ComboBoxItem>
                             <ComboBoxItem>15x15</ComboBoxItem>
