@@ -29,8 +29,8 @@ public class Move(int amount) : ICommand
 public abstract class Repeatable : ICommand
 {
     public abstract void Execute(Character c);
-    protected List<ICommand> commands;
-    public List<ICommand> GetCommands() => commands;
+    protected List<ICommand> Commands;
+    public List<ICommand> GetCommands() => Commands;
 }
 
 public class Repeat : Repeatable
@@ -40,13 +40,13 @@ public class Repeat : Repeatable
     public Repeat(int repetitions, List<ICommand> commands)
     {
         _repetitions = repetitions;
-        this.commands = commands;
+        this.Commands = commands;
     }
 
     public override void Execute(Character c)
     {
         for (int i = 0; i < _repetitions; i++)
-            foreach (var command in commands)
+            foreach (var command in Commands)
                 command.Execute(c);
     }
 }
@@ -58,13 +58,13 @@ public class ConditionalRepeat : Repeatable
     public ConditionalRepeat(List<ICommand> commands, ICondition condition)
     {
         _condition = condition;
-        this.commands = commands;
+        this.Commands = commands;
     }
 
     public override void Execute(Character c)
     {
         while (!_condition.Evaluate(c))
-            foreach (var t in commands)
+            foreach (var t in Commands)
             {
                 t.Execute(c);
                 if (_condition.Evaluate(c))

@@ -30,11 +30,15 @@
     </Window.Styles>
     
     
-    <Grid ColumnDefinitions="0.5*,2*,2*" RowDefinitions="Auto, *, Auto, 0.4*" Margin="10">
+    <Grid ColumnDefinitions="0.6*,2*,2*" RowDefinitions="0.1*, *, Auto, 0.4*" Margin="10" x:Name="Gridy">
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <Button Command="{Binding LoadProgramCommand}">Load Program</Button>
             <Button Command="{Binding LoadGridCommand}">Load Grid</Button>
-            <Button></Button>
+            <Button Click="LoadBuildInExample">Load example 1</Button>
+            <Button Click="LoadBuildInExample">Load example 2</Button>
+            <Button Click="LoadBuildInExample">Load example 3</Button>
+            <Button Click="LoadBuildInExample">Load example 4</Button>
+            <Button Click="LoadBuildInExample">Load example 5</Button>
         </StackPanel>
         
         
@@ -42,7 +46,7 @@
         
         <TextBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" AcceptsReturn="True" TextWrapping="Wrap" Text="{Binding Code, Mode=TwoWay}" />
         
-        <Image Grid.Row="1" Grid.Column="2" Source="{Binding OutputImageBinding}"></Image> <!--> test: Source="../Assets/mauntain.bmp" -->
+        <Image Grid.Row="1" Grid.Column="2" Source="{Binding OutputImageBinding}" Margin="5" Stretch="Uniform" ClipToBounds="True"></Image> <!--> test: Source="../Assets/mauntain.bmp" -->
         
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top">
             <Button Command="{Binding OutputCommand}">RUN</Button>

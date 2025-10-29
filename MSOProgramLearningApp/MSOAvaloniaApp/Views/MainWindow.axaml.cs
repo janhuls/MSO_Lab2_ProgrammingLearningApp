@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
@@ -9,6 +10,7 @@ using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using MSOAvaloniaApp.ViewModels;
 using MSOProgramLearningApp;
+using Grid = Avalonia.Controls.Grid;
 
 namespace MSOAvaloniaApp.Views;
 
@@ -19,9 +21,8 @@ public partial class MainWindow : Window
         InitializeComponent();
         DataContext = new MainWindowViewModel(this);
     }
-
     
-    public async Task<string?> getFileContents()
+    public async Task<string?> GetFileContents()
     {
         // Get top level from the current control. Alternatively, you can use Window reference instead.
         var topLevel = TopLevel.GetTopLevel(this);
@@ -45,19 +46,19 @@ public partial class MainWindow : Window
         return null;
     }
 
-    private void GridSizeChanged(object? sender, ContainerIndexChangedEventArgs e)
+    private void LoadBuildInExample(object? sender, RoutedEventArgs e)
     {
-        //MainWindowViewModel mw = DataContext as MainWindowViewModel;
-        //mw.ChangeGrid(e.NewIndex);
-    }
+        MainWindowViewModel vm = (MainWindowViewModel)DataContext;
+        if(vm == null)
+            throw new NullReferenceException("MainWindowViewModel is null (je bent cooked)");
+        
+        Button button = sender as Button;
+        if (button == null)
+            throw new NullReferenceException("button is null (je bent cooked)");
 
-    private void GridSizeChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
-    {
-        //Console.WriteLine(e + "  " + e.NewValue);
-    }
+        string text = button.Content as string; // dont worry about null reference exception trusttt
 
-    private void GridSizeChanged(object? sender, SelectionChangedEventArgs e)
-    {
-        Console.WriteLine($"aadd: {e.AddedItems} weg: {e.RemovedItems}");
+        int index = int.Parse(text.Split()[2]);
+        vm.LoadExampleProgram(index);
     }
 }

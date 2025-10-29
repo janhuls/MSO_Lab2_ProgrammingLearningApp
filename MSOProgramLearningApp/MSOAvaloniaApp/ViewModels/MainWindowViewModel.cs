@@ -18,15 +18,15 @@ namespace MSOAvaloniaApp.ViewModels;
 public partial class MainWindowViewModel : ViewModelBase
 {
     private MainWindow _mainWindow;
-    private readonly OutputDrawer _outputDrawer;
+    private Character Character => new(GetGrid());
     
     [ObservableProperty] // example code of FindExit1
-    private string code = "Repeat 3 \n    RepeatUntil WallAhead \n        Move 1 \n    Turn right \nRepeat 2 \n    RepeatUntil GridEdge \n        Move 1 \n    Turn right\n";
+    private string _code = "Repeat 3 \n    RepeatUntil WallAhead \n        Move 1 \n    Turn right \nRepeat 2 \n    RepeatUntil GridEdge \n        Move 1 \n    Turn right\n";
 
     [ObservableProperty] 
-    private string output = "Output";
+    private string _output = "Output";
     
-    [ObservableProperty] private IImage? outputImageBinding;
+    [ObservableProperty] private IImage? _outputImageBinding;
     public IRelayCommand MetricsCommand { get; } 
     public IRelayCommand OutputCommand { get; }
     public IRelayCommand LoadProgramCommand { get; }
@@ -41,7 +41,7 @@ public partial class MainWindowViewModel : ViewModelBase
         {
             if (SetProperty(ref _selectedGrid, value))
             {
-                bindBitmap(GetCharacter()); // update the bitmap
+                BindBitmap(Character); // update the bitmap
             }
         }
     }
@@ -49,17 +49,26 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel(MainWindow mainWindow)
     {
         _mainWindow = mainWindow;
-        _outputDrawer = new OutputDrawer();
+        //_outputDrawer = new OutputDrawer(_mainWindow.GetPictureWidth());
         OutputCommand = new RelayCommand(GenerateOutput);
         MetricsCommand = new RelayCommand(GenerateMetrics);
         LoadProgramCommand = new RelayCommand(LoadProgram);
         LoadGridCommand = new RelayCommand(LoadGrid);
         
         // load default bitmap
-        bindBitmap(GetCharacter());
+        BindBitmap(Character);
+    }
+    
+    public MainWindowViewModel() //ONLY USED FOR THE PREVIEWER IN OUR RIDER IDE
+    {
+        _mainWindow = null;
+        OutputCommand = new RelayCommand(GenerateOutput);
+        MetricsCommand = new RelayCommand(GenerateMetrics);
+        LoadProgramCommand = new RelayCommand(LoadProgram);
+        LoadGridCommand = new RelayCommand(LoadGrid);
     }
 
-    private List<ICommand>? getCommands(string s)
+    private List<ICommand>? GetCommands(string s)
     {
         try
         {
@@ -74,14 +83,14 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private void GenerateMetrics()
     {
-        var cmds = getCommands(Code); 
+        var cmds = GetCommands(Code); 
         if (cmds is null)
             return;
         var metrics = new MetricsCalculator(new BasicMetricsStrategy());
         Output = metrics.Calculate(cmds);
     }
 
-    private Character GetCharacter() => new(GetGrid());
+    
 
     private Grid GetGrid()
     {
@@ -110,16 +119,16 @@ public partial class MainWindowViewModel : ViewModelBase
     
     private void GenerateOutput()
     {
-        var cmds = getCommands(Code);
+        var cmds = GetCommands(Code);
         if (cmds is null)
             return;
         
-        var c = GetCharacter();
+        var c = Character;
         try
         {
-            doCommands(c, cmds);
-            bindBitmap(c);
-            updateOutput(c);
+            DoCommands(c, cmds);
+            BindBitmap(c);
+            UpdateOutput(c);
         }
         catch (Exception e)
         {
@@ -127,20 +136,20 @@ public partial class MainWindowViewModel : ViewModelBase
         }
     }
 
-    private void updateOutput(Character c)
+    private void UpdateOutput(Character c)
     {
         Output = string.Join(", ", c.Moves) + ".";
         Output += $"\nEnd state {c}";
     }
-    private void doCommands(Character c, List<ICommand> cmds)
+    private void DoCommands(Character c, List<ICommand> cmds)
     {
         foreach (var cmd in cmds) 
             cmd.Execute(c);
     }
-    private void bindBitmap(Character character)
+    private void BindBitmap(Character character)
     {
         MemoryStream memoryStream = new MemoryStream();
-        _outputDrawer.GenerateBitmap(character, memoryStream);
+        OutputDrawer.GenerateBitmap(character, memoryStream);
         OutputImageBinding = new Bitmap(memoryStream);
     }
 
@@ -148,7 +157,7 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         try
         {
-            string? contents = await _mainWindow.getFileContents();
+            string? contents = await _mainWindow.GetFileContents();
             if (contents is not null)
                 Code = contents;
         }
@@ -163,7 +172,7 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         try
         {
-            string? contents = await _mainWindow.getFileContents();
+            string? contents = await _mainWindow.GetFileContents();
             if (contents is not null)
             {
                 SelectedGrid = 4; // set to custom
@@ -177,6 +186,27 @@ public partial class MainWindowViewModel : ViewModelBase
         catch (Exception e)
         {
             Output = $"Failed to load program file\nError: {e.Message}";
+        }
+    }
+
+    public void LoadExampleProgram(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
         }
     }
 }
