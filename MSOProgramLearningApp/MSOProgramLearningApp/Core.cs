@@ -233,13 +233,11 @@ public class Grid //true is wall
         _size = _grid.GetLength(0);
     }
 
-    public static Grid TenSquareFalse()
+    public static Grid XSquareFalse(int x)
     {
-        const int x = 10;
-        const int y = 10;
-        var array = new bool[x, y];
+        var array = new bool[x, x];
         for (int i = 0; i < x; i++)
-            for (int j = 0; j < y; j++)
+            for (int j = 0; j < x; j++)
                 array[i, j] = false;
         return new Grid(array);
     }
@@ -262,7 +260,7 @@ public class Character(Grid grid)
     public Grid Grid { get; } = grid;
     public List<string> Moves { get; } = [];
     public List<(int, int)> PointsVisited = [(0, 0)];
-    public Character() : this(Grid.TenSquareFalse()){}
+    public Character() : this(Grid.XSquareFalse(10)){}
     public (int, int) GetPosition()
     {
         return (PosX, PosY);

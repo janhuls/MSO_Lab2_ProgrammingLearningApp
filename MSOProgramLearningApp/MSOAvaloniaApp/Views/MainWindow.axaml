@@ -30,43 +30,38 @@
     </Window.Styles>
     
     
-    <TabControl>
-        <TabItem Header="Free coding">
-            <Grid ColumnDefinitions="0.5*,2*,2*" RowDefinitions="Auto, *, Auto, 0.4*" Margin="10">
-                    <Button Click="LoadHandler" Padding="10" Grid.Column="0" Grid.Row="0">Load Program</Button>
-                    <StackPanel Spacing="10" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0">
-                        <Button Click="TurnHandler"   Width="100">Turn</Button>
-                        <Button Click="MoveHandler"   Width="100">Move</Button>
-                        <Button Click="RepeatHandler" Width="100">Repeat</Button>
-                    </StackPanel>
-                    <TextBlock Grid.Row="0" Grid.Column="2" FontSize="40" FontWeight="Bold">Code Loopa app thingy</TextBlock>
-                    
-                    <TextBox Grid.Column="1" Grid.Row="1" AcceptsReturn="True" TextWrapping="Wrap" Text="{Binding Code, Mode=TwoWay}" />
-                    
-                    <Image Grid.Row="1" Grid.Column="2" Source="{Binding OutputImageBinding}"></Image> <!--> test: Source="../Assets/mauntain.bmp" -->
-                    
-                    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top">
-                        <Button Command="{Binding OutputCommand}">RUN</Button>
-                        <Button Command="{Binding MetricsCommand}">Metrics</Button>
-                    </StackPanel>
-                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Output, Mode=OneWay}" IsReadOnly="True" ></TextBox>
-                    
-                    <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
-                        <TextBlock FontSize="30" Margin="5">Select Grid size:</TextBlock>
-                        <ComboBox SelectedIndex="1" Margin="5" FontSize="20">
-                            <ComboBoxItem>5x5</ComboBoxItem>
-                            <ComboBoxItem>10x10</ComboBoxItem>
-                            <ComboBoxItem>15x15</ComboBoxItem>
-                            <ComboBoxItem>20x20</ComboBoxItem>
-                        </ComboBox>
-                    </StackPanel>
-                    
-                </Grid>
-        </TabItem>
-        <TabItem Header="Exercises">
-            <TextBlock>TODO</TextBlock>
-        </TabItem>
-    </TabControl>
+    <Grid ColumnDefinitions="0.5*,2*,2*" RowDefinitions="Auto, *, Auto, 0.4*" Margin="10">
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <Button Command="{Binding LoadProgramCommand}">Load Program</Button>
+            <Button Command="{Binding LoadGridCommand}">Load Grid</Button>
+            <Button></Button>
+        </StackPanel>
+        
+        
+        <TextBlock Grid.Row="0" Grid.Column="2" FontSize="40" FontWeight="Bold" Margin="5">Code Loopa app thingy</TextBlock>
+        
+        <TextBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" AcceptsReturn="True" TextWrapping="Wrap" Text="{Binding Code, Mode=TwoWay}" />
+        
+        <Image Grid.Row="1" Grid.Column="2" Source="{Binding OutputImageBinding}"></Image> <!--> test: Source="../Assets/mauntain.bmp" -->
+        
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top">
+            <Button Command="{Binding OutputCommand}">RUN</Button>
+            <Button Command="{Binding MetricsCommand}">Metrics</Button>
+        </StackPanel>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Output, Mode=OneWay}" IsReadOnly="True" ></TextBox>
+        
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
+            <TextBlock FontSize="30" Margin="5">Select Grid size:</TextBlock>
+            <ComboBox SelectedIndex="{Binding SelectedGrid}" Margin="5" FontSize="20" >
+                <ComboBoxItem>5x5</ComboBoxItem>
+                <ComboBoxItem>10x10</ComboBoxItem>
+                <ComboBoxItem>15x15</ComboBoxItem>
+                <ComboBoxItem>20x20</ComboBoxItem>
+                <ComboBoxItem>Custom</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+    </Grid>
+
     
     
     

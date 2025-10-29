@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using System.IO;
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using Avalonia.Platform.Storage;
 using MSOProgramLearningApp;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MSOAvaloniaApp.Views;
+using Grid = MSOProgramLearningApp.Grid;
 
 namespace MSOAvaloniaApp.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
+    private MainWindow _mainWindow;
     private readonly OutputDrawer _outputDrawer;
     
     [ObservableProperty] // example code of FindExit1
@@ -21,16 +26,37 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty] 
     private string output = "Output";
     
+    [ObservableProperty] private IImage? outputImageBinding;
     public IRelayCommand MetricsCommand { get; } 
     public IRelayCommand OutputCommand { get; }
+    public IRelayCommand LoadProgramCommand { get; }
+    public IRelayCommand LoadGridCommand { get; }
 
-    [ObservableProperty] private IImage? outputImageBinding;
-
-    public MainWindowViewModel()
+    private string _customGrid = "";
+    private int _selectedGrid = 1;
+    public int SelectedGrid
     {
+        get => _selectedGrid;
+        set
+        {
+            if (SetProperty(ref _selectedGrid, value))
+            {
+                bindBitmap(GetCharacter()); // update the bitmap
+            }
+        }
+    }
+
+    public MainWindowViewModel(MainWindow mainWindow)
+    {
+        _mainWindow = mainWindow;
         _outputDrawer = new OutputDrawer();
         OutputCommand = new RelayCommand(GenerateOutput);
         MetricsCommand = new RelayCommand(GenerateMetrics);
+        LoadProgramCommand = new RelayCommand(LoadProgram);
+        LoadGridCommand = new RelayCommand(LoadGrid);
+        
+        // load default bitmap
+        bindBitmap(GetCharacter());
     }
 
     private List<ICommand>? getCommands(string s)
@@ -55,12 +81,33 @@ public partial class MainWindowViewModel : ViewModelBase
         Output = metrics.Calculate(cmds);
     }
 
-    private Character GetCharacter()
+    private Character GetCharacter() => new(GetGrid());
+
+    private Grid GetGrid()
     {
-        return new Character();
-        //TODO
-        //read grid size from UI ofz
+        switch(_selectedGrid)
+        {
+            case 0:
+                return Grid.XSquareFalse(5);
+            case 1:
+                return Grid.XSquareFalse(10);
+            case 2:
+                return Grid.XSquareFalse(15);
+            case 3:
+                return Grid.XSquareFalse(20);
+            case 4:
+                if (string.IsNullOrEmpty(_customGrid))
+                {
+                    Output = "ERROR: No custom grid loaded, Press the load grid button to load a custom grid.\nLoaded a 10x10 grid as default";
+                    return Grid.XSquareFalse(10);
+                }
+                else
+                    return GridParser.Parse(_customGrid);
+            default:
+                return Grid.XSquareFalse(10);
+        }
     }
+    
     private void GenerateOutput()
     {
         var cmds = getCommands(Code);
@@ -95,5 +142,41 @@ public partial class MainWindowViewModel : ViewModelBase
         MemoryStream memoryStream = new MemoryStream();
         _outputDrawer.GenerateBitmap(character, memoryStream);
         OutputImageBinding = new Bitmap(memoryStream);
+    }
+
+    private async void LoadProgram()
+    {
+        try
+        {
+            string? contents = await _mainWindow.getFileContents();
+            if (contents is not null)
+                Code = contents;
+        }
+        catch (Exception e)
+        {
+            Output = $"Failed to load program file\nError: {e.Message}";
+        }
+        
+    }
+
+    private async void LoadGrid()
+    {
+        try
+        {
+            string? contents = await _mainWindow.getFileContents();
+            if (contents is not null)
+            {
+                SelectedGrid = 4; // set to custom
+                _customGrid = contents;
+            }
+            else
+            {
+                Output = "ERROR: file is empty or null";
+            }
+        }
+        catch (Exception e)
+        {
+            Output = $"Failed to load program file\nError: {e.Message}";
+        }
     }
 }

@@ -33,7 +33,7 @@ internal static class Program
         Console.WriteLine("1. Execute Program\n2. Show Metrics");
         int action = int.Parse(Console.ReadLine() ?? "1");
 
-        Character c = new(Grid.TenSquareFalse());
+        Character c = new(Grid.XSquareFalse(10));
         if (action == 1)
         {
             Console.WriteLine($"\nExecuting {name}:");
