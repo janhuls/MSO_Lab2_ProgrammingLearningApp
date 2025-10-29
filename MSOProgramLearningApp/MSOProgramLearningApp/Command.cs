@@ -64,12 +64,11 @@ public class ConditionalRepeat : Repeatable
     public override void Execute(Character c)
     {
         while (!_condition.Evaluate(c))
-            for (var index = 0; index < commands.Count; index++)
+            foreach (var t in commands)
             {
-                if (!_condition.Evaluate(c))
-                    break;
-                var com = commands[index];
-                com.Execute(c);
+                t.Execute(c);
+                if (_condition.Evaluate(c))
+                    return;
             }
     }
 }
@@ -93,6 +92,6 @@ public class GridEdge : ICondition
     public bool Evaluate(Character c)
     {
         var (x, y) = c.CalcMove(1);
-        return x >= c.Grid.GetSize() || y >= c.Grid.GetSize();
+        return x >= c.Grid.GetSize() || y >= c.Grid.GetSize() || x < 0 || y < 0;
     }
 }
