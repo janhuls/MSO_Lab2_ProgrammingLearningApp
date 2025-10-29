@@ -1,9 +1,11 @@
-﻿using System.Diagnostics;
+﻿using Avalonia;
+using Avalonia.Platform;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.Processing;
 using SixLabors.ImageSharp.Drawing;
+using Point = SixLabors.ImageSharp.Point;
 
 namespace MSOProgramLearningApp;
 
@@ -17,9 +19,12 @@ public class OutputDrawer(int imageSize = 1000) // should be a square so width a
         Image<Rgba32> image = new Image<Rgba32>(_imageSize, _imageSize);
         image.Mutate(ctx =>
         {
+            var p = character.PointsVisited;
+            var g = character.Grid;
             // draw the grid
-            ctx.DrawImage(GenerateGridImage(character.Grid), 1);
-            ctx.DrawImage(DrawPath(character.PointsVisited, character.Grid), 1);
+            ctx.DrawImage(GenerateGridImage(g), 1);
+            ctx.DrawImage(DrawPath(p, g), 1);
+            ctx.DrawImage(DrawCharacter(character, g), 1);
         });
         
         // save the image to memory
@@ -63,6 +68,53 @@ public class OutputDrawer(int imageSize = 1000) // should be a square so width a
         return image;
     }
 
+    private Image<Rgba32> DrawCharacter(Character c, Grid grid)
+    {
+        Image<Rgba32> image = new Image<Rgba32>(_imageSize, _imageSize);
+        
+        var uri = new Uri("avares://MSOAvaloniaApp/loopa.png");
+        using Stream? stream = AssetLoader.Open(uri);
+        
+        if (stream == null)
+            throw new InvalidOperationException($"Could not find Avalonia resource at {uri}");
+
+        using var sprite = Image.Load<Rgba32>(stream);
+        
+        float cellSize = _imageSize / (float)grid.GetSize();
+        sprite.Mutate(x => x.Resize((int)cellSize, (int)cellSize));
+        
+        PointF position = getPointOnGrid(c.GetPosition(), grid);
+        float x = position.X - sprite.Width / 2f;
+        float y = position.Y - sprite.Height / 2f;
+
+        // starts facing down
+        sprite.Mutate(ctx => ctx.Rotate(GetAngleFromDirection(c.Rotation)));
+        
+        image.Mutate(ctx =>
+        {
+            ctx.DrawImage(sprite, new Point((int)x, (int)y), 1f); // 1f = full opacity
+        });
+
+        return image;
+    }
+
+    private float GetAngleFromDirection(Direction d)
+    {
+        // south as 0, west as 90
+        switch (d)
+        {
+            case Direction.East:
+                return 280f;
+            case Direction.South:
+                return 0f;
+            case Direction.West:
+                return 90f;
+            case Direction.North:
+                return 180f;
+            default:
+                throw new ArgumentException("Invalid direction");
+        }
+    }
     private Image<Rgba32> DrawPath(List<(int,int)> points, Grid grid)
     {
         Image<Rgba32> image = new Image<Rgba32>(_imageSize, _imageSize);

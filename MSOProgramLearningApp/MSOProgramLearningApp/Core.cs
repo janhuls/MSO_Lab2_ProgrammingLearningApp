@@ -258,12 +258,12 @@ public class Character(Grid grid)
 {
     private int PosX { get; set; }
     private int PosY { get; set; }
-    private Direction Rotation { get; set; } = Direction.East;
+    public Direction Rotation { get; private set; } = Direction.East;
     public Grid Grid { get; } = grid;
     public List<string> Moves { get; } = [];
     public List<(int, int)> PointsVisited = [(0, 0)];
     public Character() : this(Grid.TenSquareFalse()){}
-    private (int, int) GetPosition()
+    public (int, int) GetPosition()
     {
         return (PosX, PosY);
     }

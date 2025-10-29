@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Avalonia;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using MSOProgramLearningApp;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -46,7 +48,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private void GenerateMetrics()
     {
-        var cmds = getCommands(Code);
+        var cmds = getCommands(Code); 
         if (cmds is null)
             return;
         var metrics = new MetricsCalculator(new BasicMetricsStrategy());
