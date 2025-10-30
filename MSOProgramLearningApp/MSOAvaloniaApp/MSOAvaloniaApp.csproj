@@ -33,8 +33,4 @@
     <ItemGroup>
       <ProjectReference Include="..\MSOProgramLearningApp\MSOProgramLearningApp.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <AvaloniaResource Include="loopa.png" />
-    </ItemGroup>
 </Project>
