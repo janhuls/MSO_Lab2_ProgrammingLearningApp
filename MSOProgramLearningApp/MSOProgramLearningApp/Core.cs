@@ -42,7 +42,7 @@ public static class GridParser
 }
 public class StringParser(string program) : IParser
 {
-    private const int IndentSize = 4;
+    public const int IndentSize = 4;
 
     public List<ICommand> Parse()
     {
