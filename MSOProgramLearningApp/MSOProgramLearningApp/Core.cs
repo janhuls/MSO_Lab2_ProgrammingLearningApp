@@ -11,14 +11,14 @@ public static class GridParser
     {
         return new Grid(ArrayParse(input));
     }
-    private static bool[,] ArrayParse(string input)
+    private static GridSquare[,] ArrayParse(string input)
     {
         var lines = input.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
-        if (lines.Length == 0) return new bool[0,0];
+        if (lines.Length == 0) return new GridSquare[0,0];
 
         int rows = lines.Length;
         int cols = lines[0].Length;
-        var grid = new bool[rows, cols];
+        var grid = new GridSquare[rows, cols];
 
         for (int i = 0; i < rows; i++)
         {
@@ -30,8 +30,9 @@ public static class GridParser
                 char c = lines[i][j];
                 grid[i, j] = c switch
                 {
-                    '+' => true,
-                    'o' => false,
+                    '+' => GridSquare.Wall,
+                    'o' => GridSquare.Empty,
+                    'x' => GridSquare.Finish,
                     _ => throw new ArgumentException($"Invalid character '{c}' at line {i+1}, column {j+1}")
                 };
             }
@@ -221,12 +222,12 @@ public enum Side
     Right
 }
 
-public class Grid //true is wall
+public class Grid
 {
     private int _size;
-    private readonly bool[,] _grid;
+    private readonly GridSquare[,] _grid;
 
-    public Grid(bool[,] grid)
+    public Grid(GridSquare[,] grid)
     {
         Debug.Assert(grid.GetLength(0) == grid.GetLength(1)); // should be a square grid
         _grid = grid;
@@ -235,22 +236,41 @@ public class Grid //true is wall
 
     public static Grid XSquareFalse(int x)
     {
-        var array = new bool[x, x];
+        var array = new GridSquare[x, x];
         for (int i = 0; i < x; i++)
             for (int j = 0; j < x; j++)
-                array[i, j] = false;
+                array[i, j] = GridSquare.Empty;
         return new Grid(array);
     }
 
     public int GetSize() => _size;
 
+    private bool outOfBounds(int x, int y)
+    {
+        return x < 0 || y < 0 || x >= GetSize() || y >= GetSize();
+    }
     public bool IsWall(int x, int y)
     {
-        if (x < 0 || y < 0 || x >= GetSize() || y >= GetSize())
+        if (outOfBounds(x, y))
             return true;
 
-        return _grid[x, y];
+        return _grid[x, y] == GridSquare.Wall;
     }
+
+    public bool IsFinish(int x, int y)
+    {
+        if (outOfBounds(x, y))
+            return false;
+
+        return _grid[x, y] == GridSquare.Finish;
+    }
+}
+
+public enum GridSquare
+{
+    Empty,
+    Wall,
+    Finish
 }
 public class Character(Grid grid)
 {
@@ -305,6 +325,13 @@ public class Character(Grid grid)
             Side.Right => (Direction)((rot + 1) % 4),
             _ => Rotation
         };
+    }
+
+    public string HasFinished()
+    {
+        if (grid.IsFinish(PosX, PosY))
+            return "Finished";
+        return $"Not finished, ended on ({PosX},{PosY})";
     }
     public override string ToString()
     {

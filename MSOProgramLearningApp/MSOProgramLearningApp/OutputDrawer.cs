@@ -70,7 +70,7 @@ public static class OutputDrawer
     {
         Image<Rgba32> image = new Image<Rgba32>(imageSize, imageSize);
         
-        var uri = new Uri("avares://MSOAvaloniaApp/loopa.png");
+        var uri = new Uri("avares://MSOAvaloniaApp/Assets/loopa.png");
         using Stream? stream = AssetLoader.Open(uri);
         
         if (stream == null)
@@ -102,7 +102,7 @@ public static class OutputDrawer
         switch (d)
         {
             case Direction.East:
-                return 280f;
+                return 270f;
             case Direction.South:
                 return 0f;
             case Direction.West:

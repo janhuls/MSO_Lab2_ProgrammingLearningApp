@@ -52,7 +52,7 @@
             <Button Command="{Binding OutputCommand}">RUN</Button>
             <Button Command="{Binding MetricsCommand}">Metrics</Button>
         </StackPanel>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Output, Mode=OneWay}" IsReadOnly="True" ></TextBox>
+        <TextBox TextWrapping="Wrap" Grid.Row="3" Grid.Column="1" Text="{Binding Output, Mode=OneWay}" IsReadOnly="True" ></TextBox>
         
         <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
             <TextBlock FontSize="30" Margin="5">Select Grid size:</TextBlock>
