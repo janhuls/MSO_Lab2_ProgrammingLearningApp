@@ -62,6 +62,8 @@
                 <ComboBoxItem>15x15</ComboBoxItem>
                 <ComboBoxItem>20x20</ComboBoxItem>
                 <ComboBoxItem>Custom</ComboBoxItem>
+                <ComboBoxItem>Simple challenge</ComboBoxItem>
+                <ComboBoxItem>Advanced challenge</ComboBoxItem>
             </ComboBox>
         </StackPanel>
     </Grid>

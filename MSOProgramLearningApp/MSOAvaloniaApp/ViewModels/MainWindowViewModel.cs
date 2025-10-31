@@ -178,8 +178,8 @@ public partial class MainWindowViewModel : ViewModelBase
             string? contents = await _mainWindow.GetFileContents();
             if (contents is not null)
             {
-                SelectedGrid = 4; // set to custom
                 _customGrid = contents;
+                SelectedGrid = 4; // set to custom
             }
             else
             {

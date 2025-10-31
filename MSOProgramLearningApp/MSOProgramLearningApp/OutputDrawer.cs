@@ -61,8 +61,7 @@ public static class OutputDrawer
                 ctx.DrawLine(color, thickness, horizontalPoints);
             }
         });
-
-        //image.SaveAsBmp("grid.bmp"); //test doet output in root folder waar de .exe staat
+        
         return image;
     }
 
