@@ -3,6 +3,6 @@ Repeat 3
         Move 1
     Turn right
 Repeat 4
-    RepeatUntil GridEdge
+    RepeatUntil WallAhead
         Move 1
     Turn right

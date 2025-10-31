@@ -66,6 +66,9 @@
     <setting file="file://$PROJECT_DIR$/MSOTestProject/StringParserTest.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -74,28 +77,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.MSOAvaloniaApp.executor": "Debug",
-    ".NET Project.MSOProgramLearningApp.executor": "Run",
-    ".NET Project.MSOTestProject.executor": "Run",
-    "LaTeX.prac2.executor": "Run",
-    "LaTeX.prac3.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "f1367efc-4b1f-47e9-b432-03e3dc0086c4.executor": "Debug",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.MSOAvaloniaApp.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Project.MSOProgramLearningApp.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Project.MSOTestProject.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.prac2.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.prac3.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;f1367efc-4b1f-47e9-b432-03e3dc0086c4.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;RiderCodeInspectionGeneratedSettingsId&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Project.MSOAvaloniaApp">
     <configuration name="MSOAvaloniaApp" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -340,43 +343,17 @@
           <option name="timeStamp" value="3" />
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs</url>
-          <line>110</line>
-          <properties documentPath="C:\Users\Arwin\Documents\GitHub\MSO_Lab2_ProgrammingLearningApp\MSOProgramLearningApp\MSOAvaloniaApp\ViewModels\MainWindowViewModel.cs" containingFunctionPresentation="Method 'GetGrid'">
+          <url>file://$PROJECT_DIR$/MSOProgramLearningApp/Core.cs</url>
+          <line>15</line>
+          <properties documentPath="C:\Users\Arwin\Documents\GitHub\MSO_Lab2_ProgrammingLearningApp\MSOProgramLearningApp\MSOProgramLearningApp\Core.cs" containingFunctionPresentation="Method 'ArrayParse'">
             <startOffsets>
-              <option value="3289" />
+              <option value="328" />
             </startOffsets>
             <endOffsets>
-              <option value="3327" />
+              <option value="413" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs</url>
-          <line>113</line>
-          <properties documentPath="C:\Users\Arwin\Documents\GitHub\MSO_Lab2_ProgrammingLearningApp\MSOProgramLearningApp\MSOAvaloniaApp\ViewModels\MainWindowViewModel.cs" containingFunctionPresentation="Method 'GetGrid'">
-            <startOffsets>
-              <option value="3510" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3539" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs</url>
-          <line>116</line>
-          <properties documentPath="C:\Users\Arwin\Documents\GitHub\MSO_Lab2_ProgrammingLearningApp\MSOProgramLearningApp\MSOAvaloniaApp\ViewModels\MainWindowViewModel.cs" containingFunctionPresentation="Method 'GetGrid'">
-            <startOffsets>
-              <option value="3599" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3636" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="7" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

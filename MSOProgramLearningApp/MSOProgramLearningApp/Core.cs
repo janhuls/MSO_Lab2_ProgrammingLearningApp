@@ -28,7 +28,7 @@ public static class GridParser
             for (int j = 0; j < cols; j++)
             {
                 char c = lines[i][j];
-                grid[i, j] = c switch
+                grid[j, i] = c switch
                 {
                     '+' => GridSquare.Wall,
                     'o' => GridSquare.Empty,
@@ -206,7 +206,6 @@ public static class ExamplePrograms
                     .Build()),
             _ => throw new ArgumentException("Invalid example choice.")
         };
-        ;
     }
 }
 public enum Direction
@@ -245,13 +244,13 @@ public class Grid
 
     public int GetSize() => _size;
 
-    public bool outOfBounds(int x, int y)
+    public bool OutOfBounds(int x, int y)
     {
         return x < 0 || y < 0 || x > GetSize() - 1 || y > GetSize() - 1;
     }
     public bool IsWall(int x, int y)
     {
-        if (outOfBounds(x, y))
+        if (OutOfBounds(x, y))
             return true;
 
         return _grid[x, y] == GridSquare.Wall;
@@ -259,7 +258,7 @@ public class Grid
 
     public bool IsFinish(int x, int y)
     {
-        if (outOfBounds(x, y))
+        if (OutOfBounds(x, y))
             return false;
 
         return _grid[x, y] == GridSquare.Finish;
@@ -299,7 +298,7 @@ public class Character(Grid grid)
     public void Move(int amount)
     {
         var (newx, newy) = CalcMove(amount);
-        if (grid.outOfBounds(newx, newy))
+        if (grid.OutOfBounds(newx, newy))
             throw new Exception($"Moving out of bounds from {ToString()} to {newx},{newy}");
         PosX = newx; PosY = newy;
         PointsVisited.Add(GetPosition());

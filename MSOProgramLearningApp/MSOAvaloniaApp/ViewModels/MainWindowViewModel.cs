@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
-using Avalonia.Platform.Storage;
 using MSOProgramLearningApp;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MSOAvaloniaApp.Views;
+
 using Grid = MSOProgramLearningApp.Grid;
 
 namespace MSOAvaloniaApp.ViewModels;
@@ -61,7 +59,7 @@ public partial class MainWindowViewModel : ViewModelBase
     
     public MainWindowViewModel() //ONLY USED FOR THE PREVIEWER IN OUR RIDER IDE
     {
-        _mainWindow = null;
+        _mainWindow = new MainWindow();
         OutputCommand = new RelayCommand(GenerateOutput);
         MetricsCommand = new RelayCommand(GenerateMetrics);
         LoadProgramCommand = new RelayCommand(LoadProgram);
@@ -111,7 +109,33 @@ public partial class MainWindowViewModel : ViewModelBase
                     Output = "ERROR: No custom grid loaded, Press the load grid button to load a custom grid.\nLoaded a 10x10 grid as default";
                     return Grid.XSquareFalse(10);
                 }
-                return GridParser.Parse(_customGrid);
+
+                try
+                {
+                    return GridParser.Parse(_customGrid);
+                }
+                catch (Exception e)
+                {
+                    Output = "ERROR parsing custom grid: " + e.Message + "\nLoaded a 10x10 grid as default";
+                    return Grid.XSquareFalse(10);
+                }
+                
+            case 5:
+                string? parseText = ReadTextAsset("exampleGrid");
+                if (parseText is null)
+                {
+                    Output = "ERROR: Failed to load example grid asset.\nLoaded a 10x10 grid as default";
+                    return Grid.XSquareFalse(10);
+                }
+                return GridParser.Parse(parseText);
+            case 6:
+                string? parseTexxt = ReadTextAsset("challangeGrid1");
+                if (parseTexxt is null)
+                {
+                    Output = "ERROR: Failed to load example grid asset.\nLoaded a 10x10 grid as default";
+                    return Grid.XSquareFalse(10);
+                }
+                return GridParser.Parse(parseTexxt);
             default:
                 return Grid.XSquareFalse(10);
         }
@@ -197,9 +221,22 @@ public partial class MainWindowViewModel : ViewModelBase
         if (index is < 0 or > 5)
             return;
         
-        string fileName = $"avares://MSOAvaloniaApp/Assets/Example{index}.txt";
+        Code = ReadTextAsset($"Example{index}") ?? $"ERROR reading example program asset at index {index}";
+    }
 
-        using TextReader reader = new StreamReader(AssetLoader.Open(new Uri(fileName)));
-        Code = reader.ReadToEnd();
+    private string? ReadTextAsset(string name)
+    {
+        string fileName = $"avares://MSOAvaloniaApp/Assets/{name}.txt";
+
+        try
+        {
+            using TextReader reader = new StreamReader(AssetLoader.Open(new Uri(fileName)));
+            return reader.ReadToEnd();
+        }
+        catch (Exception e)
+        {
+            Output = $"Error reading file: {name} error: {e.Message}";
+            return null;
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Avalonia;
-using Avalonia.Platform;
+﻿using Avalonia.Platform;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Drawing.Processing;

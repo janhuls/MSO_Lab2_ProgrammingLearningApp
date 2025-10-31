@@ -20,7 +20,7 @@ public class BasicMetricsStrategy : IMetricsStrategy
 
     private static void Analyze(List<ICommand> commands, int depth, ref int total, ref int repeats, ref int maxDepth)
     {
-        if (commands == null) return;
+        if (commands.Count == 0) return;
         
         foreach (var cmd in commands)
         {

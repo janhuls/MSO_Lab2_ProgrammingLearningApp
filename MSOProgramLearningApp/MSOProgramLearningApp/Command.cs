@@ -1,6 +1,3 @@
-using System.ComponentModel;
-using System.Data;
-
 namespace MSOProgramLearningApp;
 
 public interface ICommand
@@ -29,7 +26,7 @@ public class Move(int amount) : ICommand
 public abstract class Repeatable : ICommand
 {
     public abstract void Execute(Character c);
-    protected List<ICommand> Commands;
+    protected List<ICommand> Commands = new List<ICommand>();
     public List<ICommand> GetCommands() => Commands;
 }
 

@@ -1,17 +1,13 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
-using MSOAvaloniaApp.ViewModels;
 using MSOAvaloniaApp.Views;
-
-using MSOProgramLearningApp;
 
 namespace MSOAvaloniaApp;
 
-public partial class App : Application
+public class App : Application
 {
     public override void Initialize()
     {
