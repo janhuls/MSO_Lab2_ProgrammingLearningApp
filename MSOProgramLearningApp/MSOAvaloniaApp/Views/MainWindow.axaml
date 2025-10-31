@@ -34,9 +34,9 @@
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <Button Command="{Binding LoadProgramCommand}">Load Program</Button>
             <Button Command="{Binding LoadGridCommand}">Load Grid</Button>
-            <Button Click="LoadBuildInExample">Load example 1</Button>
-            <Button Click="LoadBuildInExample">Load example 2</Button>
-            <Button Click="LoadBuildInExample">Load example 3</Button>
+            <Button Click="LoadBuildInExample">Load Basic 1</Button>
+            <Button Click="LoadBuildInExample">Load Advanced 2</Button>
+            <Button Click="LoadBuildInExample">Load Expert 3</Button>
             <Button Click="LoadBuildInExample">Load example 4</Button>
             <Button Click="LoadBuildInExample">Load example 5</Button>
         </StackPanel>
@@ -44,7 +44,7 @@
         
         <TextBlock Grid.Row="0" Grid.Column="2" FontSize="40" FontWeight="Bold" Margin="5">Code Loopa app thingy</TextBlock>
         
-        <TextBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" AcceptsReturn="True" TextWrapping="Wrap" Text="{Binding Code, Mode=TwoWay}" />
+        <TextBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" Text="{Binding Code, Mode=TwoWay}" />
         
         <Image Grid.Row="1" Grid.Column="2" Source="{Binding OutputImageBinding}" Margin="5" Stretch="Uniform" ClipToBounds="True"></Image> <!--> test: Source="../Assets/mauntain.bmp" -->
         

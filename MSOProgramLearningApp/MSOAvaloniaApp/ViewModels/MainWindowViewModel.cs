@@ -70,9 +70,12 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private List<ICommand>? GetCommands(string s)
     {
+        // change all tabs to 4 white spaces
+        string newString = s.Replace("\t", "    ");
+        
         try
         {
-            return new StringParser(s).Parse();
+            return new StringParser(newString).Parse();
         }
         catch (Exception e)
         {
@@ -191,22 +194,12 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public void LoadExampleProgram(int index)
     {
-        switch (index)
-        {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-        }
+        if (index is < 0 or > 5)
+            return;
+        
+        string fileName = $"avares://MSOAvaloniaApp/Assets/Example{index}.txt";
+
+        using TextReader reader = new StreamReader(AssetLoader.Open(new Uri(fileName)));
+        Code = reader.ReadToEnd();
     }
 }
