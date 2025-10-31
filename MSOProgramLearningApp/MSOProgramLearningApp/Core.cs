@@ -245,9 +245,9 @@ public class Grid
 
     public int GetSize() => _size;
 
-    private bool outOfBounds(int x, int y)
+    public bool outOfBounds(int x, int y)
     {
-        return x < 0 || y < 0 || x >= GetSize() || y >= GetSize();
+        return x < 0 || y < 0 || x > GetSize() - 1 || y > GetSize() - 1;
     }
     public bool IsWall(int x, int y)
     {
@@ -264,6 +264,17 @@ public class Grid
 
         return _grid[x, y] == GridSquare.Finish;
     }
+
+    public bool HasFinish()
+    {
+        for (int i = 0; i < GetSize(); i++)
+            for (int j = 0; j < GetSize(); j++)
+                if (_grid[i, j] == GridSquare.Finish)
+                    return true;
+        return false;
+    }
+
+    public GridSquare GetCellState(int x, int y) => _grid[x, y];
 }
 
 public enum GridSquare
@@ -288,7 +299,7 @@ public class Character(Grid grid)
     public void Move(int amount)
     {
         var (newx, newy) = CalcMove(amount);
-        if (Grid.GetSize() < newx || Grid.GetSize() < newy || 0 > newx || 0 > newy)
+        if (grid.outOfBounds(newx, newy))
             throw new Exception($"Moving out of bounds from {ToString()} to {newx},{newy}");
         PosX = newx; PosY = newy;
         PointsVisited.Add(GetPosition());
@@ -327,6 +338,10 @@ public class Character(Grid grid)
         };
     }
 
+    public bool GridHasFinish()
+    {
+        return grid.HasFinish();
+    }
     public string HasFinished()
     {
         if (grid.IsFinish(PosX, PosY))
