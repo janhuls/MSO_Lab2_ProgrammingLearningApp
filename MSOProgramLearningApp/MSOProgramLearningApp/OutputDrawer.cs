@@ -31,38 +31,76 @@ public static class OutputDrawer
     }
 
     // generates an image of the grid
-    public static Image<Rgba32> GenerateGridImage(Grid grid, int imageSize)
+    private static Image<Rgba32> GenerateGridImage(Grid grid, int imageSize)
     {
-        Image<Rgba32> image = new Image<Rgba32>(imageSize, imageSize);
-        Color color = Color.Black;
-        const float thicknessDevider = 5f;
-        int spaceBetweenLines = imageSize / grid.GetSize();
-        float thickness = spaceBetweenLines / thicknessDevider;
+        int gridSize = grid.GetSize();
+        int cellSize = imageSize / gridSize;
+        float lineThickness = cellSize / 5f;
+        Color gridColor = Color.Black;
+        Color backgroundColor = Color.White;
 
-        
+        var image = new Image<Rgba32>(imageSize, imageSize);
+
         image.Mutate(ctx =>
         {
-            // background and border
-            ctx.Fill(Color.White);
-            ctx.Draw(color, thickness, new RectangularPolygon(0, 0, imageSize, imageSize));
-            
-            // grid
-            for (int i = 1; i < grid.GetSize(); i++)
-            {
-                PointF[] verticalPoints = new PointF[2];
-                verticalPoints[0] = new PointF(i * spaceBetweenLines, 0);
-                verticalPoints[1] = new PointF(i * spaceBetweenLines, imageSize);
-                
-                PointF[] horizontalPoints = new PointF[2];
-                horizontalPoints[0] = new PointF(0, i * spaceBetweenLines);
-                horizontalPoints[1] = new PointF(imageSize, i * spaceBetweenLines);
-                
-                ctx.DrawLine(color, thickness, verticalPoints);
-                ctx.DrawLine(color, thickness, horizontalPoints);
-            }
+            // Draw background
+            ctx.Fill(backgroundColor);
+
+            DrawCells(ctx, gridSize, cellSize, grid);
+
+            DrawGridLines(ctx, gridSize, cellSize, gridColor, lineThickness, imageSize);
         });
         
         return image;
+    }
+
+    private static void DrawCells(IImageProcessingContext ctx, int gridSize, int cellSize, Grid grid)
+    {
+        for (int row = 0; row < gridSize; row++)
+        {
+            for (int col = 0; col < gridSize; col++)
+            {
+                Color cellColor;
+                switch (grid.GetCellState(col, row))
+                {
+                    case GridSquare.Empty:
+                        cellColor = Color.White;
+                        break;
+                    case GridSquare.Wall:
+                        cellColor = Color.Red;
+                        break;
+                    case GridSquare.Finish:
+                        cellColor = Color.Green;
+                        break;
+                    default:
+                        cellColor = Color.RebeccaPurple;
+                        break;
+                }
+
+                float x = col * cellSize;
+                float y = row * cellSize;
+
+                var rect = new RectangularPolygon(x, y, cellSize, cellSize);
+                ctx.Fill(cellColor, rect);
+            }
+        }
+    }
+
+    private static void DrawGridLines(IImageProcessingContext ctx, int gridSize, int cellSize, Color color, float thickness, int imageSize)
+    {
+        // Draw vertical lines
+        for (int i = 0; i <= gridSize; i++)
+        {
+            float x = i * cellSize;
+            ctx.DrawLine(color, thickness, new PointF(x, 0), new PointF(x, imageSize));
+        }
+
+        // Draw horizontal lines
+        for (int i = 0; i <= gridSize; i++)
+        {
+            float y = i * cellSize;
+            ctx.DrawLine(color, thickness, new PointF(0, y), new PointF(imageSize, y));
+        }
     }
 
     private static Image<Rgba32> DrawCharacter(Character c, Grid grid, int imageSize)

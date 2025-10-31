@@ -92,9 +92,7 @@ public partial class MainWindowViewModel : ViewModelBase
         var metrics = new MetricsCalculator(new BasicMetricsStrategy());
         Output = metrics.Calculate(cmds);
     }
-
     
-
     private Grid GetGrid()
     {
         switch(_selectedGrid)
@@ -113,8 +111,7 @@ public partial class MainWindowViewModel : ViewModelBase
                     Output = "ERROR: No custom grid loaded, Press the load grid button to load a custom grid.\nLoaded a 10x10 grid as default";
                     return Grid.XSquareFalse(10);
                 }
-                else
-                    return GridParser.Parse(_customGrid);
+                return GridParser.Parse(_customGrid);
             default:
                 return Grid.XSquareFalse(10);
         }
@@ -143,6 +140,8 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         Output = string.Join(", ", c.Moves) + ".";
         Output += $"\nEnd state {c}";
+        if (c.GridHasFinish())
+            Output += "\n" + c.HasFinished();
     }
     private void DoCommands(Character c, List<ICommand> cmds)
     {
@@ -190,6 +189,7 @@ public partial class MainWindowViewModel : ViewModelBase
         {
             Output = $"Failed to load program file\nError: {e.Message}";
         }
+        BindBitmap(Character);
     }
 
     public void LoadExampleProgram(int index)
