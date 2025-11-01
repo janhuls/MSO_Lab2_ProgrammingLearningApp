@@ -10,10 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97649446-9819-4f13-9779-b22e68479461" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/MSOProgramLearningApp/ExamplePrograms.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Parsers.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/OutputDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/OutputDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,21 +52,32 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/57d616db882b441b8c50720b4477e03db2e200/2e/1a14f40f/String.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOAvaloniaApp/App.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOAvaloniaApp/App.axaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOAvaloniaApp/App.axaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOAvaloniaApp/App.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOAvaloniaApp/Views/MainWindow.axaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Command.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOAvaloniaApp/Views/MainWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOAvaloniaApp/Views/MainWindow.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Command.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Command.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Core.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Core.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Core.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Core.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Core.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Core.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Core.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Core.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Core.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Core.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Core.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Core.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/Core.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOProgramLearningApp/Metrics.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOProgramLearningApp/OutputDrawer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOProgramLearningApp/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOTestProject/StringParserTest.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -342,19 +358,6 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/MSOProgramLearningApp/Core.cs</url>
-          <line>15</line>
-          <properties documentPath="C:\Users\Arwin\Documents\GitHub\MSO_Lab2_ProgrammingLearningApp\MSOProgramLearningApp\MSOProgramLearningApp\Core.cs" containingFunctionPresentation="Method 'ArrayParse'">
-            <startOffsets>
-              <option value="328" />
-            </startOffsets>
-            <endOffsets>
-              <option value="413" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

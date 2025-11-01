@@ -15,13 +15,13 @@ namespace MSOAvaloniaApp.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    private MainWindow _mainWindow;
+    private readonly MainWindow _mainWindow;
     private Character Character => new(GetGrid());
     
-    [ObservableProperty] // example code of FindExit1
+    [ObservableProperty] //represents the input field
     private string _code = "Repeat 3 \n    RepeatUntil WallAhead \n        Move 1 \n    Turn right \nRepeat 2 \n    RepeatUntil GridEdge \n        Move 1 \n    Turn right\n";
 
-    [ObservableProperty] 
+    [ObservableProperty] //represents the output field 
     private string _output = "Output";
     
     [ObservableProperty] private IImage? _outputImageBinding;
@@ -65,7 +65,7 @@ public partial class MainWindowViewModel : ViewModelBase
         LoadProgramCommand = new RelayCommand(LoadProgram);
         LoadGridCommand = new RelayCommand(LoadGrid);
     }
-
+    //Parses the input string
     private List<ICommand>? GetCommands(string s)
     {
         // change all tabs to 4 white spaces
@@ -81,7 +81,7 @@ public partial class MainWindowViewModel : ViewModelBase
             return null;
         }
     }
-
+    //Displays the metrics for the code field in the output field
     private void GenerateMetrics()
     {
         var cmds = GetCommands(Code); 
@@ -90,7 +90,7 @@ public partial class MainWindowViewModel : ViewModelBase
         var metrics = new MetricsCalculator(new BasicMetricsStrategy());
         Output = metrics.Calculate(cmds);
     }
-    
+    //returns the grid currently selected
     private Grid GetGrid()
     {
         switch(_selectedGrid)
@@ -129,7 +129,7 @@ public partial class MainWindowViewModel : ViewModelBase
                 }
                 return GridParser.Parse(parseText);
             case 6:
-                string? parseTexxt = ReadTextAsset("challangeGrid1");
+                string? parseTexxt = ReadTextAsset("challengeGrid1");
                 if (parseTexxt is null)
                 {
                     Output = "ERROR: Failed to load example grid asset.\nLoaded a 10x10 grid as default";
@@ -140,7 +140,7 @@ public partial class MainWindowViewModel : ViewModelBase
                 return Grid.XSquareFalse(10);
         }
     }
-    
+    //runs the code in the code field and returns the result in the output field
     private void GenerateOutput()
     {
         var cmds = GetCommands(Code);
@@ -159,7 +159,7 @@ public partial class MainWindowViewModel : ViewModelBase
             Output =  e.Message;
         }
     }
-
+    //display result in output field
     private void UpdateOutput(Character c)
     {
         Output = string.Join(", ", c.Moves) + ".";
@@ -167,18 +167,20 @@ public partial class MainWindowViewModel : ViewModelBase
         if (c.GridHasFinish())
             Output += "\n" + c.HasFinished();
     }
+    //execute commands on the character
     private void DoCommands(Character c, List<ICommand> cmds)
     {
         foreach (var cmd in cmds) 
             cmd.Execute(c);
     }
+    //updates the image displayed
     private void BindBitmap(Character character)
     {
         MemoryStream memoryStream = new MemoryStream();
         OutputDrawer.GenerateBitmap(character, memoryStream);
         OutputImageBinding = new Bitmap(memoryStream);
     }
-
+    //load file into code field
     private async void LoadProgram()
     {
         try
@@ -193,7 +195,7 @@ public partial class MainWindowViewModel : ViewModelBase
         }
         
     }
-
+    //load exercise grid file into grid
     private async void LoadGrid()
     {
         try
@@ -215,7 +217,7 @@ public partial class MainWindowViewModel : ViewModelBase
         }
         BindBitmap(Character);
     }
-
+    //Loads example program from assets folder
     public void LoadExampleProgram(int index)
     {
         if (index is < 0 or > 5)
@@ -223,7 +225,7 @@ public partial class MainWindowViewModel : ViewModelBase
         
         Code = ReadTextAsset($"Example{index}") ?? $"ERROR reading example program asset at index {index}";
     }
-
+    //returns name.txt as string, if in assets folder
     private string? ReadTextAsset(string name)
     {
         string fileName = $"avares://MSOAvaloniaApp/Assets/{name}.txt";

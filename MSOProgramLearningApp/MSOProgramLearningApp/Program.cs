@@ -2,6 +2,7 @@
 
 internal static class Program
 {
+    //CLI
     private static void Main()
     {
         Console.WriteLine("=== Programming Learning App ===");

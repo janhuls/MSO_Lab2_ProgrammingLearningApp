@@ -15,7 +15,7 @@ public partial class MainWindow : Window
         InitializeComponent();
         DataContext = new MainWindowViewModel(this);
     }
-    
+    //open the file explorer
     public async Task<string?> GetFileContents()
     {
         // Get top level from the current control. Alternatively, you can use Window reference instead.
@@ -41,7 +41,7 @@ public partial class MainWindow : Window
 
         return null;
     }
-
+    //load the examples through button clicks
     private void LoadBuildInExample(object? sender, RoutedEventArgs e)
     {
         MainWindowViewModel? vm = (MainWindowViewModel)DataContext!;

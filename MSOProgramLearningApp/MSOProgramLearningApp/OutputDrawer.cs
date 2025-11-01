@@ -11,6 +11,7 @@ namespace MSOProgramLearningApp;
 // can create an image of the output given a set of instructions
 public static class OutputDrawer 
 {
+    //generates the grid, character and path, saves it to memory
     public static void GenerateBitmap(Character character, MemoryStream outputMemStream, int imageSize = 1000)
     {
         Image<Rgba32> image = new Image<Rgba32>(imageSize, imageSize); // should be a square
@@ -21,7 +22,7 @@ public static class OutputDrawer
             // draw the grid
             ctx.DrawImage(GenerateGridImage(g, imageSize), 1);
             ctx.DrawImage(DrawPath(p, g, imageSize), 1);
-            ctx.DrawImage(DrawCharacter(character, g, imageSize), 1);
+            ctx.DrawImage(GenerateCharacterImage(character, g, imageSize), 1);
         });
         
         // save the image to memory
@@ -52,29 +53,15 @@ public static class OutputDrawer
         
         return image;
     }
-
+    //draw the cells on the given ctx
     private static void DrawCells(IImageProcessingContext ctx, int gridSize, int cellSize, Grid grid)
     {
+        //loop over grid
         for (int row = 0; row < gridSize; row++)
         {
             for (int col = 0; col < gridSize; col++)
             {
-                Color cellColor;
-                switch (grid.GetCellState(col, row))
-                {
-                    case GridSquare.Empty:
-                        cellColor = Color.White;
-                        break;
-                    case GridSquare.Wall:
-                        cellColor = Color.Red;
-                        break;
-                    case GridSquare.Finish:
-                        cellColor = Color.Green;
-                        break;
-                    default:
-                        cellColor = Color.RebeccaPurple;
-                        break;
-                }
+                Color cellColor = GetCellColor(grid.GetCellState(row, col));
 
                 float x = col * cellSize;
                 float y = row * cellSize;
@@ -84,57 +71,75 @@ public static class OutputDrawer
             }
         }
     }
-
+    //returns cell color based on GridSquare
+    private static Color GetCellColor(GridSquare cell)
+    {
+        return cell switch
+        {
+            GridSquare.Empty => Color.White,
+            GridSquare.Wall => Color.Red,
+            GridSquare.Finish => Color.Green,
+            _ => throw new ArgumentException($"Could not get cell color, {cell} is not valid")
+        };
+    }
+    //draws grid lines on the given ctx
     private static void DrawGridLines(IImageProcessingContext ctx, int gridSize, int cellSize, Color color, float thickness, int imageSize)
     {
-        // Draw vertical lines
+        //draw vertical lines
         for (int i = 0; i <= gridSize; i++)
         {
             float x = i * cellSize;
             ctx.DrawLine(color, thickness, new PointF(x, 0), new PointF(x, imageSize));
         }
 
-        // Draw horizontal lines
+        //draw horizontal lines
         for (int i = 0; i <= gridSize; i++)
         {
             float y = i * cellSize;
             ctx.DrawLine(color, thickness, new PointF(0, y), new PointF(imageSize, y));
         }
     }
-
-    private static Image<Rgba32> DrawCharacter(Character c, Grid grid, int imageSize)
+    //generates the image for the character
+    private static Image<Rgba32> GenerateCharacterImage(Character c, Grid grid, int imageSize)
     {
         Image<Rgba32> image = new Image<Rgba32>(imageSize, imageSize);
         
+        using var sprite = GetCharacterSprite();
+        
+        //resize sprite to fit in cells
+        float cellSize = imageSize / (float)grid.GetSize();
+        sprite.Mutate(x => x.Resize((int)cellSize, (int)cellSize));
+        
+        //find position for the sprite
+        PointF position = getPointOnGrid(c.GetPosition(), grid,imageSize);
+        float x = position.X - sprite.Width / 2f;
+        float y = position.Y - sprite.Height / 2f;
+
+        //starts facing down, makes it face the correct way
+        sprite.Mutate(ctx => ctx.Rotate(GetAngleFromDirection(c.Rotation)));
+        
+        image.Mutate(ctx =>
+        {
+            ctx.DrawImage(sprite, new Point((int)x, (int)y), 1f);
+        });
+
+        return image;
+    }
+    //returns the character sprite
+    private static Image<Rgba32> GetCharacterSprite()
+    {
         var uri = new Uri("avares://MSOAvaloniaApp/Assets/loopa.png");
         using Stream? stream = AssetLoader.Open(uri);
         
         if (stream == null)
             throw new InvalidOperationException($"Could not find Avalonia resource at {uri}");
-
-        using var sprite = Image.Load<Rgba32>(stream);
         
-        float cellSize = imageSize / (float)grid.GetSize();
-        sprite.Mutate(x => x.Resize((int)cellSize, (int)cellSize));
-        
-        PointF position = getPointOnGrid(c.GetPosition(), grid,imageSize);
-        float x = position.X - sprite.Width / 2f;
-        float y = position.Y - sprite.Height / 2f;
-
-        // starts facing down
-        sprite.Mutate(ctx => ctx.Rotate(GetAngleFromDirection(c.Rotation)));
-        
-        image.Mutate(ctx =>
-        {
-            ctx.DrawImage(sprite, new Point((int)x, (int)y), 1f); // 1f = full opacity
-        });
-
-        return image;
+        return Image.Load<Rgba32>(stream);
     }
-
+    //gets the angle offset
     private static float GetAngleFromDirection(Direction d)
     {
-        // south as 0, west as 90
+        //offset from 1 1/2 pi radians
         switch (d)
         {
             case Direction.East:
@@ -149,18 +154,19 @@ public static class OutputDrawer
                 throw new ArgumentException("Invalid direction");
         }
     }
+    //draws the path the character has walked
     private static Image<Rgba32> DrawPath(List<(int,int)> points, Grid grid, int imageSize)
     {
         Image<Rgba32> image = new Image<Rgba32>(imageSize, imageSize);
 
         Color color = Color.Blue;
-        const float thicknessDevider = 4f;
-
-        // ReSharper disable once PossibleLossOfFraction
-        float thickness = (imageSize / grid.GetSize()) / thicknessDevider;
+        const float thicknessDivider = 4f;
+        
+        float thickness = imageSize  / (thicknessDivider * grid.GetSize());
         
         image.Mutate(ctx =>
         {
+            //loops over points visited
             for (int i = 0; i < points.Count - 1; i++)
             {
                 PointF[] twoPoints = new PointF[2];
@@ -172,7 +178,7 @@ public static class OutputDrawer
 
         return image;
     }
-
+    //returns the world coordinates of a grid point
     private static PointF getPointOnGrid((int,int) pt, Grid grid, int imageSize)
     {
         int spaceBetweenLines = imageSize / grid.GetSize();

@@ -1,213 +1,7 @@
 using System.Diagnostics;
 
 namespace MSOProgramLearningApp;
-public interface IParser
-{
-    public List<ICommand> Parse();
-}
-public static class GridParser
-{
-    public static Grid Parse(string input)
-    {
-        return new Grid(ArrayParse(input));
-    }
-    private static GridSquare[,] ArrayParse(string input)
-    {
-        var lines = input.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
-        if (lines.Length == 0) return new GridSquare[0,0];
 
-        int rows = lines.Length;
-        int cols = lines[0].Length;
-        var grid = new GridSquare[rows, cols];
-
-        for (int i = 0; i < rows; i++)
-        {
-            if (lines[i].Length != cols)
-                throw new ArgumentException("All lines must have the same length.");
-
-            for (int j = 0; j < cols; j++)
-            {
-                char c = lines[i][j];
-                grid[j, i] = c switch
-                {
-                    '+' => GridSquare.Wall,
-                    'o' => GridSquare.Empty,
-                    'x' => GridSquare.Finish,
-                    _ => throw new ArgumentException($"Invalid character '{c}' at line {i+1}, column {j+1}")
-                };
-            }
-        }
-
-        return grid;
-    }
-}
-public class StringParser(string program) : IParser
-{
-    public const int IndentSize = 4;
-
-    public List<ICommand> Parse()
-    {
-        var lines = program
-            .Split('\n', StringSplitOptions.RemoveEmptyEntries)
-            .Select(l => l.Replace("\r", ""))
-            .ToArray();
-        int index = 0;
-        return ParseBlock(lines, ref index, 0);
-    }
-
-    private List<ICommand> ParseBlock(string[] lines, ref int index, int expectedIndent)
-    {
-        var commands = new List<ICommand>();
-
-        while (index < lines.Length)
-        {
-            string line = lines[index];
-            int indent = ParserUtils.CountLeadingSpaces(line);
-
-            if (indent < expectedIndent)
-                break;
-
-            if (indent > expectedIndent)
-                throw new Exception($"Unexpected indentation at line {index + 1}: '{line}'");
-
-            string trimmed = line.Trim();
-
-            if (trimmed.StartsWith("Repeat", StringComparison.OrdinalIgnoreCase))
-                commands.Add(ParseRepeatable(lines, ref index, expectedIndent));
-            else
-            {
-                commands.Add(ParseSimpleCommand(trimmed));
-                index++;
-            }
-        }
-        return commands;
-    }
-
-    private Repeatable ParseRepeatable(string[] lines, ref int index, int expectedIndent)
-    {
-        string line = lines[index].Trim();
-        string[] parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
-        if (parts.Length < 2)
-            throw new Exception($"Invalid repeat syntax at line {index + 1}: '{line}'");
-
-        string keyword = parts[0];
-        string arg = parts[1];
-
-        // RepeatUntil
-        if (keyword.Equals("RepeatUntil", StringComparison.OrdinalIgnoreCase))
-        {
-            var condition = ParseCondition(arg);
-
-            index++;
-            var innerCommands = ParseBlock(lines, ref index, expectedIndent + IndentSize);
-
-            return new ConditionalRepeat(innerCommands, condition);
-        }
-
-        // regular Repeat
-        if (!int.TryParse(arg, out int times))
-            throw new Exception($"Invalid repeat count at line {index + 1}: '{line}'");
-
-        index++;
-        var repeatCommands = ParseBlock(lines, ref index, expectedIndent + IndentSize);
-        return new Repeat(times, repeatCommands);
-    }
-
-    private ICondition ParseCondition(string token)
-    {
-        return token.Equals("WallAhead", StringComparison.OrdinalIgnoreCase)
-            ? new WallAhead()
-            : new GridEdge();
-    }
-
-    private static ICommand ParseSimpleCommand(string line)
-    {
-        var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        return CreateCommand(parts);
-    }
-
-    private static ICommand CreateCommand(string[] parts) =>
-        parts[0] switch
-        {
-            "Move" => new Move(int.Parse(parts[1])),
-            "Turn" => new Turn((Side)Enum.Parse(typeof(Side), parts[1], true)),
-            _ => throw new Exception($"Unknown command: {parts[0]}")
-        };
-}
-
-
-public static class ParserUtils
-{
-    public static int CountLeadingSpaces(string line)
-    {
-        int count = 0;
-        foreach (char c in line)
-        {
-            if (c == ' ') count++;
-            else break;
-        }
-        return count;
-    }
-}
-
-public class ProgramBuilder
-{
-    private readonly List<ICommand> _commands = new();
-
-    public ProgramBuilder Move(int steps)
-    {
-        _commands.Add(new Move(steps));
-        return this;
-    }
-
-    public ProgramBuilder Turn(Side side)
-    {
-        _commands.Add(new Turn(side));
-        return this;
-    }
-
-    public ProgramBuilder Repeat(int times, Action<ProgramBuilder> block)
-    {
-        var innerBuilder = new ProgramBuilder();
-        block(innerBuilder);
-        _commands.Add(new Repeat(times, innerBuilder.Build()));
-        return this;
-    }
-
-    public List<ICommand> Build() => _commands;
-}
-
-public static class ExamplePrograms
-{
-    public static (string name, List<ICommand> program) GetExample(int level)
-    {
-        return level switch
-        {
-            1 => ("Basic",
-                new ProgramBuilder().Move(10)
-                    .Turn(Side.Right)
-                    .Move(10)
-                    .Turn(Side.Right)
-                    .Move(10)
-                    .Turn(Side.Right)
-                    .Move(10)
-                    .Turn(Side.Right)
-                    .Build()),
-            2 => ("Advanced", new ProgramBuilder().Repeat(4, b => b.Move(10).Turn(Side.Right)).Build()),
-            3 => ("Expert",
-                new ProgramBuilder().Move(5)
-                    .Turn(Side.Left)
-                    .Turn(Side.Left)
-                    .Move(3)
-                    .Turn(Side.Right)
-                    .Repeat(3, r => r.Move(1).Turn(Side.Right).Repeat(5, s => s.Move(2)))
-                    .Turn(Side.Left)
-                    .Build()),
-            _ => throw new ArgumentException("Invalid example choice.")
-        };
-    }
-}
 public enum Direction
 {
     North,
@@ -220,10 +14,15 @@ public enum Side
     Left,
     Right
 }
-
+public enum GridSquare
+{
+    Empty,
+    Wall,
+    Finish
+}
 public class Grid
 {
-    private int _size;
+    private readonly int _size;
     private readonly GridSquare[,] _grid;
 
     public Grid(GridSquare[,] grid)
@@ -232,7 +31,8 @@ public class Grid
         _grid = grid;
         _size = _grid.GetLength(0);
     }
-
+    
+    //generates an empty grid of size x
     public static Grid XSquareFalse(int x)
     {
         var array = new GridSquare[x, x];
@@ -241,13 +41,15 @@ public class Grid
                 array[i, j] = GridSquare.Empty;
         return new Grid(array);
     }
-
+    
     public int GetSize() => _size;
 
+    //returns whether (x, y) is outside the grid
     public bool OutOfBounds(int x, int y)
     {
         return x < 0 || y < 0 || x > GetSize() - 1 || y > GetSize() - 1;
     }
+    //returns whether (x, y) is a wall
     public bool IsWall(int x, int y)
     {
         if (OutOfBounds(x, y))
@@ -255,7 +57,7 @@ public class Grid
 
         return _grid[x, y] == GridSquare.Wall;
     }
-
+    //returns whether (x, y) is a finish
     public bool IsFinish(int x, int y)
     {
         if (OutOfBounds(x, y))
@@ -263,7 +65,7 @@ public class Grid
 
         return _grid[x, y] == GridSquare.Finish;
     }
-
+    //returns whether the grid has a finish
     public bool HasFinish()
     {
         for (int i = 0; i < GetSize(); i++)
@@ -272,15 +74,8 @@ public class Grid
                     return true;
         return false;
     }
-
+    
     public GridSquare GetCellState(int x, int y) => _grid[x, y];
-}
-
-public enum GridSquare
-{
-    Empty,
-    Wall,
-    Finish
 }
 public class Character(Grid grid)
 {
@@ -288,21 +83,27 @@ public class Character(Grid grid)
     private int PosY { get; set; }
     public Direction Rotation { get; private set; } = Direction.East;
     public Grid Grid { get; } = grid;
+    //saves the simple commands executed on the character (only Turn and Move)
     public List<string> Moves { get; } = [];
-    public List<(int, int)> PointsVisited = [(0, 0)];
+    //saves the points this character has been
+    public readonly List<(int, int)> PointsVisited = [(0, 0)];
     public Character() : this(Grid.XSquareFalse(10)){}
     public (int, int) GetPosition()
     {
         return (PosX, PosY);
     }
+    //moves the character by amount
     public void Move(int amount)
     {
         var (newx, newy) = CalcMove(amount);
-        if (grid.OutOfBounds(newx, newy))
+        if (Grid.OutOfBounds(newx, newy))
             throw new Exception($"Moving out of bounds from {ToString()} to {newx},{newy}");
+        if (Grid.IsWall(newx, newy))
+            throw new Exception($"Moving into a wall  from {ToString()} to {newx},{newy}");
         PosX = newx; PosY = newy;
         PointsVisited.Add(GetPosition());
     }
+    //gives the position this instance would be in after executing move by amount
     public (int, int) CalcMove(int amount)
     {
         int x = PosX;
@@ -326,9 +127,10 @@ public class Character(Grid grid)
         }
         return (x, y);
     }
+    //rotates the character to the side specified
     public void Rotate(Side side)
     {
-        int rot = (int)this.Rotation;
+        int rot = (int)Rotation;
         Rotation = side switch
         {
             Side.Left => (Direction)((rot + 3) % 4),
@@ -337,13 +139,11 @@ public class Character(Grid grid)
         };
     }
 
-    public bool GridHasFinish()
-    {
-        return grid.HasFinish();
-    }
+    public bool GridHasFinish() => Grid.HasFinish();
+    //returns the text displayed indicating whether this instance has finished
     public string HasFinished()
     {
-        if (grid.IsFinish(PosX, PosY))
+        if (Grid.IsFinish(PosX, PosY))
             return "Finished";
         return $"Not finished, ended on ({PosX},{PosY})";
     }
