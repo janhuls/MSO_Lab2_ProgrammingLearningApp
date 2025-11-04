@@ -102,10 +102,55 @@
     To fix this we added a list of executed commands to the character, and each basic command (Turn and Move) adds itself to this list.
     This way we can easily print the list in the \texttt{Character} class. 
     
+    \section{Code Quality}
+    \subsection{Resharper}
+    We use the Rider IDE from Jetbrains as our main IDE for coding this project, luckely Rider has a great build-in code Quality tool called Resharper.
+    Resharper provides good feedback on code quality and we have used it intensifly throughout the whole project.
+    Resharper gives errors (wich are actual c# errors) and warnings wich is feedback on our code quality.
+    These warnings can be naming conventions, possible null values, redundend code and much more.
+    This way we always wrote code that complies to the code quality standards
+    \subsection{Metrices}
+    kkr blijkbaar moet dit ook
+    \subsection{Reflection + Code reviews}
+    Using Resharper took a bit of time getting used to.
+    Normaly we didn't really care about, naming conventions or possible null values and only cared about that the code worked.
+    But now we needed to, and it actualy made the project a lot more well-organized. 
+    Throughout the project we frequently took a look at each others code and gave feedback on each others work.
+    Giving each other ideas of how the code could be improved or refactored, or making sure that we both understood each others code.
+    By using Resharper and checking on eachother, we have writen clean code that complies to the code quality standards.
+
+    \section{Evaluation}
+    \subsection{Analysis}
+    We strive of cource for high \texttt{Cohesion} and low \texttt{Coupling} to make the design of our code as good as possible.
+    To achieve low \texttt{Coupling} we have seperated the project in 3 sub projects.
+    \begin{enumerate}
+        \item MSOProgramLearningApp
+        This project holds the core logic of our application and holds all the data structures such as the character, grid and commands.
+        It also is responsible for parsing strings into commands, moving the character and drawing an output image.
+        This project on its own is just the commandline interface we made at the previous practical assigment
+        \item MSOAvaloniaApp
+        This projects uses the Avalonia libary to create a window for the actual finished application.
+        All the UI related code is in here, and it uses a reference to the \texttt{MSOProgramLearningApp} project for all the core logic
+        \item MSOTestProject
+        This project is used for testing the logic in the \texttt{MSOProgramLearningApp} project.
+        It holds unit and system tests that we will discus in the next section
+    \end{enumerate}
+    This way we also make sure that each project has high \texttt{Cohesion} because it only does a specific part of our application.
+    %moeten we nog dieper op cohesion and coupling in gaan? als in echt per class kijken waarom hij eraan voldoet of is dit prima?
+    \subsection{Changing Requirements}
+
+    \section{Testing}
+    \subsection{Unit tests}
+    \subsection{System tests} % moet nog
+    \subsection{Final test run} %foto van alle geslaagde tests op het eind
+
+    \section{Work Distribution & Retrospective}
+    \subsection{Task Distribution}
+    \subsection{Retrospective}
+
     %begint altijd (0, 0)
     %grid is altijd vierkant
     %geen oneindige grids
     %kan niet uit grid lopen??
     
-    %resharper zit build-in bij rider en hebben we gebruikt om alle errors en warnings op te lossen
 \end{document}

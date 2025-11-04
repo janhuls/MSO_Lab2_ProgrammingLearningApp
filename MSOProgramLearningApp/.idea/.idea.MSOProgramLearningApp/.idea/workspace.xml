@@ -41,7 +41,6 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/57d616db882b441b8c50720b4477e03db2e200/2e/1a14f40f/String.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
@@ -49,7 +48,6 @@
     <setting file="file://$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOProgramLearningApp/Metrics.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOProgramLearningApp/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/jan/Documents/school/MSO/prac 2/MSO_Lab2_ProgrammingLearningApp/MSOProgramLearningApp/MSOTestProject/CharacterUnitTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSOTestProject/StringParserTest.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
@@ -86,7 +84,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected=".NET Project.MSOTestProject">
+  <component name="RunManager" selected="LaTeX.prac3">
     <configuration name="MSOAvaloniaApp" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -160,7 +158,7 @@
       <texify>
         <compiler>PDFLATEX</compiler>
         <compiler-path />
-        <pdf-viewer>evince</pdf-viewer>
+        <pdf-viewer>none</pdf-viewer>
         <require-focus>true</require-focus>
         <viewer-command />
         <compiler-arguments />
@@ -183,7 +181,7 @@
       <texify>
         <compiler>PDFLATEX</compiler>
         <compiler-path />
-        <pdf-viewer>evince</pdf-viewer>
+        <pdf-viewer>none</pdf-viewer>
         <require-focus>true</require-focus>
         <viewer-command />
         <compiler-arguments />
@@ -235,6 +233,8 @@
       <workItem from="1761838953043" duration="449000" />
       <workItem from="1761904394659" duration="1831000" />
       <workItem from="1762168376107" duration="3008000" />
+      <workItem from="1762268999182" duration="542000" />
+      <workItem from="1762269556469" duration="2271000" />
     </task>
     <task id="LOCAL-00001" summary="mascots">
       <option name="closed" value="true" />
