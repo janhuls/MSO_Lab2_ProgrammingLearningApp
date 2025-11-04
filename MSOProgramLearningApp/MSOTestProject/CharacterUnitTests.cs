@@ -27,6 +27,16 @@ public class CharacterUnitTests
         c.Rotate(Side.Right);
         Assert.Equal("(0, 0) facing south.", c.ToString());
     }
-    
+    [Fact]
+    public void TestComplexMovementSequence()
+    {
+        Character c = new Character();
+        c.Move(3);
+        c.Rotate(Side.Right);
+        c.Move(2);
+        c.Rotate(Side.Left);
+        c.Move(1);
+        Assert.Equal("(4, 2) facing east.", c.ToString());
+    }
     
 }

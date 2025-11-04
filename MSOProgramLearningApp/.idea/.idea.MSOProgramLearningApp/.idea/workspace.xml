@@ -10,15 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97649446-9819-4f13-9779-b22e68479461" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MSOProgramLearningApp/ExamplePrograms.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Parsers.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/ViewModels/MainWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOAvaloniaApp/Views/MainWindow.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Command.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Core.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/OutputDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/OutputDrawer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOTestProject/CharacterUnitTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOTestProject/CharacterUnitTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +108,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected=".NET Project.MSOAvaloniaApp">
+  <component name="RunManager" selected=".NET Project.MSOTestProject">
     <configuration name="MSOAvaloniaApp" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -231,6 +224,11 @@
       </texify>
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="LaTeX.prac3" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -258,6 +256,7 @@
       <workItem from="1761819340734" duration="5334000" />
       <workItem from="1761838953043" duration="449000" />
       <workItem from="1761904394659" duration="1831000" />
+      <workItem from="1762168376107" duration="726000" />
     </task>
     <task id="LOCAL-00001" summary="mascots">
       <option name="closed" value="true" />
@@ -299,7 +298,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761730352385</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="comments en grote cleanup">
+      <option name="closed" value="true" />
+      <created>1762031786731</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1762031786731</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,7 +328,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/jan-bracn" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -341,7 +348,8 @@
     <MESSAGE value="kleine push" />
     <MESSAGE value="cooked :(" />
     <MESSAGE value="hij werkt weer" />
-    <option name="LAST_COMMIT_MESSAGE" value="hij werkt weer" />
+    <MESSAGE value="comments en grote cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="comments en grote cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
