@@ -12,7 +12,7 @@ public class CommandUnitTests
 
         m.Execute(c);
 
-        Assert.Equal(m.ToString(), c.Moves[0]);
+        Assert.Equal("Move 3", c.Moves[0]);
     }
 
     [Fact]
@@ -23,7 +23,7 @@ public class CommandUnitTests
 
         t.Execute(c);
 
-        Assert.Equal(t.ToString(), c.Moves[0]);
+        Assert.Equal("Turn left", c.Moves[0]);
     }
 
     [Fact]
@@ -60,11 +60,11 @@ public class CommandUnitTests
 
         cr.Execute(c);
         
-        Assert.All(c.Moves, cmd => Assert.Equal("Move 1", cmd.ToString()));
+        Assert.All(c.Moves, cmd => Assert.Equal("Move 1", cmd));
     }
 
     [Fact]
-    public void TestWallAheadConditionalRepeat()
+    public void TestWallAheadConditionalRepeatRightEndPosition()
     {
         Character c = new Character();
         List<ICommand> inner = new List<ICommand> { new Move(1) };
