@@ -86,65 +86,87 @@
 
 \begin{document} 
     \maketitle
-    \begin{figure*}[htbp]
+    \begin{figure*}[htbp]\label{image-mascot}
         \centering
         \includegraphics[width=0.9\textwidth]{mascot}
-        \label{image-mascot}
     \end{figure*}
     \newpage
     \section*{Design}
     \subsection*{Class Diagram}
+    \begin{figure}[htbp]\label{fig:class-diagram}
+        \centering
+        \includegraphics[width=0.9\textwidth]{class_diagram_program}
+        \caption{\small{Class diagram of the Programming Learning App}}
+    \end{figure}
     \subsection*{Design Patterns}
+    We mainly used the same design patterns as in the previous practical assignment for the core program. 
+    For the UI part, we split the model from the view, but we did not end up using the MVVM pattern as we initially planned, we just bound the model directily to the view.
+    This was because we found it quite hard to implement the pattern with Avalonia, and since our UI is not that complex, we decided to just have the view interact directly with the model.
+    This does however make it harder to switch to a different UI, since there is more coupling between the UI and the model, but with a few small changes to the model, it is still easily done. 
     \subsection*{Deviations From Previous Design}
     To implement the \texttt{ConditionalRepeat} class, we had to make a few changes, since we encountered problems with our program needing to paste all the moves it has completed. 
     Previously we implemented a \texttt{ToString} method for all classes implementing \texttt{ICommand}, and while executing the commands, we added them to a list, and after executing we called \texttt{ToString} on them.
     This worked fine for the old commands, but the conditional repeat needs to check a character state to see how many times it should do its code block, which was not possible with our old implementation. 
     To fix this we added a list of executed commands to the character, and each basic command (Turn and Move) adds itself to this list.
     This way we can easily print the list in the \texttt{Character} class. 
+    Another change was the addition of the abstract class \texttt{Repeatable}, which both \texttt{Repeat} and \texttt{ConditionalRepeat} inherit from.
+    This was done to reduce code duplication, since both classes had a lot of similar code, such as holding a list of commands and executing them multiple times.
     
     \section{Code Quality}
     \subsection{Resharper}
-    We use the Rider IDE from Jetbrains as our main IDE for coding this project, luckely Rider has a great build-in code Quality tool called Resharper.
-    Resharper provides good feedback on code quality and we have used it intensifly throughout the whole project.
-    Resharper gives errors (wich are actual c# errors) and warnings wich is feedback on our code quality.
-    These warnings can be naming conventions, possible null values, redundend code and much more.
+    We use the Rider IDE from Jetbrains as our main IDE for coding this project, luckily Rider has a great build-in code Quality tool called Resharper.
+    Resharper provides good feedback on code quality and we have used it intensively throughout the whole project.
+    Resharper gives errors (which are actual c\# errors) and warnings which is feedback on our code quality.
+    These warnings can be naming conventions, possible null values, redundant code and much more.
     This way we always wrote code that complies to the code quality standards
     \subsection{Metrices}
     kkr blijkbaar moet dit ook
-    \subsection{Reflection + Code reviews}
-    Using Resharper took a bit of time getting used to.
-    Normaly we didn't really care about, naming conventions or possible null values and only cared about that the code worked.
-    But now we needed to, and it actualy made the project a lot more well-organized. 
+    \subsection{Reflection \& Code reviews}
+    Using Resharper took a bit of time to get used to.
+    Normally we didn't really care about naming conventions or possible null values and only cared about the code working.
+    But now that we were forced to, it actually made the project a lot more well-organized. 
     Throughout the project we frequently took a look at each others code and gave feedback on each others work.
     Giving each other ideas of how the code could be improved or refactored, or making sure that we both understood each others code.
-    By using Resharper and checking on eachother, we have writen clean code that complies to the code quality standards.
+    By using Resharper and checking on each other, we have written clean code that complies to the code quality standards.
 
     \section{Evaluation}
     \subsection{Analysis}
-    We strive of cource for high \texttt{Cohesion} and low \texttt{Coupling} to make the design of our code as good as possible.
-    To achieve low \texttt{Coupling} we have seperated the project in 3 sub projects.
-    \begin{enumerate}
-        \item MSOProgramLearningApp
+    We strive, ofcourse, for high cohesion and low coupling to make the design of our code as extensible and understandable as possible.
+    To achieve low coupling we have seperated the project in 3 sub projects.
+    \begin{itemize}
+        \item \texttt{MSOProgramLearningApp}: 
         This project holds the core logic of our application and holds all the data structures such as the character, grid and commands.
         It also is responsible for parsing strings into commands, moving the character and drawing an output image.
-        This project on its own is just the commandline interface we made at the previous practical assigment
-        \item MSOAvaloniaApp
+        This project on its own is just the commandline interface we made at the previous practical assigment.
+        \item \texttt{MSOAvaloniaApp}:
         This projects uses the Avalonia libary to create a window for the actual finished application.
-        All the UI related code is in here, and it uses a reference to the \texttt{MSOProgramLearningApp} project for all the core logic
-        \item MSOTestProject
+        All the UI related code is in here, and it uses a reference to the \texttt{MSOProgramLearningApp} project for all the core logic.
+        \item \texttt{MSOTestProject}:
         This project is used for testing the logic in the \texttt{MSOProgramLearningApp} project.
-        It holds unit and system tests that we will discus in the next section
-    \end{enumerate}
-    This way we also make sure that each project has high \texttt{Cohesion} because it only does a specific part of our application.
+        It holds unit and system tests that we will discus in section~\ref{sec:testing}.
+    \end{itemize}
+    This way we also make sure that each project has high cohesion because it only does a specific part of our application.
     %moeten we nog dieper op cohesion and coupling in gaan? als in echt per class kijken waarom hij eraan voldoet of is dit prima?
+    %mss zijn een paar voorbeelden van waar we het goed hebben gedaan wel handig
     \subsection{Changing Requirements}
 
-    \section{Testing}
+    \section{Testing}\label{sec:testing}
     \subsection{Unit tests}
-    \subsection{System tests} % moet nog
+    \subsection{System tests}
+    We manually tested the application by running through a few different scenarios, making sure that we got the expected output each time. 
+    These tests changed a bit over time, since we added new features to be tested. 
+    Here is a list of the different scenarios we tested:
+    \begin{enumerate}
+        \item Basic movement: Running the basic example from the assignment description, and checking if the character ends up in the right position and orientation, without errors.
+        \item Nested repeat command: We ran the advanced example from the assignment description, which includes a nested repeat command, and checked if the character ends up in the right position and orientation, without errors.
+        \item Metrics: We ran metrics on the examples to see if the metrics were calculated correctly.
+        \item Conditional repeat: We created a scenario that uses the conditional repeat command, and checked if the character ends up in the right position and orientation, without errors.
+        \item Catching file errors: We tried to load files with invalid formats, and checked if the program catches the errors and displays an appropriate message to the user.
+        \item Catching out of bounds errors: We created scenarios where the character would try to move out of bounds, and checked if the program catches the errors and displays an appropriate message to the user.
+    \end{enumerate}
     \subsection{Final test run} %foto van alle geslaagde tests op het eind
 
-    \section{Work Distribution & Retrospective}
+    \section{Work Distribution \& Retrospective}
     \subsection{Task Distribution}
     \subsection{Retrospective}
 

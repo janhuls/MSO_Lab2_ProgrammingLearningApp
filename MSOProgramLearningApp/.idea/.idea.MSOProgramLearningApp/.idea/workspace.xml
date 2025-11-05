@@ -10,7 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97649446-9819-4f13-9779-b22e68479461" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/MSOTestProject/CommandUnitTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOTestProject/CommandUnitTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../document pt 3/class_diagram_program.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSOProgramLearningApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSOProgramLearningApp/OutputDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MSOProgramLearningApp/OutputDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../document pt 3/prac3.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../document pt 3/prac3.tex" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +87,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="LaTeX.prac3">
+  <component name="RunManager" selected=".NET Project.MSOAvaloniaApp">
     <configuration name="MSOAvaloniaApp" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -232,9 +235,11 @@
       <workItem from="1761819340734" duration="5334000" />
       <workItem from="1761838953043" duration="449000" />
       <workItem from="1761904394659" duration="1831000" />
-      <workItem from="1762168376107" duration="3008000" />
+      <workItem from="1762168376107" duration="5212000" />
       <workItem from="1762268999182" duration="542000" />
       <workItem from="1762269556469" duration="2271000" />
+      <workItem from="1762347239480" duration="278000" />
+      <workItem from="1762349764132" duration="482000" />
     </task>
     <task id="LOCAL-00001" summary="mascots">
       <option name="closed" value="true" />
@@ -292,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762250858988</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="unit test gefixt enz">
+      <option name="closed" value="true" />
+      <created>1762253307245</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1762253307245</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,7 +349,8 @@
     <MESSAGE value="hij werkt weer" />
     <MESSAGE value="comments en grote cleanup" />
     <MESSAGE value="command unit tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="command unit tests" />
+    <MESSAGE value="unit test gefixt enz" />
+    <option name="LAST_COMMIT_MESSAGE" value="unit test gefixt enz" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -85,7 +85,7 @@ public static class OutputDrawer
     //draws grid lines on the given ctx
     private static void DrawGridLines(IImageProcessingContext ctx, int gridSize, int cellSize, Color color, float thickness, int imageSize)
     {
-        //draw vertical lines
+        //draw vertical linesG
         for (int i = 0; i <= gridSize; i++)
         {
             float x = i * cellSize;
@@ -178,7 +178,7 @@ public static class OutputDrawer
 
         return image;
     }
-    //returns the world coordinates of a grid point
+    //returns the world coordinates of a grid pointG
     private static PointF getPointOnGrid((int,int) pt, Grid grid, int imageSize)
     {
         int spaceBetweenLines = imageSize / grid.GetSize();

@@ -1,8 +1,8 @@
-Move 10
+Move 9
 Turn right
-Move 10
+Move 9
 Turn right
-Move 10
+Move 9
 Turn right
-Move 10
+Move 9
 Turn right
