@@ -3,7 +3,7 @@ namespace MSOProgramLearningApp;
 //simple builder for making hardcoded example programs
 public class ProgramBuilder
 {
-    private readonly List<ICommand> _commands = new();
+    private readonly List<ICommand> _commands = [];
 
     public ProgramBuilder Move(int steps)
     {
@@ -25,7 +25,10 @@ public class ProgramBuilder
         return this;
     }
 
-    public List<ICommand> Build() => _commands;
+    public List<ICommand> Build()
+    {
+        return _commands;
+    }
 }
 
 //stores example programs for easy use

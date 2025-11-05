@@ -28,28 +28,34 @@ public class Move(int amount) : ICommand
 
 public abstract class Repeatable : ICommand
 {
+    //stores the commands in the repeatable
+    protected List<ICommand> Commands = [];
+
     //changes the character based on the repeatable implementation
     public abstract void Execute(Character c);
-    //stores the commands in the repeatable
-    protected List<ICommand> Commands = new();
+
     //returns the commands in the repeatable
-    public List<ICommand> GetCommands() => Commands;
+    public List<ICommand> GetCommands()
+    {
+        return Commands;
+    }
 }
 
 public class Repeat : Repeatable
 {
     //times the repeat will execute the command blocks
     private readonly int _repetitions;
-    
+
     public Repeat(int repetitions, List<ICommand> commands)
     {
         _repetitions = repetitions;
         Commands = commands;
     }
+
     //repeats the block in Commands for _repetitions times
     public override void Execute(Character c)
     {
-        for (int i = 0; i < _repetitions; i++)
+        for (var i = 0; i < _repetitions; i++)
             foreach (var command in Commands)
                 command.Execute(c);
     }
@@ -65,7 +71,7 @@ public class ConditionalRepeat : Repeatable
         _condition = condition;
         Commands = commands;
     }
-    
+
     //repeats the block in Commands until the condition is true
     public override void Execute(Character c)
     {

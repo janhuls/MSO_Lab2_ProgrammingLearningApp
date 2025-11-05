@@ -12,24 +12,23 @@
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Design.DataContext>
-    
-    
-    
+
+
     <Window.Styles>
         <Style Selector="Button">
-            <Setter Property="Padding" Value="15"></Setter>
-            <Setter Property="FontSize" Value="20"></Setter>
-            <Setter Property="Margin" Value="5"></Setter>
-            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Padding" Value="15" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
         </Style>
         <Style Selector="StackPanel.Button">
-            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="Width" Value="100" />
         </Style>
     </Window.Styles>
-    
-    
+
+
     <Grid ColumnDefinitions="0.6*,2*,2*" RowDefinitions="0.1*, *, Auto, 0.4*" Margin="10" x:Name="Gridy">
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <Button Command="{Binding LoadProgramCommand}">Load Program</Button>
@@ -40,23 +39,27 @@
             <Button Click="LoadBuildInExample">Load example 4</Button>
             <Button Click="LoadBuildInExample">Load example 5</Button>
         </StackPanel>
-        
-        
+
+
         <TextBlock Grid.Row="0" Grid.Column="2" FontSize="40" FontWeight="Bold" Margin="5">Code Loopa app thingy</TextBlock>
-        
-        <TextBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" Text="{Binding Code, Mode=TwoWay}" />
-        
-        <Image Grid.Row="1" Grid.Column="2" Source="{Binding OutputImageBinding}" Margin="5" Stretch="Uniform" ClipToBounds="True"></Image> <!--> test: Source="../Assets/mauntain.bmp" -->
-        
+
+        <TextBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" AcceptsReturn="True" AcceptsTab="True"
+                 TextWrapping="Wrap" Text="{Binding Code, Mode=TwoWay}" />
+
+        <Image Grid.Row="1" Grid.Column="2" Source="{Binding OutputImageBinding}" Margin="5" Stretch="Uniform"
+               ClipToBounds="True" />
+        <!--> test: Source="../Assets/mauntain.bmp" -->
+
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top">
             <Button Command="{Binding OutputCommand}">RUN</Button>
             <Button Command="{Binding MetricsCommand}">Metrics</Button>
         </StackPanel>
-        <TextBox TextWrapping="Wrap" Grid.Row="3" Grid.Column="1" Text="{Binding Output, Mode=OneWay}" IsReadOnly="True" ></TextBox>
-        
+        <TextBox TextWrapping="Wrap" Grid.Row="3" Grid.Column="1" Text="{Binding Output, Mode=OneWay}"
+                 IsReadOnly="True" />
+
         <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
             <TextBlock FontSize="30" Margin="5">Select Grid size:</TextBlock>
-            <ComboBox SelectedIndex="{Binding SelectedGrid}" Margin="5" FontSize="20" >
+            <ComboBox SelectedIndex="{Binding SelectedGrid}" Margin="5" FontSize="20">
                 <ComboBoxItem>5x5</ComboBoxItem>
                 <ComboBoxItem>10x10</ComboBoxItem>
                 <ComboBoxItem>15x15</ComboBoxItem>
@@ -68,8 +71,5 @@
         </StackPanel>
     </Grid>
 
-    
-    
-    
-    
+
 </Window>

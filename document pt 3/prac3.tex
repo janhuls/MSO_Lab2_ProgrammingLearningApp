@@ -84,77 +84,136 @@
 \author{Jan Huls (4699610), Arwin Moormans (4965957)}
 
 
-\begin{document} 
+\begin{document}
     \maketitle
-    \begin{figure*}[htbp]\label{image-mascot}
+    \begin{figure*}[htbp]
+        \label{image-mascot}
         \centering
         \includegraphics[width=0.9\textwidth]{mascot}
     \end{figure*}
     \newpage
+
+
     \section*{Design}
+
     \subsection*{Class Diagram}
-    \begin{figure}[htbp]\label{fig:class-diagram}
+    \begin{figure}[htbp]
+        \label{fig:class-diagram}
         \centering
         \includegraphics[width=0.9\textwidth]{class_diagram_program}
         \caption{\small{Class diagram of the Programming Learning App}}
     \end{figure}
+
     \subsection*{Design Patterns}
-    We mainly used the same design patterns as in the previous practical assignment for the core program. 
-    For the UI part, we split the model from the view, but we did not end up using the MVVM pattern as we initially planned, we just bound the model directily to the view.
+    We mainly used the same design patterns as in the previous practical assignment for the core program.
+    For the UI part, we split the model from the view, but we did not end up using the MVVM pattern as we initially planned, we just bound the model directly to the view.
     This was because we found it quite hard to implement the pattern with Avalonia, and since our UI is not that complex, we decided to just have the view interact directly with the model.
-    This does however make it harder to switch to a different UI, since there is more coupling between the UI and the model, but with a few small changes to the model, it is still easily done. 
+    This does however make it harder to switch to a different UI, since there is more coupling between the UI and the model, but with a few small changes to the model, it is still easily done.
+
     \subsection*{Deviations From Previous Design}
-    To implement the \texttt{ConditionalRepeat} class, we had to make a few changes, since we encountered problems with our program needing to paste all the moves it has completed. 
+    To implement the \texttt{ConditionalRepeat} class, we had to make a few changes, since we encountered problems with our program needing to paste all the moves it has completed.
     Previously we implemented a \texttt{ToString} method for all classes implementing \texttt{ICommand}, and while executing the commands, we added them to a list, and after executing we called \texttt{ToString} on them.
-    This worked fine for the old commands, but the conditional repeat needs to check a character state to see how many times it should do its code block, which was not possible with our old implementation. 
+    This worked fine for the old commands, but the conditional repeat needs to check a character state to see how many times it should do its code block, which was not possible with our old implementation.
     To fix this we added a list of executed commands to the character, and each basic command (Turn and Move) adds itself to this list.
-    This way we can easily print the list in the \texttt{Character} class. 
+    This way we can easily print the list in the \texttt{Character} class.
     Another change was the addition of the abstract class \texttt{Repeatable}, which both \texttt{Repeat} and \texttt{ConditionalRepeat} inherit from.
     This was done to reduce code duplication, since both classes had a lot of similar code, such as holding a list of commands and executing them multiple times.
-    
-    \section{Code Quality}
-    \subsection{Resharper}
+
+    \subsection*{Assumptions}
+    During the development of the project, we made a few assumptions to interpret the assignment.
+    \begin{itemize}
+        \item The grid is always square: We assumed that the grid is always square, meaning that the width and height are always the same.
+        This assumption was made to simplify the implementation of the grid and character movement.
+        \item The character always starts at position (0, 0) facing east: We assumed that the character always starts at the top-left corner of the grid, facing left.
+        This assumption was made to have a consistent starting point for all scenarios.
+        \item When using the `sandbox' mode, the grid is finite and the character cannot move out of bounds: We assumed that in sandbox mode, the grid has a fixed size and the character cannot move outside the grid.
+        If the character tries to move out of bounds, an error is thrown.
+    \end{itemize}
+
+
+    \section*{Code Quality}
+
+    \subsection*{Resharper}
     We use the Rider IDE from Jetbrains as our main IDE for coding this project, luckily Rider has a great build-in code Quality tool called Resharper.
-    Resharper provides good feedback on code quality and we have used it intensively throughout the whole project.
+    Resharper provides good feedback on code quality which we have used it intensively throughout the whole project.
     Resharper gives errors (which are actual c\# errors) and warnings which is feedback on our code quality.
     These warnings can be naming conventions, possible null values, redundant code and much more.
     This way we always wrote code that complies to the code quality standards
-    \subsection{Metrices}
-    kkr blijkbaar moet dit ook
-    \subsection{Reflection \& Code reviews}
+
+    \subsection*{Metrics}
+    Resharper automatically tests the cyclomatic complexity of our code, and if it is more than $10$ in a method, it will give a warning. 
+    It also tests a number of other metrics, which when above a certain threshold, will give a warning or error. 
+    
+
+    \subsection*{Reflection \& Code reviews}
     Using Resharper took a bit of time to get used to.
     Normally we didn't really care about naming conventions or possible null values and only cared about the code working.
-    But now that we were forced to, it actually made the project a lot more well-organized. 
-    Throughout the project we frequently took a look at each others code and gave feedback on each others work.
-    Giving each other ideas of how the code could be improved or refactored, or making sure that we both understood each others code.
+    But now that we were forced to, it actually made the project a lot more well-organized.
+    Throughout the project we frequently took a look at each others code and gave feedback on each other's work.
+    Giving each other ideas of how the code could be improved or refactored, or making sure that we both understood each other's code.
     By using Resharper and checking on each other, we have written clean code that complies to the code quality standards.
 
-    \section{Evaluation}
-    \subsection{Analysis}
-    We strive, ofcourse, for high cohesion and low coupling to make the design of our code as extensible and understandable as possible.
+
+    \section*{Evaluation}
+
+    \subsection*{Analysis}
+    We strive, of course, for high cohesion and low coupling to make the design of our code as extensible and understandable as possible.
     To achieve low coupling we have seperated the project in 3 sub projects.
     \begin{itemize}
-        \item \texttt{MSOProgramLearningApp}: 
+        \item \texttt{MSOProgramLearningApp}:
         This project holds the core logic of our application and holds all the data structures such as the character, grid and commands.
         It also is responsible for parsing strings into commands, moving the character and drawing an output image.
         This project on its own is just the commandline interface we made at the previous practical assigment.
         \item \texttt{MSOAvaloniaApp}:
-        This projects uses the Avalonia libary to create a window for the actual finished application.
+        This projects uses the Avalonia library to create a window for the actual finished application.
         All the UI related code is in here, and it uses a reference to the \texttt{MSOProgramLearningApp} project for all the core logic.
         \item \texttt{MSOTestProject}:
         This project is used for testing the logic in the \texttt{MSOProgramLearningApp} project.
-        It holds unit and system tests that we will discus in section~\ref{sec:testing}.
+        It holds unit and system tests that we will discuss later.
     \end{itemize}
     This way we also make sure that each project has high cohesion because it only does a specific part of our application.
-    %moeten we nog dieper op cohesion and coupling in gaan? als in echt per class kijken waarom hij eraan voldoet of is dit prima?
-    %mss zijn een paar voorbeelden van waar we het goed hebben gedaan wel handig
-    \subsection{Changing Requirements}
+    Since the core of our program is the same as the previous practical assignment, we wil not go into detail about the analysis of the \texttt{MSOProgramLearningApp}.
+    We do however note that the \texttt{OutputDrawer} class is lightly coupled to the rest of the program, since it is programmed to the interface of the rest of the classes, it also boasts high cohesion since it only draws the output image.
+    For the \texttt{MSOAvaloniaApp} project we also made sure to have high cohesion by separating the UI code from the core logic.
+    The UI code only handles displaying the window, getting user input and showing output to the user.
+    All the core logic is handled by the \texttt{MSOProgramLearningApp} project.
+    This way we can easily change the UI in the future without having to change the core logic of the program.
+    The \texttt{MainWindowViewModel} also has high cohesion, since it only holds the data that is displayed in the UI and handles user input.
+    It does not hold any core logic of the program, it just calls the appropriate methods from the \texttt{MSOProgramLearningApp} project.
 
-    \section{Testing}\label{sec:testing}
-    \subsection{Unit tests}
-    \subsection{System tests}
-    We manually tested the application by running through a few different scenarios, making sure that we got the expected output each time. 
-    These tests changed a bit over time, since we added new features to be tested. 
+    \subsection*{Changing Requirements}
+    Our program meets all the requirements set in the assignment description, but if we were to change or add requirements, we would have to make some changes to our design.
+    For example, if we were to add a different UI framework, we would have to change the \texttt{MSOAvaloniaApp} project to use the new framework.
+    This would not affect the \texttt{MSOProgramLearningApp} project, since it is decoupled from the UI.
+    We could likely reuse most of the code from the \texttt{MainWindowViewModel}, but we would have to change the way the UI is displayed and how user input is handled.
+    If we were to add new commands to the program, we would have to add new classes implementing the \texttt{ICommand} interface in the \texttt{MSOProgramLearningApp} project.
+    This would not affect the UI project, since the UI only calls the methods from the core project.
+    Adding a new parser for a different file format would also be quite easy, we would simply have to add a new parser class in the \texttt{MSOProgramLearningApp} project, and have it implement the \texttt{IParser} interface.
+    We would have to update the command parser to recognize the new commands, but this would be a small change. \\
+    Overall, our design is quite flexible and can easily accommodate changes in requirements without having to make major changes to the codebase,
+    a harder change would be to make the grid non-square, this would require changes to the \texttt{Grid} class and possibly the \texttt{Character} class,
+    and since a few classes use the \texttt{GetSize} method from the \texttt{Grid} class, we would have to update those classes as well.
+
+
+    \section*{Testing}
+
+    \subsection*{Unit tests}
+    We wrote quite a few unit tests to test the core program functionality after making changes. 
+    The tests are in a separate project \texttt{MSOTestProject}, which we run after making changes to the \texttt{MSOProgramLearningApp}, ensuring functionality of our program's core. 
+    We have tests for $4$ major aspects of our code: 
+    \begin{enumerate}
+        \item \texttt{CharacterUnitTests}: 
+            In this class, we test movement and rotation of the character, since this is the only logic this tests implements. 
+        \item \texttt{CommandUnitTests}: 
+            Here we test the execution of the commands on a mock character. 
+        \item \texttt{MeticsStrategyTests}: 
+            We use this class for testing whether our metrics calculator works for a specific list of commands.
+        \item \texttt{StringParserTests}: 
+            In the \texttt{StringParserTests} class we test whether or parser gives the expected output when parsing a string. 
+    \end{enumerate}
+    \subsection*{System tests}
+    We manually tested the application by running through a few different scenarios, making sure that we got the expected output each time.
+    These tests changed a bit over time, since we added new features to be tested.
     Here is a list of the different scenarios we tested:
     \begin{enumerate}
         \item Basic movement: Running the basic example from the assignment description, and checking if the character ends up in the right position and orientation, without errors.
@@ -162,17 +221,16 @@
         \item Metrics: We ran metrics on the examples to see if the metrics were calculated correctly.
         \item Conditional repeat: We created a scenario that uses the conditional repeat command, and checked if the character ends up in the right position and orientation, without errors.
         \item Catching file errors: We tried to load files with invalid formats, and checked if the program catches the errors and displays an appropriate message to the user.
-        \item Catching out of bounds errors: We created scenarios where the character would try to move out of bounds, and checked if the program catches the errors and displays an appropriate message to the user.
+        \item Catching out-of-bounds errors: We created scenarios where the character would try to move out of bounds, and checked if the program catches the errors and displays an appropriate message to the user.
     \end{enumerate}
-    \subsection{Final test run} %foto van alle geslaagde tests op het eind
 
-    \section{Work Distribution \& Retrospective}
-    \subsection{Task Distribution}
-    \subsection{Retrospective}
+    \subsection*{Final test run} %foto van alle geslaagde tests op het eind
 
-    %begint altijd (0, 0)
-    %grid is altijd vierkant
-    %geen oneindige grids
-    %kan niet uit grid lopen??
-    
+
+    \section*{Work Distribution \& Retrospective}
+
+    \subsection*{Task Distribution}
+
+    \subsection*{Retrospective}
+
 \end{document}
