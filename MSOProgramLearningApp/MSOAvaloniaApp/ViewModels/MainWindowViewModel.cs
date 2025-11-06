@@ -130,7 +130,7 @@ public partial class MainWindowViewModel : ViewModelBase
                 return Grid.XSquareFalse(10);
 
             case 6:
-                var parseTexxt = ReadTextAsset("challengeGrid1");
+                var parseTexxt = ReadTextAsset("ChallengeGrid");
                 if (parseTexxt is not null) return GridParser.Parse(parseTexxt);
                 Output = "ERROR: Failed to load example grid asset.\nLoaded a 10x10 grid as default";
                 return Grid.XSquareFalse(10);
